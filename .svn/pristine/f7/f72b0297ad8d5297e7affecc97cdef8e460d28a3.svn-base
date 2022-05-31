@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Download";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model System.Data.DataTable
+@using System.Data;
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <label><b>E-RECRUITMENT DESKTOP</b></label>
+                <br />
+                <label>VERSION:</label> &nbsp;<label>1.0</label>
+                <br />
+                <label>SIZE:</label> &nbsp;<label>90MB</label>
+                <br />
+                <label>TYPE:</label> &nbsp;<label>Executable File  (.exe)</label>
+                <br />
+                <button class="btn btn-outline-success" onclick="IsPermitted()"> DOWNLOAD </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var APPNAME = '@System.Configuration.ConfigurationManager.AppSettings["APPNAME"]';
+    $(document).ready(function () {
+
+    });
+    function IsPermitted() {
+        var URL = "@Url.Action("IsPermitted", "Download")";
+        $.ajax({
+            type: "POST",
+            url: URL,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    window.open('/ERECRUITMENT2/ERECRUITMENT/E-RECRUITMENT.exe');
+                }
+                else {
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+</script>

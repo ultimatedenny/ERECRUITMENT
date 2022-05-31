@@ -1,0 +1,11 @@
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\bin\Debug\net45\ZipExtractor.exe.config
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\bin\Debug\net45\ZipExtractor.exe
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\bin\Debug\net45\ZipExtractor.pdb
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.FormMain.resources
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.Properties.Resources.resources
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.csproj.GenerateResource.cache
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.AssemblyInfoInputs.cache
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.AssemblyInfo.cs
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.csproj.CoreCompileInputs.cache
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.exe
+C:\Users\sbm_deni\Desktop\AutoUpdater.NET-master\ZipExtractor\obj\Debug\net45\ZipExtractor.pdb

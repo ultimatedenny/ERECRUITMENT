@@ -1,0 +1,264 @@
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.pdb
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.xml
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ar\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\cs\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\da\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\de\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\es\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\fr\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\it\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ja-JP\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ko\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\nl\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pl\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pt-BR\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pt\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ru\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\sk\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\sv\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\th\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\tr\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\zh-tw\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\zh\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csprojAssemblyReference.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ar.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.cs.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.da.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.de.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.es.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.fr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.it.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ja-JP.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ko.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.nl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pt-BR.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pt.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ru.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.sk.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.sv.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.th.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.tr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.zh-tw.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.zh.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ar.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.cs.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.da.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.de.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.es.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.fr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.it.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ja-JP.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ko.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.nl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.pl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.pt-BR.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ru.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.sk.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.sv.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.th.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.zh-tw.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.zh.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ar.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.cs.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.da.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.de.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.es.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.fr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.it.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ja-JP.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ko.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.nl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pt-BR.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pt.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ru.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.sk.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.sv.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.th.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.tr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.zh-tw.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.zh.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ar.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.cs.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.da.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.de.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.es.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.fr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.it.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ja-JP.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ko.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.nl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pl.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pt-BR.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pt.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ru.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.sk.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.sv.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.th.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.tr.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.zh-tw.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.zh.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csproj.GenerateResource.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.AssemblyInfoInputs.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.AssemblyInfo.cs
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csproj.CoreCompileInputs.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ar\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\cs\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\da\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\de\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\es\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\fr\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\it\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ja-JP\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ko\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\nl\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pl\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pt-BR\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pt\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ru\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\sk\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\sv\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\th\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\tr\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\zh-tw\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\zh\ShimanoUpdaterDotNet.resources.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.dll
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.pdb
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.pdb
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ShimanoUpdaterDotNet.xml
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ar\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\cs\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\da\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\de\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\es\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\fr\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\it\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ja-JP\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ko\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\nl\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pl\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pt-BR\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\pt\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\ru\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\sk\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\sv\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\th\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\tr\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\zh-tw\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\bin\Debug\net40\zh\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csprojAssemblyReference.cache
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ar.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.cs.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.da.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.de.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.es.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.fr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.it.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ja-JP.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ko.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.nl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pt-BR.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.pt.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.ru.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.sk.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.sv.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.th.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.tr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.zh-tw.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.DownloadUpdateDialog.zh.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ar.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.cs.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.da.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.de.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.es.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.fr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.it.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ja-JP.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ko.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.nl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.pl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.pt-BR.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.ru.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.sk.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.sv.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.th.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.zh-tw.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.Properties.Resources.zh.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ar.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.cs.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.da.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.de.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.es.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.fr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.it.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ja-JP.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ko.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.nl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pt-BR.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.pt.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.ru.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.sk.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.sv.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.th.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.tr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.zh-tw.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.RemindLaterForm.zh.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ar.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.cs.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.da.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.de.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.es.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.fr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.it.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ja-JP.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ko.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.nl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pl.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pt-BR.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.pt.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.ru.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.sk.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.sv.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.th.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.tr.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.zh-tw.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.UpdateForm.zh.resources
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csproj.GenerateResource.cache
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.AssemblyInfoInputs.cache
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.AssemblyInfo.cs
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.csproj.CoreCompileInputs.cache
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ar\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\cs\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\da\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\de\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\es\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\fr\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\it\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ja-JP\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ko\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\nl\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pl\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pt-BR\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\pt\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ru\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\sk\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\sv\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\th\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\tr\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\zh-tw\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\zh\ShimanoUpdaterDotNet.resources.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.dll
+D:\Project Deni\EREQRUITMENT\ShimanoUpdaterDotNet\obj\Debug\net40\ShimanoUpdaterDotNet.pdb

@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "HealthDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>RIWAYAT KESEHATAN</b> </h4>
+            </div>
+            <br />
+            <form action="javascript:SAVEHEALTHDATA()">
+                <div class="form-group mb-4">
+                    <p for="LIQUID_TINNER">APAKAH ANDA MEMILIKI ALERGI PADA CAIRAN TINNER ? <code>*</code></p>
+                    <select class="form-control" id="LIQUID_TINNER" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="STOMACH_ACID">APAKAH ANDA MEMILIKI PENYAKIT ASAM LAMBUNG / MAAG? <code>*</code></p>
+                    <select class="form-control" id="STOMACH_ACID" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="PNEUMONIA">APAKAH ANDA MEMILIKI PENYAKIT PARU-PARU BASAH ? <code>*</code></p>
+                    <select class="form-control" id="PNEUMONIA" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="LUNG_DISEASE">APAKAH ANDA MEMILIKI PENYAKIT PARU-PARU LAINNYA ? <code>*</code></p>
+                    <select class="form-control" id="LUNG_DISEASE" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="ASTHMA">APAKAH ANDA MEMILIKI PENYAKIT ASMA ? <code>*</code></p>
+                    <select class="form-control" id="ASTHMA" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="ASTHMA">APAKAH PERNAH MENGALAMI PATAH TULANG (FRACTURE) ? <code>*</code></p>
+                    <select class="form-control" id="FRACTURE" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="ASTHMA">APAKAH PERNAH MENJALANI PROSES OPERASI (SURGERY) ? <code>*</code></p>
+                    <select class="form-control" id="SURGERY" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                    <br />
+                    <textarea class="form-control" id="SURGERY_DESC" placeholder="Jika YA, jelaskan dengan singkat mengenai operasi yang anda jalani"></textarea>
+                </div>
+                
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+    });
+    function SAVEHEALTHDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_HEALTH", "MOBILE")";
+        var LIQUID_TINNER = document.getElementById("LIQUID_TINNER").value;
+        var STOMACH_ACID = document.getElementById("STOMACH_ACID").value;
+        var PNEUMONIA = document.getElementById("PNEUMONIA").value;
+        var LUNG_DISEASE = document.getElementById("LUNG_DISEASE").value;
+        var ASTHMA = document.getElementById("ASTHMA").value;
+        var FRACTURE = document.getElementById("FRACTURE").value;
+        var SURGERY = document.getElementById("SURGERY").value;
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            LIQUID_TINNER: LIQUID_TINNER,
+            STOMACH_ACID: STOMACH_ACID,
+            PNEUMONIA: PNEUMONIA,
+            LUNG_DISEASE: LUNG_DISEASE,
+            ASTHMA: ASTHMA,
+            FRACTURE: FRACTURE,
+            SURGERY: SURGERY,
+            SURGERY_DESC: SURGERY_DESC
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'HEALTH DATA UPDATED, PAGE WILL BE REDIRECT TO DOCUMENT DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                            window.location.href = "@Url.Action("DocumentDataForm", "MOBILE")";
+                        }, 1000);
+                    }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEHEALTHDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEHEALTHDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    
+</script>
+

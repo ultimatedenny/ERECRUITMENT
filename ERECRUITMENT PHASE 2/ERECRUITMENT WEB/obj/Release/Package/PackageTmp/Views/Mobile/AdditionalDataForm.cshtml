@@ -1,0 +1,438 @@
+﻿
+@{
+    ViewBag.Title = "AdditionalDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA PENDUKUNG</b> </h4>
+            </div>
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+
+            <form action="javascript:UPLOAD_CL()">
+
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <p>SURAT LAMARAN KERJA<code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadCL" name="UploadWorkEXP" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="mySecondImage">
+                    <p>CURRICULUM VITAE (CV)<code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadCV" name="UploadWorkEXP" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="MOTIVASI">Tujuan / motivasi Anda dalam bekerja<code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="MOTIVASI" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="KOMITMEN">Apa komitmen Anda kepada perusahaan apabila Anda diterima sebagai karyawan?<code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="KOMITMEN" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="LEFT_HANDED">Apakah Anda kidal?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="LEFT_HANDED" placeholder="" onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="CRIME">Apakah Anda pernah terlibat dalam tindakan kriminal / hukuman pidana?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="CRIME" placeholder="" onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="MENTAL_DISEASE">Apakah Anda pernah menderita penyakit atau gangguan fisik dan mental?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="MENTAL_DISEASE" placeholder="" onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="WORKED_ON_SHIMANO">Apakah Anda pernah bekerja di PT Shimano?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="WORKED_ON_SHIMANO" placeholder="" onchange="WORKED_ON_SHIMANO_ONCHANGE()" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4" id="WORKED_ON_SHIMANO_DIV">
+                    <p for="">jika Iya, berapa lama Anda pernah bekerja di PT Shimano?<code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="SHIMANO_START" placeholder="TAHUN MULAI">
+                    <br />
+                    <input type="text" class="form-control form-control-sm" id="SHIMANO_END" placeholder="TAHUN SELESAI">
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SAPORCOMP">Apakah Anda memiliki kemampuan komputer/SAP?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="SAPORCOMP" placeholder="" onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="STUDY_PLAN">Apakah Anda sedang kuliah / memiliki rencana untuk kuliah?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="STUDY_PLAN" placeholder="" onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EYECHECK">Apakah Anda memiliki gangguan penglihatan (rabun jauh (minus), rabun dekat (plus), rabun senja, silinder, dll.)<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="EYECHECK" placeholder="" onchange="EYECHECK_ONCHANGE()">
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4" id="EYECHECK_DIV">
+                    <p for="EYEVALUE">Jika iya, berapakah minus / plus yang Anda miliki sekarang?</p>
+                    <input type="text" class="form-control form-control-sm" id="EYEVALUE" placeholder="eg: +0.5 atau -0.5">
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SMOKING">Apakah Anda merokok?<code>*</code></p>
+                    <select type="text" class="form-control form-control-sm" id="SMOKING"  onchange="" required>
+                        <option value="">PILIH...</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="LAST_SMOKING">Kapan terakhir Anda merokok?</p>
+                    <input type="text" class="form-control form-control-sm" id="LAST_SMOKING" placeholder="">
+                </div>
+
+                <div class="n-chk">
+                    <label class="new-control new-checkbox checkbox-primary">
+                        <input id="ACCEPT_TERMS" type="checkbox" class="new-control-input" onchange="ACCEPT_TERMS_ONCHANGE()" required>
+                        <span class="new-control-indicator"></span>Dengan ini saya menyatakan informasi diatas saya tulis  dengan sadar serta tanpa tekanan ataupun paksaan dari pihak mana pun dan jika kemudian hari, terdapat pernyataan yang tidak benar dari pernyataan tersebut, saya bersedia menerima segala konsekuensinya.
+                    </label>
+                </div>
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SAVE</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var total_exp = 1;
+    var WORKED_ON_SHIMANO_VISIBLE = 1;
+    var EYECHECK_VISIBLE = 1;
+    var ACCEPT_TERMS_ENABLED = 0;
+
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+        var secondUpload = new FileUploadWithPreview('mySecondImage');
+        $('#WORKED_ON_SHIMANO_DIV').hide();
+        $('#EYECHECK_DIV').hide();
+        document.getElementById("SAVEBUTTON").disabled = true;
+        //GET_MOBILE_CANEDIT_ADDITIONALFORM();
+    });
+    function GET_MOBILE_CANEDIT_ADDITIONALFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_ADDITIONALFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    $.unblockUI();
+                    document.getElementById("SAVEBUTTON").disabled = true;
+                    ACCEPT_TERMS_ENABLED = 0;
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_ADDITIONALFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function UPLOAD_CL() {
+        $.blockUI({
+            message: "UPLOADING CL..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadCL").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_CL", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    UPLOAD_CV();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_CL() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_CL() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function UPLOAD_CV() {
+        $.blockUI({
+            message: "UPLOADING CV..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadCV").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_CV", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    SAVEADDITIONALDATA();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_CV() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_CV() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function WORKED_ON_SHIMANO_ONCHANGE() {
+        if (document.getElementById('WORKED_ON_SHIMANO').value == '' || document.getElementById('WORKED_ON_SHIMANO').value == 'false' || document.getElementById('WORKED_ON_SHIMANO').value == false) {
+            $('#WORKED_ON_SHIMANO_DIV').hide();
+            document.getElementById("SHIMANO_START").required = false;
+            document.getElementById("SHIMANO_END").required = false;
+        }
+        else {
+            $('#WORKED_ON_SHIMANO_DIV').show();
+            document.getElementById("SHIMANO_START").required = true;
+            document.getElementById("SHIMANO_END").required = true;
+        }
+    }
+    function EYECHECK_ONCHANGE() {
+        if (document.getElementById('EYECHECK').value == '' || document.getElementById('EYECHECK').value == 'false' || document.getElementById('EYECHECK').value == false) {
+            $('#EYECHECK_DIV').hide();
+            document.getElementById("EYEVALUE").required = false;
+        }
+        else {
+            document.getElementById("EYEVALUE").required = true;
+            $('#EYECHECK_DIV').show();
+        }
+    }
+    function ACCEPT_TERMS_ONCHANGE() {
+        if (ACCEPT_TERMS_ENABLED == 0) {
+            document.getElementById("SAVEBUTTON").disabled = false;
+            ACCEPT_TERMS_ENABLED = 1;
+        }
+        else {
+            document.getElementById("SAVEBUTTON").disabled = true;
+            ACCEPT_TERMS_ENABLED = 0;
+        }
+    }
+    function SAVEADDITIONALDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var URL = "@Url.Action("MOBILE_SAVE_ADDITIONAL", "MOBILE")";
+        var _MOTIVASI = document.getElementById('MOTIVASI').value;
+        var _KOMITMEN = document.getElementById('KOMITMEN').value;
+        var _CRIME = document.getElementById('CRIME').value;
+        var _MENTAL_DISEASE = document.getElementById('MENTAL_DISEASE').value;
+        var _WORKED_ON_SHIMANO = document.getElementById('WORKED_ON_SHIMANO').value;
+        var _SHIMANO_START = document.getElementById('SHIMANO_START').value;
+        var _SHIMANO_END = document.getElementById('SHIMANO_END').value;
+        var _STUDY_PLAN = document.getElementById('STUDY_PLAN').value;
+        var _EYECHECK = document.getElementById('EYECHECK').value;
+        var _EYEVALUE = document.getElementById('EYEVALUE').value;
+        var _SMOKING = document.getElementById('SMOKING').value;
+        var _LAST_SMOKING = document.getElementById('LAST_SMOKING').value;
+        var _ACCEPT_TERMS = document.getElementById('ACCEPT_TERMS').value;
+        if (_ACCEPT_TERMS == 'on') {
+            _ACCEPT_TERMS == true;
+        }
+        else {
+            _ACCEPT_TERMS == false;
+        }
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+
+        if (_WORKED_ON_SHIMANO == false) {
+            _SHIMANO_START = "";
+            _SHIMANO_END = "";
+        }
+
+        if (_EYECHECK == false) {
+            _EYEVALUE = "";
+        }
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            MOTIVASI: _MOTIVASI,
+            KOMITMEN: _KOMITMEN,
+            CRIME: _CRIME,
+            MENTAL_DISEASE: _MENTAL_DISEASE,
+            WORKED_ON_SHIMANO: _WORKED_ON_SHIMANO,
+            SHIMANO_START: _SHIMANO_START,
+            SHIMANO_END: _SHIMANO_END,
+            STUDY_PLAN: _STUDY_PLAN,
+            EYECHECK: _EYECHECK,
+            EYEVALUE: _EYEVALUE,
+            SMOKING: _SMOKING,
+            LAST_SMOKING: _LAST_SMOKING,
+            ACCEPT_TERMS: _ACCEPT_TERMS
+        };
+
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'ADDITIONAL DATA UPDATED, PAGE WILL BE REDIRECT TO DASHBOARD.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("DASHBOARD", "MOBILE", new { id = @ViewBag.UNIQUEID }) ";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEADDITIONALDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEADDITIONALDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,397 @@
+﻿
+@{
+    ViewBag.Title = "FamilyDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA KELUARGA</b> </h4>
+            </div>
+            <br />
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+            <form action="javascript:UploadKK()">
+
+                <div class="form-group mb-4">
+                    <p>NOMOR KARTU KELUARGA <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="NO_KK" maxlength="16" placeholder="16 Digit No. KK" onKeyPress="if(this.value.length==16) return false;">
+                </div>
+
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <p>FOTO KK <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></b></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadKK" name="UploadKK" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>NAMA AYAH <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="FATHER_NAME" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>USIA AYAH <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="FATHER_AGE" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>PEKERJAAN AYAH <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="FATHER_JOB" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>NAMA IBU <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="MOTHER_NAME" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>USIA IBU <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="MOTHER_AGE" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p>PEKERJAAN IBU <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="MOTHER_JOB" placeholder="" required>
+                </div>
+
+                <div>
+                    <div class="form-holder-append">
+                        <div class="form-holder form-row">
+                            <div class="form-group col-md-4">
+                                <p for="SIBLING_NAME">NAMA SAUDARA</p>
+                                <input type="text" class="form-control form-control-sm" id="SIBLING_NAME" placeholder="">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <p for="SIBLING_AGE">USIA SAUDARA</p>
+                                <input type="number" class="form-control form-control-sm" id="SIBLING_AGE" placeholder="">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <p for="SIBLING_JOB">PEKERJAAN SAUDARA</p>
+                                <input type="text" class="form-control form-control-sm" id="SIBLING_JOB" placeholder="">
+                            </div>
+                            <button type="button" name="REMOVEBUTTON" id="REMOVEBUTTON" class="btn btn-block btn-danger remove">HAPUS</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12" style="padding:5pt">
+                            <button type="button" name="ADDBUTTON" id="ADDBUTTON" class="btn btn-block btn-secondary add">TAMBAH SAUDARA</button>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <button type="submit" onclick="UploadKK()" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+
+
+
+        </div>
+       
+    </div>
+</div>
+<script>
+    var total_saudara = 1;
+
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+        $('#NO_KK').maxlength();
+        //GET_MOBILE_CANEDIT_FAMILYFORM();
+    });
+
+    function GET_MOBILE_CANEDIT_FAMILYFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_FAMILYFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_FAMILYFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function Add_Sibling() {
+        var source = $('.form-holder:first'), clone = source.clone();
+        clone.find(':input').attr('id', function (i, val) {
+            return val + total_saudara;
+        });
+        clone.appendTo('.form-holder-append');
+        total_saudara++;
+
+    }
+
+    function Del_Sibling() {
+        var closest = $(this).closest('.form-holder').remove();
+    }
+
+    $('.add').on('click', function () {
+        if (total_saudara == 3) {
+            Snackbar.show({ text: 'YOU CANNOT ADD MORE SIBLING', pos: 'bottom-right' });
+        }
+        else {
+            var source = $('.form-holder:first'), clone = source.clone();
+            clone.find(':input').attr('id', function (i, val) {
+                return val + total_saudara;
+            });
+            clone.appendTo('.form-holder-append');
+            total_saudara++;
+
+            var SIBLING_NAME = "SIBLING_NAME" + (total_saudara - 1);
+            var SIBLING_NAME_ELEM = document.getElementById(SIBLING_NAME);
+            SIBLING_NAME_ELEM.value = '';
+            SIBLING_NAME_ELEM.innerHTML = '';
+
+            var SIBLING_AGE = "SIBLING_AGE" + (total_saudara - 1);
+            var SIBLING_AGE_ELEM = document.getElementById(SIBLING_AGE);
+            SIBLING_AGE_ELEM.value = '';
+            SIBLING_AGE_ELEM.innerHTML = '';
+
+            var SIBLING_JOB = "SIBLING_JOB" + (total_saudara - 1);
+            var SIBLING_JOB_ELEM = document.getElementById(SIBLING_JOB);
+            SIBLING_JOB_ELEM.value = '';
+            SIBLING_JOB_ELEM.innerHTML = '';
+        }
+    });
+
+    $('body').on('click', '.remove', function () {
+        if (total_saudara == 1) {
+            Snackbar.show({ text: 'YOU CANNOT REMOVE SIBLING', pos: 'bottom-right' });
+        }
+        else {
+            var closest = $(this).closest('.form-holder').remove();
+            total_saudara--;
+        }
+    });
+
+    function SAVEFAMILYDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var URL = "@Url.Action("MOBILE_SAVE_FAMILYFORM", "MOBILE")";
+        var _NOKK = document.getElementById('NO_KK').value;
+        var _FATHER_NAME = document.getElementById('FATHER_NAME').value;
+        var _FATHER_AGE = document.getElementById('FATHER_AGE').value;
+        var _FATHER_JOB = document.getElementById('FATHER_JOB').value;
+        var _MOTHER_NAME = document.getElementById('MOTHER_NAME').value;
+        var _MOTHER_AGE = document.getElementById('MOTHER_AGE').value;
+        var _MOTHER_JOB = document.getElementById('MOTHER_JOB').value;
+
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            NOKK: _NOKK,
+            FATHER_NAME: _FATHER_NAME,
+            FATHER_AGE: _FATHER_AGE,
+            FATHER_JOB: _FATHER_JOB,
+            MOTHER_NAME: _MOTHER_NAME,
+            MOTHER_AGE: _MOTHER_AGE,
+            MOTHER_JOB: _MOTHER_JOB
+        };
+
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEFAMILYDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    SAVESIBLINGS();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEFAMILYDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEFAMILYDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UploadKK() {
+        $.blockUI({
+            message: "UPLOADING KK..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadKK").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_KK", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOADKK() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    SAVEFAMILYDATA();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOADKK() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOADKK() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function SAVESIBLINGS() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_SIBLINGSFORM", "MOBILE")";
+        var SIBLINGS = new Array();
+        for (var i = 0; i < total_saudara; i++) {
+            var _SIBLING_NAME = "";
+            var _SIBLING_AGE = "";
+            var _SIBLING_JOB = "";
+            var X = $("#SIBLING_NAME").val();
+            var Y = $("#SIBLING_AGE").val();
+            var Z = $("#SIBLING_JOB").val();
+            if (i == 0) {
+                _SIBLING_NAME = $("#SIBLING_NAME").val();
+                _SIBLING_AGE = $("#SIBLING_AGE").val();
+                _SIBLING_JOB = $("#SIBLING_JOB").val();
+            }
+            else {
+                _SIBLING_NAME = $("#SIBLING_NAME"+ i + "").val();
+                _SIBLING_AGE  = $("#SIBLING_AGE" + i + "").val();
+                _SIBLING_JOB  = $("#SIBLING_JOB" + i + "").val();
+            }
+            SIBLINGS[i] = { BATCH_EMP: UNIQUEID, SIBLINGS_NAME: _SIBLING_NAME, SIBLINGS_AGE: _SIBLING_AGE, SIBLINGS_JOB: _SIBLING_JOB};
+        }
+        SIBLINGS = JSON.stringify({ 'MODEL': SIBLINGS });
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: SIBLINGS,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'FAMILY DATA UPDATED, PAGE WILL BE REDIRECT TO EDUCATION DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("EducationDataForm", "MOBILE")";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVESIBLINGS() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            failure: function (data) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVESIBLINGS() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVESIBLINGS() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+</script>

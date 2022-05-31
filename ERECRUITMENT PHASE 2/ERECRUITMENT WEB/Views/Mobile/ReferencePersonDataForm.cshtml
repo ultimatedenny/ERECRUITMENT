@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "ReferencePersonDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <form action="javascript:SAVEREFERENCEDATA()">
+                <div style="text-align: center; background-color: #d3d3d3 ">
+                    <h4 id="TITLE" style="color:black"> <b>REFERNCE PERSON DATA FORM</b> </h4>
+                </div>
+                <br />
+                <div class="form-group mb-4">
+                    <label for="ISREFERENCE">APAKAH ANDA MEMILIKI REFERENSI UNTUK DIHUBUNGI ?</label>
+                    <select class="form-control" id="ISREFERENCE" onchange="ISREFERENCE_CHG()" required>
+                        <option value="">SELECT</option>
+                        <option value="true">PUNYA</option>
+                        <option value="false">TIDAK PUNYA</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="REF_NAME">NAMA <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="REF_NAME" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <p for="REF_TITLE">JABATAN / DEPARTEMEN / POSISI <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="REF_TITLE" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <p for="REF_COMPANY">NAMA PERUSAHAAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="REF_COMPANY" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <p for="REF_MOBILE">NOMOR HP <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="REF_MOBILE" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <p for="REF_EMAIL">EMAIL <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="REF_EMAIL" placeholder="">
+                </div>
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+<script>
+    var ISREFERENCE = false;
+    $(document).ready(function () {
+        if (ISREFERENCE == true) {
+            document.getElementById("REF_NAME").disabled = false;
+            document.getElementById("REF_TITLE").disabled = false;
+            document.getElementById("REF_COMPANY").disabled = false;
+            document.getElementById("REF_MOBILE").disabled = false;
+            document.getElementById("REF_EMAIL").disabled = false;
+        }
+        else {
+            document.getElementById("REF_NAME").disabled = true;
+            document.getElementById("REF_TITLE").disabled = true;
+            document.getElementById("REF_COMPANY").disabled = true;
+            document.getElementById("REF_MOBILE").disabled = true;
+            document.getElementById("REF_EMAIL").disabled = true;
+        }
+        document.getElementById("ISREFERENCE").value = "";
+    });
+
+    function ISREFERENCE_CHG() {
+        if (document.getElementById("ISREFERENCE").value == false || document.getElementById("ISREFERENCE").value == 'false' || document.getElementById("ISREFERENCE").value == '') {
+            document.getElementById("REF_NAME").disabled = true;
+            document.getElementById("REF_TITLE").disabled = true;
+            document.getElementById("REF_COMPANY").disabled = true;
+            document.getElementById("REF_MOBILE").disabled = true;
+            document.getElementById("REF_EMAIL").disabled = true;
+            ISREFERENCE = false;
+        }
+        else {
+            document.getElementById("REF_NAME").disabled = false;
+            document.getElementById("REF_TITLE").disabled = false;
+            document.getElementById("REF_COMPANY").disabled = false;
+            document.getElementById("REF_MOBILE").disabled = false;
+            document.getElementById("REF_EMAIL").disabled = false;
+            ISREFERENCE = true;
+        }
+    }
+
+    function SAVEREFERENCEDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_REFERENCE_PERSON", "MOBILE")";
+        var _ISREFERENCE = ISREFERENCE;
+        var REF_NAME = document.getElementById("REF_NAME").value;
+        var REF_TITLE = document.getElementById("REF_TITLE").value;
+        var REF_COMPANY = document.getElementById("REF_COMPANY").value;
+        var REF_MOBILE = document.getElementById("REF_MOBILE").value;
+        var REF_EMAIL = document.getElementById("REF_EMAIL").value;
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            ISREFERENCE: _ISREFERENCE,
+            REF_NAME: "",
+            REF_TITLE: "",
+            REF_COMPANY: "",
+            REF_MOBILE: "",
+            REF_EMAIL: ""
+        };
+        if (_ISREFERENCE == true) {
+            MODEL = {
+                BATCH_EMP: UNIQUEID,
+                ISREFERENCE: _ISREFERENCE,
+                REF_NAME: REF_NAME,
+                REF_TITLE: REF_TITLE,
+                REF_COMPANY: REF_COMPANY,
+                REF_MOBILE: REF_MOBILE,
+                REF_EMAIL: REF_EMAIL
+            };
+        }
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'REFERENCE DATA UPDATED, PAGE WILL BE REDIRECT TO HEALT DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                            window.location.href = "@Url.Action("HealthDataForm", "MOBILE")";
+                        }, 1000);
+                    }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEREFERENCEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEREFERENCEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+</script>

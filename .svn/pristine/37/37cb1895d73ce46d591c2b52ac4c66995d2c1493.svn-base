@@ -1,0 +1,549 @@
+﻿
+@{
+    ViewBag.Title = "SpouseDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA PERKAWINAN</b> </h4>
+            </div>
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+            </div>
+
+            <form action="javascript:SAVESPOUSEDATA()">
+                <div class="form-group mb-4">
+                    <label for="ISFAMILY">Apakah sudah berkeluarga ?</label>
+                    <select class="form-control" id="ISFAMILY" onchange="ISFAMILY_CHG()" required>
+                        <option value="">PILIH</option>
+                        <option value="true">SUDAH</option>
+                        <option value="false">BELUM</option>
+                    </select>
+                </div>
+                <div id="DIV_FAMILY">
+                    <div class="form-group mb-4">
+                        <p for="WIFE_NAME">NAMA PASANGAN <code>*</code></p>
+                        <input type="text" class="form-control form-control-sm" id="WIFE_NAME" placeholder="">
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="custom-file-container" data-upload-id="myFirstImage" id="UPLOADBUKUNIKAH">
+                            <p>BUKU NIKAH <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear File"> (X)</a></b></p>
+                            <label class="custom-file-container__custom-file">
+                                <input type="file" id="UPLOADNIKAH" name="UPLOADNIKAH" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                <span class="custom-file-container__custom-file__custom-file-control"></span>
+                            </label>
+                            <div class="custom-file-container__image-preview"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <p for="WIFE_NIK">NIK <code>*</code></p>
+                        <input type="number" class="form-control form-control-sm" id="WIFE_NIK" maxlength="16" placeholder="16 Digit NIK" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;">
+                    </div>
+                    <div class="form-group mb-4">
+                        <p for="WIFE_BIRTH_PLACE">TEMPAT LAHIR <code>*</code></p>
+                        <input type="text" class="form-control form-control-sm" id="WIFE_BIRTH_PLACE" placeholder="">
+                    </div>
+                    <div class="form-group mb-4">
+                        <p for="WIFE_BIRTH_DATE">TANGGAL LAHIR <code>*</code></p>
+                        <input id="WIFE_BIRTH_DATE" value="" class="form-control" type="text" placeholder="hh-bb-tttt" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <p for="WIFE_MOBILE">NO. HP <code>*</code></p>
+                        <input type="text" class="form-control form-control-sm" id="WIFE_MOBILE" placeholder="">
+                    </div>
+
+                    <div>
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <p style="font-size: 8pt; margin-left: 13pt; margin-top: 13pt;">DATA ANAK</p>
+                                        <p style="font-size: 8pt; margin-left: 13pt;"><i>*Kosongkan bila belum memiliki anak</i></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content widget-content-area">
+                                <div class="form-row mb-12" style="padding:10pt">
+                                    <div class="form-holder-append col-xl-12 col-md-12 col-sm-12 col-12">
+                                        <div class="form-holder form-row">
+
+                                            <div class="form-group col-md-12">
+                                                <p for="CHILD_NAME">NAMA</p>
+                                                <input type="text" class="form-control form-control-sm" id="CHILD_NAME" placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <p for="CHILD_NIK">NIK</p>
+                                                <input type="number" class="form-control form-control-sm" id="CHILD_NIK" maxlength="16" placeholder="16 Digit NIK" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <p for="CHILD_MOBILE">NOMOR HP</p>
+                                                <input type="text" class="form-control form-control-sm" id="CHILD_MOBILE" placeholder="">
+                                                <label style="font-size:8pt;"><i>*Kosongkan bila belum mempunyai nomor HP</i></label>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <p for="CHILD_BIRTH_PLACE">TEMPAT LAHIR</p>
+                                                <input type="text" class="form-control form-control-sm" id="CHILD_BIRTH_PLACE" placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <p for="CHILD_BIRTH_DATE">TANGGAL LAHIR</p>
+                                                <input type="date" class="form-control form-control-sm" id="CHILD_BIRTH_DATE" placeholder="hh-bb-tttt">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="custom-file-container" data-upload-id="mySecondImage" id="UPLOADAKTAANAK_DIV">
+                                                    <p>AKTA LAHIR <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear File"> (X)</a></b></p>
+                                                    <label class="custom-file-container__custom-file">
+                                                        <input type="file" id="UPLOADAKTAANAK" name="UPLOADAKTAANAK" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                    </label>
+                                                    <div class="custom-file-container__image-preview"></div>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" name="REMOVEBUTTON" id="REMOVEBUTTON" class="btn btn-block btn-danger remove">HAPUS DATA ANAK</button>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12" style="padding:5pt">
+                                <button type="button" name="ADDBUTTON" id="ADDBUTTON" class="btn btn-block btn-secondary add">TAMBAH DATA ANAK</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN DAN LANJUTKAN</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var total_anak = 1;
+
+    var ISFAMILY = false;
+
+    $(document).ready(function () {
+        $('#WIFE_NIK').maxlength();
+        flatpickr(document.getElementById('WIFE_BIRTH_DATE'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        flatpickr(document.getElementById('CHILD_BIRTH_DATE'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        if (ISFAMILY == true) {
+            document.getElementById("WIFE_NAME").disabled = false;
+            document.getElementById("WIFE_NIK").disabled = false;
+            document.getElementById("WIFE_BIRTH_PLACE").disabled = false;
+            document.getElementById("WIFE_BIRTH_DATE").disabled = false;
+            document.getElementById("WIFE_MOBILE").disabled = false;
+            document.getElementById("ADDBUTTON").disabled = false;
+            document.getElementById("REMOVEBUTTON").disabled = false;
+            document.getElementById("UPLOADBUKUNIKAH").style.display = "block";
+        }
+        else {
+            document.getElementById("WIFE_NAME").disabled = true;
+            document.getElementById("WIFE_NIK").disabled = true;
+            document.getElementById("WIFE_BIRTH_PLACE").disabled = true;
+            document.getElementById("WIFE_BIRTH_DATE").disabled = true;
+            document.getElementById("WIFE_MOBILE").disabled = true;
+            document.getElementById("ADDBUTTON").disabled = true;
+            document.getElementById("REMOVEBUTTON").disabled = true;
+            document.getElementById("UPLOADBUKUNIKAH").style.display = "none";
+        }
+        document.getElementById("ISFAMILY").value = '';
+        var firstUpload     = new FileUploadWithPreview('myFirstImage');
+        var secondUpload    = new FileUploadWithPreview('mySecondImage');
+    });
+
+    $('.add').on('click', function () {
+        if (total_anak == 10) {
+            Snackbar.show({ text: 'YOU CANNOT ADD CHILD', pos: 'bottom-right' });
+        }
+        else {
+            var source = $('.form-holder:first'), clone = source.clone();
+            clone.find(':input').attr('id', function (i, val) {
+                return val + total_anak;
+            });
+            clone.appendTo('.form-holder-append');
+            total_anak++;
+            console.log(total_anak);
+            var CHILD_NAME = "CHILD_NAME" + (total_anak - 1);
+            var CHILD_NIK = "CHILD_NIK" + (total_anak - 1);
+            var CHILD_BIRTH_PLACE = "CHILD_BIRTH_PLACE" + (total_anak - 1);
+            var CHILD_BIRTH_DATE = "CHILD_BIRTH_DATE" + (total_anak - 1);
+            var CHILD_MOBILE = "CHILD_MOBILE" + (total_anak - 1);
+            var UPLOADAKTAANAK = "UPLOADAKTAANAK" + (total_anak - 1);
+            var CHILD_NAME_ELEM = document.getElementById(CHILD_NAME);
+            var CHILD_NIK_ELEM = document.getElementById(CHILD_NIK);
+            var CHILD_BIRTH_PLACE_ELEM = document.getElementById(CHILD_BIRTH_PLACE);
+            var CHILD_BIRTH_DATE_ELEM = document.getElementById(CHILD_BIRTH_DATE);
+            var CHILD_MOBILE_ELEM = document.getElementById(CHILD_MOBILE);
+            var UPLOADAKTAANAK_ELEM = document.getElementById(UPLOADAKTAANAK);
+            CHILD_NAME_ELEM.value = '';
+            CHILD_NAME_ELEM.innerHTML = '';
+            CHILD_NIK_ELEM.value = '';
+            CHILD_NIK_ELEM.innerHTML = '';
+            CHILD_BIRTH_PLACE_ELEM.value = '';
+            CHILD_BIRTH_PLACE_ELEM.innerHTML = '';
+            CHILD_BIRTH_DATE_ELEM.value = '';
+            CHILD_BIRTH_DATE_ELEM.innerHTML = '';
+            CHILD_MOBILE_ELEM.value = '';
+            CHILD_MOBILE_ELEM.innerHTML = '';
+            UPLOADAKTAANAK_ELEM.value = null;
+            UPLOADAKTAANAK_ELEM.files = null;
+            flatpickr(document.getElementById(CHILD_BIRTH_DATE), {
+                disableMobile: "true",
+                dateFormat: "d-m-Y"
+            });
+        }
+    });
+
+    $('body').on('click', '.remove', function () {
+        if (total_anak == 1) {
+            Snackbar.show({ text: 'YOU CANNOT REMOVE CHILD', pos: 'bottom-right' });
+        }
+        else {
+            var closest = $(this).closest('.form-holder').remove();
+            total_anak--;
+        }
+    });
+
+    function SAVESPOUSEDATA() {
+        if (ISFAMILY == false) {
+            SAVESPOUSEDATA_NOFAMILY();
+        }
+        else {
+            var WIFE_NAME = document.getElementById("WIFE_NAME").value;
+            var WIFE_NIK = document.getElementById("WIFE_NIK").value;
+            var WIFE_BIRTH_PLACE = document.getElementById("WIFE_BIRTH_PLACE").value;
+            var WIFE_BIRTH_DATE = document.getElementById("WIFE_BIRTH_DATE").value;
+            var WIFE_MOBILE = document.getElementById("WIFE_MOBILE").value;
+            if (WIFE_NAME == "" || WIFE_NIK == "" || WIFE_BIRTH_PLACE == "" || WIFE_BIRTH_DATE == "" || WIFE_MOBILE == "") {
+                Snackbar.show({ text: 'PLEASE FILL SPOUSE DATA INFORMATION', pos: 'bottom-right' });
+            }
+            else {
+                SAVESPOUSEDATA_WIFE();
+            }
+        }
+    }
+
+    function ISFAMILY_CHG() {
+        if (document.getElementById("ISFAMILY").value == '' || document.getElementById("ISFAMILY").value == false || document.getElementById("ISFAMILY").value == 'false') {
+            document.getElementById("WIFE_NAME").disabled = true;
+            document.getElementById("WIFE_NIK").disabled = true;
+            document.getElementById("WIFE_BIRTH_PLACE").disabled = true;
+            document.getElementById("WIFE_BIRTH_DATE").disabled = true;
+            document.getElementById("WIFE_MOBILE").disabled = true;
+            document.getElementById("ADDBUTTON").disabled = true;
+            document.getElementById("REMOVEBUTTON").disabled = true;
+            document.getElementById("UPLOADBUKUNIKAH").style.display = "none";
+
+            document.getElementById("WIFE_NAME").value = "";
+            document.getElementById("WIFE_NIK").value = "";
+            document.getElementById("WIFE_BIRTH_PLACE").value = "";
+            document.getElementById("WIFE_BIRTH_DATE").value = "";
+            document.getElementById("WIFE_MOBILE").value = "";
+            ISFAMILY = false;
+
+            var UPLOADBUKUNIKAH_ELEM        = document.getElementById("UPLOADBUKUNIKAH");
+            UPLOADBUKUNIKAH_ELEM.value      = null;
+            UPLOADBUKUNIKAH_ELEM.files = null;
+
+            document.getElementById("WIFE_NAME").required = false;
+            document.getElementById("WIFE_NIK").required = false;
+            document.getElementById("WIFE_BIRTH_PLACE").required = false;
+            document.getElementById("WIFE_BIRTH_DATE").required = false;
+            document.getElementById("WIFE_MOBILE").required = false;
+            document.getElementById("UPLOADNIKAH").required = false;
+        }
+        else {
+            document.getElementById("WIFE_NAME").disabled = false;
+            document.getElementById("WIFE_NIK").disabled = false;
+            document.getElementById("WIFE_BIRTH_PLACE").disabled = false;
+            document.getElementById("WIFE_BIRTH_DATE").disabled = false;
+            document.getElementById("WIFE_MOBILE").disabled = false;
+            document.getElementById("ADDBUTTON").disabled = false;
+            document.getElementById("REMOVEBUTTON").disabled = false;
+            document.getElementById("UPLOADBUKUNIKAH").style.display = "block";
+            ISFAMILY = true;
+
+            document.getElementById("WIFE_NAME").required = true;
+            document.getElementById("WIFE_NIK").required = true;
+            document.getElementById("WIFE_BIRTH_PLACE").required = true;
+            document.getElementById("WIFE_BIRTH_DATE").required = true;
+            document.getElementById("WIFE_MOBILE").required = true;
+            document.getElementById("UPLOADNIKAH").required = true;
+        }
+    }
+
+    function SAVESPOUSEDATA_NOFAMILY() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_SPOUSE", "MOBILE")";
+        var MODEL =
+        {
+            BATCH_EMP: UNIQUEID,
+            ISFAMILY: ISFAMILY,
+            WIFE_NAME: "",
+            WIFE_NIK: "",
+            WIFE_BIRTH_PLACE: "",
+            WIFE_BIRTH_DATE: "",
+            WIFE_MOBILE: "",
+            BNIKAH: ""
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                       setTimeout(function () {
+                            Snackbar.show({ text: 'SPOUSE DATA UPDATED, PAGE WILL BE REDIRECT TO REFERENCE PERSON DATA FORM.', pos: 'bottom-right' });
+                            setTimeout(function () {
+                                 window.location.href = "@Url.Action("ReferencePersonDataForm", "MOBILE")";
+                            }, 1000);
+                       }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVESPOUSEDATA_WIFE() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVESPOUSEDATA_WIFE() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function SAVESPOUSEDATA_WIFE() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var _ISFAMILY           = ISFAMILY;
+        var WIFE_NAME           = document.getElementById("WIFE_NAME").value;
+        var WIFE_NIK            = document.getElementById("WIFE_NIK").value;
+        var WIFE_BIRTH_PLACE    = document.getElementById("WIFE_BIRTH_PLACE").value;
+        var WIFE_BIRTH_DATE     = document.getElementById("WIFE_BIRTH_DATE").value;
+        var fileData            = new FormData();
+        var fileUpload          = $("#UPLOADNIKAH").get(0);
+        var files               = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "";
+        $.ajax({
+            url: "@Url.Action("UPLOAD_BUKU_NIKAH", "MOBILE")",
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    var MODEL = {
+                        BATCH_EMP: UNIQUEID,
+                        ISFAMILY: _ISFAMILY,
+                        WIFE_NAME: WIFE_NAME,
+                        WIFE_NIK: WIFE_NIK,
+                        WIFE_BIRTH_PLACE: WIFE_BIRTH_PLACE,
+                        WIFE_BIRTH_DATE: WIFE_BIRTH_DATE,
+                        WIFE_MOBILE: WIFE_MOBILE,
+                        BNIKAH: data.Message
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("MOBILE_SAVE_SPOUSE", "MOBILE")",
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.Result == true) {
+                                $.unblockUI();
+                                var ANAK = $("#CHILD_NAME").val();
+                                if (total_anak >= 1 && ANAK != "") {
+                                    SAVESPOUSEDATA_CHILD();
+                                }
+                                else {
+                                    $.unblockUI();
+                                    setTimeout(function () {
+                                        Snackbar.show({ text: 'CHILD DATA UPDATED, PAGE WILL BE REDIRECT TO REFERENCE PERSON DATA FORM.', pos: 'bottom-right' });
+                                        setTimeout(function () {
+                                            window.location.href = "@Url.Action("ReferencePersonDataForm", "MOBILE")";
+                                        }, 500);
+                                    }, 1000);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function SAVESPOUSEDATA_CHILD() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var CHILDS = new Array();
+        var ANAK = $("#CHILD_NAME").val();
+        for (let i = 0; i < total_anak; i++) {
+            var fileData = new FormData();
+            var files = null;
+            if (i == 0) {
+                var fileUpload = $("#UPLOADAKTAANAK").get(0);
+                files = fileUpload.files;
+            }
+            else {
+                var fileUpload = $("#UPLOADAKTAANAK" + i + "").get(0);
+                files = fileUpload.files;
+            }
+            for (var j = 0; j < files.length; j++) {
+                fileData.append('File', files[j]);
+            }
+            $.ajax({
+                url: "@Url.Action("UPLOAD_AKTA_ANAK", "MOBILE")",
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        if (i == 0) {
+                            CHILDS[i] =
+                            {
+                                BATCH_EMP: UNIQUEID,
+                                CHILD_NAME: $("#CHILD_NAME").val(),
+                                CHILD_NIK: $("#CHILD_NIK").val(),
+                                CHILD_BIRTH_PLACE: $("#CHILD_BIRTH_PLACE").val(),
+                                CHILD_BIRTH_DATE: $("#CHILD_BIRTH_DATE").val(),
+                                CHILD_MOBILE: $("#CHILD_MOBILE").val(),
+                                CHILD_DOC: data.Message
+                            };
+                        }
+                        else {
+                            CHILDS[i] =
+                            {
+                                BATCH_EMP: UNIQUEID,
+                                CHILD_NAME: $("#CHILD_NAME" + i + "").val(),
+                                CHILD_NIK: $("#CHILD_NIK" + i + "").val(),
+                                CHILD_BIRTH_PLACE: $("#CHILD_BIRTH_PLACE" + i + "").val(),
+                                CHILD_BIRTH_DATE: $("#CHILD_BIRTH_DATE" + i + "").val(),
+                                CHILD_MOBILE: $("#CHILD_MOBILE" + i + "").val(),
+                                CHILD_DOC: data.Message
+                            };
+                        }
+                        if (CHILDS.length == total_anak) {
+                            CHILDS = JSON.stringify({ 'MODEL': CHILDS });
+                            $.ajax({
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                type: 'POST',
+                                url: "@Url.Action("MOBILE_SAVE_CHILD", "MOBILE")",
+                                data: CHILDS,
+                                success: function (data) {
+                                    if (data.Result == true) {
+                                        $.unblockUI();
+                                        setTimeout(function () {
+                                            Snackbar.show({ text: 'CHILD DATA UPDATED, PAGE WILL BE REDIRECT TO REFERENCE PERSON DATA FORM.', pos: 'bottom-right' });
+                                            setTimeout(function () {
+                                                window.location.href = "@Url.Action("ReferencePersonDataForm", "MOBILE")";
+                                            }, 500);
+                                        }, 1000);
+                                    }
+                                    else {
+                                        $.unblockUI();
+                                    }
+                                },
+                                failure: function (data) { $.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' }); },
+                                error: { function(request, status, error) { $.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' }); } }
+                            });
+                        }
+                    }
+                    else {
+                        $.unblockUI();
+                    }
+                },
+                failure: function (data) {
+                    $.unblockUI();
+                },
+                error: {
+                    function(request, status, error) {
+                        $.unblockUI();
+                    }
+                }
+            });
+        }
+    }
+
+</script>

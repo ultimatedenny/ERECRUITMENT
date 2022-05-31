@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9EtyEsW33HMY5cRyAVlQuHKdJCqxidHAeKeUnjUH6gsSWSKiMvz53ef3/7lJ1fjPBitKfroS2BZEa9cF9QGXkA==",
+  "success": true,
+  "projectFilePath": "D:\\Project Deni\\EREQRUITMENT\\ShimanoUpdaterDotNet\\ShimanoUpdaterDotNet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sbm_deni\\.nuget\\packages\\resource.embedder\\2.1.1\\resource.embedder.2.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

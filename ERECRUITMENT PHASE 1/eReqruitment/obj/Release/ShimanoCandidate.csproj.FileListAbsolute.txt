@@ -1,0 +1,8 @@
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\ShimanoCandidate.csproj.ResolveComReference.cache
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\ShimanoCandidate.Form1.resources
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\ShimanoCandidate.FrmAuth.resources
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\eReqruitment.FrmMain.resources
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\eReqruitment.Properties.Resources.resources
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\ShimanoCandidate.csproj.GenerateResource.cache
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\ShimanoCandidate\obj\Release\ShimanoCandidate.csproj.CoreCompileInputs.cache

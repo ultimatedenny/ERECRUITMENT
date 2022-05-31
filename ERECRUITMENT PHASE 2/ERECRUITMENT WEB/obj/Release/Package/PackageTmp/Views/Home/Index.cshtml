@@ -1,0 +1,332 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model System.Data.DataTable
+@using System.Data;
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="form-group mb-4">
+                <label for="BATCH_NO">BATCH NUMBER</label>
+                <select class="form-control basic js-data-example-ajax" id="BATCH_NO" onchange="GETDETAIL()"></select>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+            <div class="widget widget-three" style="background-color: #2196f3;">
+                <div class="widget-heading">
+                    <h5 style="color:white" class="">IN PROGRESS</h5>
+                </div>
+                <div class="widget-content">
+                    <div class="order-summary">
+                        <h1 style="color:white" class="" id="PROGRESS_TEXT"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+            <div class="widget widget-three" style="background-color: #1abc9c;">
+                <div class="widget-heading">
+                    <h5 style="color:white" class="">
+                        PASSED CANDIDATES
+                    </h5>
+                </div>
+                <div class="widget-content">
+                    <div class="order-summary">
+                        <h1 style="color:white" class="" id="PASSED_TEXT"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+            <div class="widget widget-three" style="background-color: #e7515a; ">
+                <div class="widget-heading">
+                    <h5 style="color:white" class="">
+                        FAILED CANDIDATES
+                    </h5>
+                </div>
+                <div class="widget-content">
+                    <div class="order-summary">
+                        <h1 style="color:white" class="" id="FAILED_TEXT"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-three">
+                <div class="widget-heading">
+                    <h5 class="">Batch Info</h5>
+                    <div class="task-action">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="pendingTask" style="will-change: transform;">
+                                <a class="dropdown-item" href="javascript:void(0);">View Report</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Edit Report</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Mark as Done</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content">
+                    <div class="order-summary">
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Accepted</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Medical Check-Up</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Interview Test</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Practical Test</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Written Test</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Attended</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-list">
+                            <div class="w-summary-details">
+                                <div class="w-summary-info">
+                                    <h6>Total</h6>
+                                    <p class="summary-count">0</p>
+                                </div>
+                                <div class="w-summary-stats">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-three">
+                <div class="widget-heading">
+                    <h5 class="">6 MONTH SUMMARY</h5>
+
+                    <div class="task-action">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="pendingTask" style="will-change: transform;">
+                                <a class="dropdown-item" href="javascript:void(0);">View Report</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Edit Report</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Mark as Done</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget-content">
+                    <div id="BATCHCHART1" class=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GETBATCHNO();
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+        
+    });
+    function LOADCHART() {
+        var URL = "@Url.Action("LOADCHART", "MASTERDATA")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (response) {
+                let series = [];
+                let categories = [];
+                for (let i = 0; i < response.length; i++) {
+                    series.push(
+                        {
+                            name: response[i].BATCHNO,
+                            data: [response[i].STAT_1, response[i].STAT_2, response[i].STAT_3, response[i].STAT_4, response[i].STAT_5, response[i].STAT_6, response[i].STAT_7, response[i].STAT_8]
+                        }
+                    );
+                }
+                var OPTIONS = {
+                    chart: {
+                        height: 350,
+                        type: 'bar',
+                        stacked: true,
+                        toolbar: {
+                            show: false,
+                        }
+                    },
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            legend: {
+                                position: 'bottom',
+                                offsetX: -10,
+                                offsetY: 0
+                            }
+                        }
+                    }],
+                    plotOptions: {
+                        bar: {
+                            horizontal: false,
+                        },
+                    },
+                    series: series,
+                    xaxis: {
+                        categories: [],
+                    },
+                    legend: {
+                        position: 'right',
+                        offsetY: 40
+                    },
+                    fill: {
+                        opacity: 1
+                    },
+                    noData: {
+                        text: 'Loading...'
+                    }
+                }
+                var chart = new ApexCharts(document.querySelector("#BATCHCHART1"), OPTIONS);
+                chart.render();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'LOADCHART() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function GETBATCHNO() {
+        var URL = "@Url.Action("WEB_GETBATCH_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                var option = new Option("SELECT BATCH", "", true, true);
+                document.getElementById('BATCH_NO').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].BATCHNO, data[i].BATCHNO, true, true);
+                    document.getElementById('BATCH_NO').append(option);
+                }
+                document.getElementById('BATCH_NO').value = "";
+                var ss = $(".basic").select2({
+                    tags: true,
+                });
+                LOADCHART();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GETBATCHNO() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function GETDETAIL() {
+        var VAL = document.getElementById('BATCH_NO').value;
+        var URL = "@Url.Action("WEB_GET_DASHBOARD_DETAIL", "MASTERDATA")?BATCHNO=" + VAL;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById('PROGRESS_TEXT').innerText = data[0].TOTAL;
+                document.getElementById('PASSED_TEXT').innerText = data[0].PASSED;
+                document.getElementById('FAILED_TEXT').innerText = data[0].FAILED;
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GETBATCHNO() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+        //PROGRESS_TEXT
+        //PASSED_TEXT
+        //FAILED_TEXT
+    }
+    
+    
+</script>

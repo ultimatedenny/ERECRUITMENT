@@ -1,0 +1,487 @@
+﻿
+@{
+    ViewBag.Title = "LanguageDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>PENGALAMAN BEKEJERA</b> </h4>
+            </div>
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+            <form action="javascript:SAVEEXP()">
+                <div class="form-group mb-4">
+                    <P for="ISEXPERIENCED">APAKAH ANDA MEMILIKI PENGALAMAN BEKERJA SEBELUMNYA ?</P>
+                    <select type="text" class="form-control form-control-sm" id="ISEXPERIENCED" placeholder="" onchange="isExperienced()">
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+                <div id="DIV_EXP">
+                    @*<div class="custom-file-container" data-upload-id="myFirstImage">
+                        <p>FOTO PENGALAMAN BEKERJA <code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></p>
+                        <label class="custom-file-container__custom-file">
+                            <input type="file" id="UploadWorkEXP" name="UploadWorkEXP" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                        </label>
+                        <div class="custom-file-container__image-preview"></div>
+                    </div>*@
+                    <div class="form-holder-append">
+                        <div class="form-holder form-row">
+                            <div class="form-group col-md-3">
+                                <div class="custom-file-container" data-upload-id="myFirstImage">
+                                    <p>FOTO PENGALAMAN BEKERJA <code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></p>
+                                    <label class="custom-file-container__custom-file">
+                                        <input type="file" id="UploadWorkEXP" name="UploadWorkEXP" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                    </label>
+                                    <div class="custom-file-container__image-preview"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-md-3">
+                                <p for="COMPANY_NAME">NAMA PERUSAHAAN<code>*</code></p>
+                                <input type="text" class="form-control form-control-sm" id="COMPANY_NAME" placeholder="">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <p for="COMPANY_POSITION">POSISI <code>*</code></p>
+                                <input type="text" class="form-control form-control-sm" id="COMPANY_POSITION" placeholder="">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <p for="START_YEAR">TANGGAL MULAI <code>*</code></p>
+                                <input id="START_YEAR" value="" class="form-control" type="text" placeholder="hh-bb-tttt" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <p for="END_YEAR">TANGGAL SELESAI <code>*</code></p>
+                                <input id="END_YEAR" value="" class="form-control" type="text" placeholder="hh-bb-tttt" required>
+                            </div>
+
+
+                          
+                            <div class="form-group col-md-3">
+                                <p for="REASON_LEAVING">ALASAN KELUAR <code>*</code></p>
+                                <input type="text" class="form-control form-control-sm" id="REASON_LEAVING" placeholder="">
+                            </div>
+                            <button type="button" name="REMOVEBUTTON" id="REMOVEBUTTON" class="btn btn-block btn-danger remove">HAPUS</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12" style="padding:5pt">
+                            <button type="button" name="ADDBUTTON" id="ADDBUTTON" class="btn btn-block btn-secondary add">TAMBAH PENGALAMAN KERJA</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    var total_exp = 1;
+
+    var isVisible = 0;
+
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+        $('#DIV_EXP').hide();
+        document.getElementById("ISEXPERIENCED").value = "";
+        flatpickr(document.getElementById('START_YEAR'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        flatpickr(document.getElementById('END_YEAR'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+    });
+
+    function isExperienced() {
+        if (document.getElementById("ISEXPERIENCED").value == "" || document.getElementById("ISEXPERIENCED").value == 'false') {
+            $('#DIV_EXP').hide();
+        }
+        else {
+            $('#DIV_EXP').show();
+        }
+    }
+
+    function GET_MOBILE_CANEDIT_WORKEXPFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_WORKEXPFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_LANGUAGEFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function WITHNO_EXP() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_WORKEXPFORM", "MOBILE")";
+        var WORKEXPS_NO_EXP = new Array();
+        WORKEXPS_NO_EXP[0] = {
+            BATCH_EMP: UNIQUEID,
+            ISEXPERIENCED: false,
+            COMPANY_NAME: "",
+            POSITION: "",
+            START_YEAR: "",
+            END_YEAR: "",
+            REASON_LEAVE: "",
+            CERT_PHOTO: ""
+        };
+        WORKEXPS_NO_EXP = JSON.stringify({ 'MODEL': WORKEXPS_NO_EXP });
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: WORKEXPS_NO_EXP,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'WORK EXPERIENCE DATA UPDATED, PAGE WILL BE REDIRECT TO ADDITIONAL DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("AdditionalDataForm", "MOBILE")";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            failure: function (data) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function WITH_EXP() {
+        if (total_exp == 1) {
+            SINGLE_EXP()
+        }
+        else
+        {
+            MULTIEXP();
+        }
+    }
+
+    function SINGLE_EXP() {
+        $.blockUI({
+            message: "PROCESSING...",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var WORKEXPS = new Array();
+        var fileData = new FormData();
+        var fileUpload = $("#UploadWorkEXP").get(0);
+        var files = fileUpload.files;
+        for (var j = 0; j < files.length; j++) {
+            fileData.append('File', files[j]);
+        }
+        var URL = "@Url.Action("UPLOAD_WORKEXPERIENCE", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    var UNIQUEID = "@ViewBag.UNIQUEID";
+                    var URL = "@Url.Action("MOBILE_SAVE_WORKEXPFORM", "MOBILE")";
+                    WORKEXPS[0] = {
+                        BATCH_EMP: UNIQUEID,
+                        ISEXPERIENCED: $("#ISEXPERIENCED").val(),
+                        COMPANY_NAME: $("#COMPANY_NAME").val(),
+                        POSITION: $("#COMPANY_POSITION").val(),
+                        START_YEAR: $("#START_YEAR").val(),
+                        END_YEAR: $("#END_YEAR").val(),
+                        REASON_LEAVE: $("#REASON_LEAVING").val(),
+                        CERT_PHOTO: data.Message
+                    };
+                    WORKEXPS = JSON.stringify({ 'MODEL': WORKEXPS });
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: "@Url.Action("MOBILE_SAVE_WORKEXPFORM", "MOBILE")",
+                        data: WORKEXPS,
+                        success: function (data) {
+                            if (data.Result == true) {
+                                $.unblockUI();
+                                setTimeout(function () {
+                                    Snackbar.show({ text: 'WORK EXPERIENCE DATA UPDATED, PAGE WILL BE REDIRECT TO ADDITIONAL DATA FORM.', pos: 'bottom-right' });
+                                    setTimeout(function () {
+                                        window.location.href = "@Url.Action("AdditionalDataForm", "MOBILE")";
+                                    }, 500);
+                                }, 1000);
+                            }
+                            else { $.unblockUI(); Snackbar.show({ text: data.Result, pos: 'bottom-right' });}
+                        },
+                        failure: function (data) { $.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' }); },
+                        error:{ function(request, status, error) { $.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });}}
+                    });
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            failure: function (data) {$.unblockUI();Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });},
+            error: {function(request, status, error) { $.unblockUI();Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });}}
+        });
+    }
+
+    function MULTIEXP() {
+        var WORKEXPS_MULTI = new Array();
+        for (let i = 0; i < total_exp; i++) {
+            var fileData = new FormData();
+            var files = null;
+            if (i == 0) {
+                var URL = "@Url.Action("UPLOAD_WORKEXPERIENCE", "MOBILE")";
+                var fileUpload = $("#UploadWorkEXP").get(0);
+                files = fileUpload.files;
+            }
+            else {
+                var URL = "@Url.Action("UPLOAD_WORKEXPERIENCE", "MOBILE")";
+                var fileUpload = $("#UploadWorkEXP" + i + "").get(0);
+                files = fileUpload.files;
+            }
+            for (var j = 0; j < files.length; j++) {
+                fileData.append('File', files[j]);
+            }
+            $.ajax({
+                url: URL,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        var UNIQUEID = "@ViewBag.UNIQUEID";
+                        if (i == 0) {
+                            WORKEXPS_MULTI[i] = {
+                                BATCH_EMP: UNIQUEID,
+                                ISEXPERIENCED: $("#ISEXPERIENCED").val(),
+                                COMPANY_NAME: $("#COMPANY_NAME").val(),
+                                POSITION: $("#COMPANY_POSITION").val(),
+                                START_YEAR: $("#START_YEAR").val(),
+                                END_YEAR: $("#END_YEAR").val(),
+                                REASON_LEAVE: $("#REASON_LEAVING").val(),
+                                CERT_PHOTO: data.Message
+                            };
+                            console.log(WORKEXPS_MULTI[i]);
+                        }
+                        else {
+                            WORKEXPS_MULTI[i] = {
+                                BATCH_EMP: UNIQUEID,
+                                ISEXPERIENCED: $("#ISEXPERIENCED").val(),
+                                COMPANY_NAME: $("#COMPANY_NAME" + i + "").val(),
+                                POSITION: $("#COMPANY_POSITION" + i + "").val(),
+                                START_YEAR: $("#START_YEAR" + i + "").val(),
+                                END_YEAR: $("#END_YEAR" + i + "").val(),
+                                REASON_LEAVE: $("#REASON_LEAVING" + i + "").val(),
+                                CERT_PHOTO: data.Message
+                            };
+                            console.log(WORKEXPS_MULTI[i]);
+                        }
+                        console.log('WORKEXPS_MULTI.length: '+ WORKEXPS_MULTI.length);
+                        console.log('i: ' + i);
+                        if (WORKEXPS_MULTI.length == total_exp) {
+                            WORKEXPS_MULTI = JSON.stringify({ 'MODEL': WORKEXPS_MULTI });
+                            $.ajax({
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                type: 'POST',
+                                url: "@Url.Action("MOBILE_SAVE_WORKEXPFORM", "MOBILE")",
+                                data: WORKEXPS_MULTI,
+                                success: function (data) {
+                                    if (data.Result == true) {
+                                        $.unblockUI();
+                                        setTimeout(function () {
+                                            Snackbar.show({ text: 'WORK EXPERIENCE DATA UPDATED, PAGE WILL BE REDIRECT TO ADDITIONAL DATA FORM.', pos: 'bottom-right' });
+                                            setTimeout(function () {
+                                                window.location.href = "@Url.Action("AdditionalDataForm", "MOBILE")";
+                                            }, 500);
+                                        }, 1000);
+                                    }
+                                    else {
+                                        $.unblockUI();
+                                    }
+                                },
+                                failure: function (data) { $.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' }); },
+                                error:{function(request, status, error) {$.unblockUI(); Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });} }
+                            });
+                        }
+                    }
+                },
+                failure: {
+                    function(data, request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + error.Message + '', pos: 'bottom-right' });
+                    }
+                },
+                error: {
+                    function(data, request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + error.Message + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+    }
+
+    function SAVEEXP() {
+        var e = document.getElementById("ISEXPERIENCED");
+        var strUser = e.value;
+        if (strUser == 'false') {
+            WITHNO_EXP();
+        }
+        else {
+            WITH_EXP();
+        }
+    }
+
+    $('.add').on('click', function () {
+        if (total_exp == 3) {
+            Snackbar.show({ text: 'YOU CANNOT ADD EXPERIENCE', pos: 'bottom-right' });
+        }
+        else {
+            var source = $('.form-holder:first'), clone = source.clone();
+            clone.find(':input').attr('id', function (i, val) {
+                return val + total_exp;
+            });
+            clone.appendTo('.form-holder-append');
+            total_exp++;
+
+            var COMPANY_NAME = "COMPANY_NAME" + (total_exp - 1);
+            var COMPANY_POSITION = "COMPANY_POSITION" + (total_exp - 1);
+            var START_YEAR = "START_YEAR" + (total_exp - 1);
+            var END_YEAR = "END_YEAR" + (total_exp - 1);
+            var REASON_LEAVING = "REASON_LEAVING" + (total_exp - 1);
+            var UploadWorkEXP = "UploadWorkEXP" + (total_exp - 1);
+
+            var COMPANY_NAME_ELEM = document.getElementById(COMPANY_NAME);
+            var COMPANY_POSITION_ELEM = document.getElementById(COMPANY_POSITION);
+            var START_YEAR_ELEM = document.getElementById(START_YEAR);
+            var END_YEAR_ELEM = document.getElementById(END_YEAR);
+            var REASON_LEAVING_ELEM = document.getElementById(REASON_LEAVING);
+            var UploadWorkEXP_ELEM = document.getElementById(UploadWorkEXP);
+
+            COMPANY_NAME_ELEM.value = '';
+            COMPANY_NAME_ELEM.innerHTML = '';
+            COMPANY_POSITION_ELEM.value = '';
+            COMPANY_POSITION_ELEM.innerHTML = '';
+            START_YEAR_ELEM.value = '';
+            START_YEAR_ELEM.innerHTML = '';
+            END_YEAR_ELEM.value = '';
+            END_YEAR_ELEM.innerHTML = '';
+            REASON_LEAVING_ELEM.value = '';
+            REASON_LEAVING_ELEM.innerHTML = '';
+
+            UploadWorkEXP_ELEM.value = null;
+            UploadWorkEXP_ELEM.files = null;
+            UploadWorkEXP_ELEM.innerHTML = null;
+
+            flatpickr(document.getElementById(START_YEAR), {
+                disableMobile: "true",
+                dateFormat: "d-m-Y"
+            });
+            flatpickr(document.getElementById(END_YEAR), {
+                disableMobile: "true",
+                dateFormat: "d-m-Y"
+            });
+        }
+    });
+
+    $('body').on('click', '.remove', function () {
+        if (total_exp == 1) {
+            Snackbar.show({ text: 'YOU CANNOT REMOVE EXPERIENCE', pos: 'bottom-right' });
+        }
+        else {
+            var closest = $(this).closest('.form-holder').remove();
+            total_exp--;
+        }
+    });
+
+</script>

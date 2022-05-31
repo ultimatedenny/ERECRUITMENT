@@ -1,0 +1,208 @@
+﻿
+@{
+    ViewBag.Title = "LanguageDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>KEMAMPUAN BERBAHASA</b> </h4>
+            </div>
+            <form action="javascript:SAVELANGAGEDATA()">
+                <div class="form-group mb-4">
+                    <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                    <br />
+                    <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                </div>
+                <div>
+                    <div class="form-holder-append">
+                        <div class="form-holder form-row">
+                            <div class="form-group col-md-6">
+                                <p for="LANGUAGE">BAHASA<code>*</code></p>
+                                <select type="text" class="form-control form-control-sm" id="LANGUAGE" placeholder="">
+                                    <option value="">SELECT</option>
+                                    <option value="INDONESIA">INDONESIA</option>
+                                    <option value="ENGLISH">ENGLISH</option>
+                                    <option value="MANDARIN">MANDARIN</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p for="LANGUAGE_LEVEL">KEMAMPUAN BERBAHASA<code>*</code></p>
+                                <select type="text" class="form-control form-control-sm" id="LANGUAGE_LEVEL" placeholder="">
+                                    <option value="">SELECT</option>
+                                    <option value="BEGINNER">BEGINNER (TINGKAT PEMULA)</option>
+                                    <option value="INTERMEDIATE">INTERMEDIATE (TINGKAT MENEGAH)</option>
+                                    <option value="ADVANCED">ADVANCED (TINGKAT LANJUT)</option>
+                                </select>
+                            </div>
+                            <button type="button" name="REMOVEBUTTON" id="REMOVEBUTTON" class="btn btn-block btn-danger remove">HAPUS</button>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12" style="padding:5pt">
+                            <button type="button" name="ADDBUTTON" id="ADDBUTTON" class="btn btn-block btn-secondary add">TAMBAH BAHASA</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var total_bahasa = 1;
+
+    $(document).ready(function () {
+        //GET_MOBILE_CANEDIT_LANGUAGEFORM();
+    });
+
+    function GET_MOBILE_CANEDIT_LANGUAGEFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_LANGUAGEFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_LANGUAGEFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function SAVELANGAGEDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_LANGUAGEFORM", "MOBILE")";
+        var LANGUAGES = new Array();
+        for (var i = 0; i < total_bahasa; i++) {
+            var _LANGUAGE = "";
+            var _LEVEL = "";
+            if (i == 0) {
+                _LANGUAGE   = $("#LANGUAGE").val();
+                _LEVEL      = $("#LANGUAGE_LEVEL").val();
+            }
+            else {
+                _LANGUAGE   = $("#LANGUAGE"+ i + "").val();
+                _LEVEL      = $("#LANGUAGE_LEVEL" + i + "").val();
+            }
+            LANGUAGES[i] = { BATCH_EMP: UNIQUEID, LANGUAGE: _LANGUAGE, LEVEL: _LEVEL};
+        }
+        LANGUAGES = JSON.stringify({ 'MODEL': LANGUAGES });
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: LANGUAGES,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'LANGUAGE DATA UPDATED, PAGE WILL BE REDIRECT TO WORK EXPERIENCES DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("WorkExperienceDataForm", "MOBILE")";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            failure: function (data) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVELANGAGEDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    $('.add').on('click', function () {
+        if (total_bahasa == 3) {
+            Snackbar.show({ text: 'YOU CANNOT ADD LANGUAGE', pos: 'bottom-right' });
+        }
+        else {
+            var source = $('.form-holder:first'), clone = source.clone();
+            clone.find(':input').attr('id', function (i, val) {
+                return val + total_bahasa;
+            });
+            clone.appendTo('.form-holder-append');
+            total_bahasa++;
+        }
+        //LANGUAGE_LEVEL
+        var LANGUAGE = "LANGUAGE" + (total_bahasa - 1);
+        var LANGUAGE_LEVEL = "LANGUAGE_LEVEL" + (total_bahasa - 1);
+
+        var LANGUAGE_ELEM = document.getElementById(LANGUAGE);
+        var LANGUAGE_LEVEL_ELEM = document.getElementById(LANGUAGE_LEVEL);
+
+        LANGUAGE_ELEM.value = "";
+        LANGUAGE_LEVEL_ELEM.value = "";
+    });
+
+    $('body').on('click', '.remove', function () {
+        if (total_bahasa == 1) {
+            Snackbar.show({ text: 'YOU CANNOT REMOVE LANGUAGE', pos: 'bottom-right' });
+        }
+        else {
+            var closest = $(this).closest('.form-holder').remove();
+            total_bahasa--;
+        }
+    });
+
+
+
+
+</script>

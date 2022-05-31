@@ -1,0 +1,894 @@
+﻿
+@{
+    ViewBag.Title = "DocumentDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DOCUMENT DATA FORM</b> </h4>
+            </div>
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+
+            <form action="javascript:UPLOAD_BCA()">
+
+                <div class="custom-file-container" data-upload-id="BCA_FILE">
+                    <p>NO. REKENING BCA <code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <input type="text" class="form-control form-control-sm" id="NO_BCA_LABEL" placeholder="" required/>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_BCA_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        @*<input type="file" id="NO_BCA_FILE" class="custom-file-container__custom-file__custom-file-input" accept="image/*">*@
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control" required></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="NPWP_FILE">
+                    <p>NO. NPWP <code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <input type="text" class="form-control form-control-sm" id="NO_NPWP_LABEL" placeholder="" required/>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_NPWP_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control" required></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="EFIN_FILE">
+                    <p>NO. EFIN<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <input type="text" class="form-control form-control-sm" id="NO_EFIN_LABEL" placeholder=""/>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_EFIN_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="BPJS_KS_FILE">
+                    <p>NO. BPJS KESEHATAN<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <input type="text" class="form-control form-control-sm" id="NO_BPJS_KS_LABEL" placeholder="" />
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_BPJS_KS_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="BPJS_TKJ_FILE">
+                    <p>NO. BPJS KETENAGAKERJAAN<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <input type="text" class="form-control form-control-sm" id="NO_BPJS_TKJ_LABEL" placeholder="" />
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_BPJS_TKJ_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="SIM_C_FILE">
+                    <p>SIM C<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_SIM_C_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="VAKSIN_FILE">
+                    <p>KARTU VAKSIN KE-2 <code>*</code><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_VAKSIN_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="SKCK_FILE">
+                    <p>SKCK<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_SKCK_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="SERTIFIKAT_FILE">
+                    <p>SERTIFIKAT KOMPETENSI<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_SERTIFIKAT_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" >
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="PENGALAMAN_FILE">
+                    <p>SURAT PENGALAMAN KERJA<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_PENGALAMAN_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" >
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="SURAT_KESEHATAN_FILE">
+                    <p>SURAT KESEHATAN<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_KESEHATAN_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="KARTU_KUNING_FILE">
+                    <p>KARTU KUNING<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_KARTU_KUNING_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="SIO_FILE">
+                    <p>SURAT IZIN OPERATOR (SIO)<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (x)</a>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="NO_SIO_FILE" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" >
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var BCA_FILE_UPLOAD = new FileUploadWithPreview('BCA_FILE')
+        var NPWP_FILE_UPLOAD = new FileUploadWithPreview('NPWP_FILE')
+        var EFIN_FILE_UPLOAD = new FileUploadWithPreview('EFIN_FILE')
+        var BPJS_KS_FILE_UPLOAD = new FileUploadWithPreview('BPJS_KS_FILE')
+        var BPJS_TKJ_FILE_UPLOAD = new FileUploadWithPreview('BPJS_TKJ_FILE')
+        var SIM_C_FILE_UPLOAD = new FileUploadWithPreview('SIM_C_FILE')
+        var VAKSIN_FILE_UPLOAD = new FileUploadWithPreview('VAKSIN_FILE')
+        var SKCK_FILE_UPLOAD = new FileUploadWithPreview('SKCK_FILE')
+        var SERTIFIKAT_FILE_UPLOAD = new FileUploadWithPreview('SERTIFIKAT_FILE')
+        var PENGALAMAN_FILE_UPLOAD = new FileUploadWithPreview('PENGALAMAN_FILE')
+        var SURAT_KESEHATAN_FILE_UPLOAD = new FileUploadWithPreview('SURAT_KESEHATAN_FILE')
+        var SIO_FILE_UPLOAD = new FileUploadWithPreview('SIO_FILE')
+        var KARTU_KUNING_FILE_UPLOAD = new FileUploadWithPreview('KARTU_KUNING_FILE')
+    });
+
+    function UPLOAD_BCA() {
+        $.blockUI({
+            message: "UPLOADING BCA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_BCA_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_BCA", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_NPWP();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLAD_BCA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLAD_BCA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_NPWP() {
+        $.blockUI({
+            message: "UPLOADING NPWP..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_NPWP_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_NPWP", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_EFIN();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_NPWP() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_NPWP() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_EFIN() {
+        $.blockUI({
+            message: "UPLOADING EFIN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_EFIN_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_EFIN", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_BPJS_KS();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_EFIN() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_EFIN() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_BPJS_KS() {
+        $.blockUI({
+            message: "UPLOADING BPJS KESEHATAN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_BPJS_KS_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_BPJS_KS", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_BPJS_TKJ();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BPJS_KS() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BPJS_KS() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_BPJS_TKJ() {
+        $.blockUI({
+            message: "UPLOADING BPJS KETENAGA KERJAAN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_BPJS_TKJ_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_BPJS_TKJ", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_SIM_C();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BPJS_TKJ() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BPJS_TKJ() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_SIM_C() {
+        $.blockUI({
+            message: "UPLOADING SIM C..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_SIM_C_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_SIM_C", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_VAKSIN();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SIM_C() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SIM_C() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_VAKSIN() {
+        $.blockUI({
+            message: "UPLOADING VAKSIN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_VAKSIN_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_VAKSIN", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_SKCK();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_VAKSIN() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_VAKSIN() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_SKCK() {
+        $.blockUI({
+            message: "UPLOADING SKCK..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_SKCK_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_SKCK", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_SERTIFIKAT();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SKCK() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SKCK() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_SERTIFIKAT() {
+        $.blockUI({
+            message: "UPLOADING SERTIFIKAT..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_SERTIFIKAT_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_SERTIFIKAT", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_PENGALAMAN();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SERTIFIKAT() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SERTIFIKAT() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_PENGALAMAN() {
+        $.blockUI({
+            message: "UPLOADING PENGALAMAN BEKERJA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_PENGALAMAN_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_PENGALAMAN", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_KESEHATAN();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_PENGALAMAN() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_PENGALAMAN() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_KESEHATAN() {
+        $.blockUI({
+            message: "UPLOADING SURAT KESEHATAN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_KESEHATAN_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_KESEHATAN", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_KARTU_KUNING();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_KESEHATAN() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_KESEHATAN() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_KARTU_KUNING() {
+        $.blockUI({
+            message: "UPLOADING KARTU KUNING..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_KARTU_KUNING_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_KARTU_KUNING", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_SIO();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_KARTU_KUNING() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_KARTU_KUNING() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_SIO() {
+        $.blockUI({
+            message: "UPLOADING KARTU KUNING..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#NO_KARTU_KUNING_FILE").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_SIO", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    UPLOAD_DATA();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SIO() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_SIO() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UPLOAD_DATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var URL = "@Url.Action("MOBILE_SAVE_DOCUMENT", "MOBILE")";
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var ACCOUNT_BCA = document.getElementById('NO_BCA_LABEL').value;
+        var ACCOUNT_NPWP = document.getElementById('NO_NPWP_LABEL').value;
+        var ACCOUNT_EFIN = document.getElementById('NO_EFIN_LABEL').value;
+        var ACCOUNT_BPJS_KES = document.getElementById('NO_BPJS_KS_LABEL').value;
+        var ACCOUNT_BPJS_TKJ = document.getElementById('NO_BPJS_TKJ_LABEL').value;
+
+        if (ACCOUNT_EFIN == null) {
+            ACCOUNT_EFIN = "";
+        }
+        if (ACCOUNT_BPJS_KES == null) {
+            ACCOUNT_BPJS_KES = "";
+        }
+        if (ACCOUNT_BPJS_TKJ == null) {
+            ACCOUNT_BPJS_TKJ = "";
+        }
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            ACCOUNT_BCA: ACCOUNT_BCA,
+            ACCOUNT_NPWP: ACCOUNT_NPWP,
+            ACCOUNT_EFIN: ACCOUNT_EFIN,
+            ACCOUNT_BPJS_KES: ACCOUNT_BPJS_KES,
+            ACCOUNT_BPJS_TKJ: ACCOUNT_BPJS_TKJ
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'DOCUMENT DATA UPDATED, PAGE WILL BE REDIRECT TO DASHBOARD.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                            window.location.href = "@Url.Action("DASHBOARD", "MOBILE")?id=" + UNIQUEID;
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_DATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_DATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+</script>

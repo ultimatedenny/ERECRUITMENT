@@ -1,0 +1,1430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBERECRUITMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="GetDifferent_Result">
+    <Property Name="KONTRAK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="ufn_String_To_Table_Result">
+    <Property Name="Val" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="menulist">
+    <Key>
+      <PropertyRef Name="Group" />
+      <PropertyRef Name="MnuCod" />
+    </Key>
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MnuSeq" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="MnuCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MnuLev" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="MnuNam" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MnuNod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MnuPrt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MnuAct" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FRMNAM" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="FRMPARMTR" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Pic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="creusr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="credat" Type="DateTime" Precision="3" />
+    <Property Name="chgusr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="chgdat" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="BatchHeader">
+    <Key>
+      <PropertyRef Name="BatchNo" />
+      <PropertyRef Name="BatchCategory" />
+      <PropertyRef Name="InvitationDate" />
+      <PropertyRef Name="RequestDate" />
+      <PropertyRef Name="StatusBatch" />
+      <PropertyRef Name="UpdateBy" />
+      <PropertyRef Name="UpdateDate" />
+    </Key>
+    <Property Name="BatchNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BatchCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InvitationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StatusBatch" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="WA_Log" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TL_Log" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="levelmenu">
+    <Key>
+      <PropertyRef Name="MnuCod" />
+    </Key>
+    <Property Name="group" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MnuCod" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="level" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BusFunc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MD_DISTRICT">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="REGENCY_ID" />
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="REGENCY_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MD_VILLAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="DISTRICT_ID" />
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DISTRICT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysset">
+    <Key>
+      <PropertyRef Name="SysCod" />
+      <PropertyRef Name="SysVar" />
+      <PropertyRef Name="VarTyp" />
+      <PropertyRef Name="VarDec" />
+    </Key>
+    <Property Name="SysCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SysVar" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VarTyp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VarDec" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MapField" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="creusr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="credat" Type="DateTime" Precision="3" />
+    <Property Name="chgusr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="chgdat" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Usr">
+    <Key>
+      <PropertyRef Name="UseId" />
+      <PropertyRef Name="UseLev" />
+      <PropertyRef Name="UseNam" />
+      <PropertyRef Name="UsePass" />
+      <PropertyRef Name="IsWindowsAuth" />
+      <PropertyRef Name="BusFunc" />
+      <PropertyRef Name="CreUsr" />
+      <PropertyRef Name="CreDat" />
+      <PropertyRef Name="UseRole" />
+      <PropertyRef Name="ChgPassword" />
+    </Key>
+    <Property Name="UseId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UseLev" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UseNam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsePass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsWindowsAuth" Type="Boolean" Nullable="false" />
+    <Property Name="UseComCod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="BusFunc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreUsr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreDat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ChgUsr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChgDat" Type="DateTime" Precision="3" />
+    <Property Name="UseRole" Type="Int32" Nullable="false" />
+    <Property Name="ChgPassword" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DBERECRUITMENTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="menulists" EntityType="Self.menulist" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="BatchHeaders" EntityType="Self.BatchHeader" />
+    <EntitySet Name="levelmenus" EntityType="Self.levelmenu" />
+    <EntitySet Name="MD_DISTRICT" EntityType="Self.MD_DISTRICT" />
+    <EntitySet Name="MD_VILLAGE" EntityType="Self.MD_VILLAGE" />
+    <EntitySet Name="syssets" EntityType="Self.sysset" />
+    <EntitySet Name="Usrs" EntityType="Self.Usr" />
+    <FunctionImport Name="GetDifferent" IsComposable="true" ReturnType="Collection(DBERECRUITMENTModel.GetDifferent_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ufn_String_To_Table" IsComposable="true" ReturnType="Collection(DBERECRUITMENTModel.ufn_String_To_Table_Result)">
+      <Parameter Name="String" Mode="In" Type="String" />
+      <Parameter Name="Delimeter" Mode="In" Type="String" />
+      <Parameter Name="TrimSpace" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="DELETE_ALL" />
+    <FunctionImport Name="DESKTOP_GET_BATCH_DETAIL" ReturnType="Collection(DBERECRUITMENTModel.DESKTOP_GET_BATCH_DETAIL_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DESKTOP_GET_BATCH_LIST" ReturnType="Collection(String)">
+      <Parameter Name="DATE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DESKTOP_UPDATE_STATUS_EMP">
+      <Parameter Name="BATCHEMP" Mode="In" Type="String" />
+      <Parameter Name="EMPSTATUS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EXPORT2">
+      <Parameter Name="BATCH_NO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GET_MOBILE_DASHBOARD" ReturnType="Collection(DBERECRUITMENTModel.GET_MOBILE_DASHBOARD_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GET_MOBILE_GETPARENTS" ReturnType="Collection(DBERECRUITMENTModel.GET_MOBILE_GETPARENTS_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetBatchInvDate" ReturnType="Collection(DateTime)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetContactList1" ReturnType="Collection(DBERECRUITMENTModel.GetContactList1_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetContactList2" ReturnType="Collection(DBERECRUITMENTModel.GetContactList2_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListLocalServers" />
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_ADDITIONALFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_ADDITIONALFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_EDUCATIONFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_EDUCATIONFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_FAMILYFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_FAMILYFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_LANGUAGEFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_LANGUAGEFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_PERSONALFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_PERSONALFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_CHECK_CANEDIT_WORKEXPFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_WORKEXPFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_GET_DISTRICT" />
+    <FunctionImport Name="MOBILE_GET_GENDER" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_GET_GENDER_Result)" />
+    <FunctionImport Name="MOBILE_GET_MARITAL" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_GET_MARITAL_Result)" />
+    <FunctionImport Name="MOBILE_GET_MOBILE_GOTOFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_GET_MOBILE_GOTOFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_GET_VILLAGE">
+      <Parameter Name="DISTRICT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_MOBILE_GATENAME_UNIFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_MOBILE_GATENAME_UNIFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_ADDITIONALFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_ADDITIONALFORM_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="MOTIVASI" Mode="In" Type="String" />
+      <Parameter Name="KOMITMEN" Mode="In" Type="String" />
+      <Parameter Name="CRIME" Mode="In" Type="Boolean" />
+      <Parameter Name="MENTAL_DISEASE" Mode="In" Type="Boolean" />
+      <Parameter Name="WORKED_ON_SHIMANO" Mode="In" Type="Boolean" />
+      <Parameter Name="SHAMANO_START" Mode="In" Type="String" />
+      <Parameter Name="SHIMANO_END" Mode="In" Type="String" />
+      <Parameter Name="STUDY_PLAN" Mode="In" Type="Boolean" />
+      <Parameter Name="EYECHECK" Mode="In" Type="Boolean" />
+      <Parameter Name="EYEVALUE" Mode="In" Type="String" />
+      <Parameter Name="SMOKING" Mode="In" Type="String" />
+      <Parameter Name="LAST_SMOKING" Mode="In" Type="String" />
+      <Parameter Name="ACCEPT_TERMS" Mode="In" Type="Boolean" />
+      <Parameter Name="CV" Mode="In" Type="String" />
+      <Parameter Name="CL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_EDUCATIONFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_EDUCATIONFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="LAST_EDU" Mode="In" Type="String" />
+      <Parameter Name="SCHOOL_NAME" Mode="In" Type="String" />
+      <Parameter Name="SCHOOL_MAJOR" Mode="In" Type="String" />
+      <Parameter Name="SCHOOL_FACULTY" Mode="In" Type="String" />
+      <Parameter Name="GRADUATE_YEAR" Mode="In" Type="String" />
+      <Parameter Name="GRADUATE_PLACE" Mode="In" Type="String" />
+      <Parameter Name="AVG_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="CERT_NO" Mode="In" Type="String" />
+      <Parameter Name="PHOTO_CERT_F" Mode="In" Type="String" />
+      <Parameter Name="PHOTO_CERT_B" Mode="In" Type="String" />
+      <Parameter Name="HOLDING_WILLINGLY" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_EMERGENCYCONTACT" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_EMERGENCYCONTACT_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="EM_NAME" Mode="In" Type="String" />
+      <Parameter Name="EM_REL" Mode="In" Type="String" />
+      <Parameter Name="EM_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="EM_ADDR" Mode="In" Type="String" />
+      <Parameter Name="EM_RT" Mode="In" Type="String" />
+      <Parameter Name="EM_RW" Mode="In" Type="String" />
+      <Parameter Name="EM_PROVINSI" Mode="In" Type="String" />
+      <Parameter Name="EM_KABUPATEN" Mode="In" Type="String" />
+      <Parameter Name="EM_KECAMATAN" Mode="In" Type="String" />
+      <Parameter Name="EM_KELURAHAN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_FAMILYBACKGROUND" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_FAMILYBACKGROUND_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="FATHER_ALIVE" Mode="In" Type="Boolean" />
+      <Parameter Name="FATHER_NIK" Mode="In" Type="String" />
+      <Parameter Name="FATHER_BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="FATHER_BIRTHDATE" Mode="In" Type="String" />
+      <Parameter Name="FATHER_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_ALIVE" Mode="In" Type="Boolean" />
+      <Parameter Name="MOTHER_NIK" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_BIRTHDATE" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_MOBILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_FAMILYFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_FAMILYFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="NOKK" Mode="In" Type="String" />
+      <Parameter Name="FATHER_NAME" Mode="In" Type="String" />
+      <Parameter Name="FATHER_AGE" Mode="In" Type="String" />
+      <Parameter Name="FATHER_JOB" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_NAME" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_AGE" Mode="In" Type="String" />
+      <Parameter Name="MOTHER_JOB" Mode="In" Type="String" />
+      <Parameter Name="PHOTO_KK" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_HEALTH" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_HEALTH_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="LIQUID_TINNER" Mode="In" Type="Boolean" />
+      <Parameter Name="STOMACH_ACID" Mode="In" Type="Boolean" />
+      <Parameter Name="PNEUMONIA" Mode="In" Type="Boolean" />
+      <Parameter Name="LUNG_DISEASE" Mode="In" Type="Boolean" />
+      <Parameter Name="ASTHMA" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_LANGUAGEFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_LANGUAGEFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="LANGUAGE" Mode="In" Type="String" />
+      <Parameter Name="LEVEL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_PERSONALFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_PERSONALFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="NIK" Mode="In" Type="String" />
+      <Parameter Name="RACE" Mode="In" Type="String" />
+      <Parameter Name="RELIGION" Mode="In" Type="String" />
+      <Parameter Name="PHONE" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="WHATSAPP" Mode="In" Type="String" />
+      <Parameter Name="TELEGRAM" Mode="In" Type="String" />
+      <Parameter Name="LINKEDIN" Mode="In" Type="String" />
+      <Parameter Name="GANDER" Mode="In" Type="String" />
+      <Parameter Name="AGE" Mode="In" Type="Int32" />
+      <Parameter Name="MARITAL" Mode="In" Type="String" />
+      <Parameter Name="LEFTHANDED" Mode="In" Type="Boolean" />
+      <Parameter Name="HEIGHT" Mode="In" Type="Int32" />
+      <Parameter Name="WEIGHT" Mode="In" Type="Int32" />
+      <Parameter Name="ADDRESS" Mode="In" Type="String" />
+      <Parameter Name="RT" Mode="In" Type="String" />
+      <Parameter Name="RW" Mode="In" Type="String" />
+      <Parameter Name="KECAMATAN" Mode="In" Type="String" />
+      <Parameter Name="KELURAHAN" Mode="In" Type="String" />
+      <Parameter Name="KTPDIR" Mode="In" Type="String" />
+      <Parameter Name="PASSFOTODIR" Mode="In" Type="String" />
+      <Parameter Name="BIRTHDATE" Mode="In" Type="String" />
+      <Parameter Name="BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="HOMESTATUS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_REFERENCE_PERSON" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_REFERENCE_PERSON_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="ISREFERENCE" Mode="In" Type="Boolean" />
+      <Parameter Name="REF_NAME" Mode="In" Type="String" />
+      <Parameter Name="REF_TITLE" Mode="In" Type="String" />
+      <Parameter Name="REF_COMPANY" Mode="In" Type="String" />
+      <Parameter Name="REF_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="REF_EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_REPORT" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_REPORT_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="REPORT_ID" Mode="In" Type="String" />
+      <Parameter Name="REPORT_CATE" Mode="In" Type="String" />
+      <Parameter Name="REPORT_DESC" Mode="In" Type="String" />
+      <Parameter Name="REPORT_IMG" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_SIBLINGSFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_SIBLINGSFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="SIBLING_NAME" Mode="In" Type="String" />
+      <Parameter Name="SIBLING_AGE" Mode="In" Type="String" />
+      <Parameter Name="SIBLING_JOB" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_SPOUSE_CHILD" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_SPOUSE_CHILD_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="CHILD_NAME" Mode="In" Type="String" />
+      <Parameter Name="CHILD_NIK" Mode="In" Type="String" />
+      <Parameter Name="CHILD_BIRTH_PLACE" Mode="In" Type="String" />
+      <Parameter Name="CHILD_BIRTH_DATE" Mode="In" Type="String" />
+      <Parameter Name="CHILD_MOBILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_SPOUSE_WIFE" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_SPOUSE_WIFE_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="ISFAMILY" Mode="In" Type="Boolean" />
+      <Parameter Name="WIFE_NAME" Mode="In" Type="String" />
+      <Parameter Name="WIFE_NIK" Mode="In" Type="String" />
+      <Parameter Name="WIFE_BIRTH_PLACE" Mode="In" Type="String" />
+      <Parameter Name="WIFE_BIRTH_DATE" Mode="In" Type="String" />
+      <Parameter Name="WIFE_MOBILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_USERDOCUMENT" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_USERDOCUMENT_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="ACCOUNT_BCA" Mode="In" Type="String" />
+      <Parameter Name="ACCOUNT_NPWP" Mode="In" Type="String" />
+      <Parameter Name="ACCOUNT_EFIN" Mode="In" Type="String" />
+      <Parameter Name="ACCOUNT_BPJS_KES" Mode="In" Type="String" />
+      <Parameter Name="ACCOUNT_BPJS_TKJ" Mode="In" Type="String" />
+      <Parameter Name="IMG_BCA" Mode="In" Type="String" />
+      <Parameter Name="IMG_NPWP" Mode="In" Type="String" />
+      <Parameter Name="IMG_EFIN" Mode="In" Type="String" />
+      <Parameter Name="IMG_BPJS_KES" Mode="In" Type="String" />
+      <Parameter Name="IMG_BPJS_TKJ" Mode="In" Type="String" />
+      <Parameter Name="IMG_SIM_C" Mode="In" Type="String" />
+      <Parameter Name="IMG_VAKSIN" Mode="In" Type="String" />
+      <Parameter Name="IMG_SKCK" Mode="In" Type="String" />
+      <Parameter Name="IMG_SERTIFIKAT_KOMPETENSI" Mode="In" Type="String" />
+      <Parameter Name="IMG_PENGALAMAN" Mode="In" Type="String" />
+      <Parameter Name="IMG_SURAT_SEHAT" Mode="In" Type="String" />
+      <Parameter Name="IMG_KARTU_KUNING" Mode="In" Type="String" />
+      <Parameter Name="IMG_SIO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_USERUNIFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_USERUNIFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="SHIRT_SIZE" Mode="In" Type="String" />
+      <Parameter Name="PANTS_SIZE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MOBILE_SAVE_WORKEXPFORM" ReturnType="Collection(DBERECRUITMENTModel.MOBILE_SAVE_WORKEXPFORM_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+      <Parameter Name="WORK_EXP" Mode="In" Type="Boolean" />
+      <Parameter Name="COMPANY_NAME" Mode="In" Type="String" />
+      <Parameter Name="POSITION" Mode="In" Type="String" />
+      <Parameter Name="START_YEAR" Mode="In" Type="String" />
+      <Parameter Name="END_YEAR" Mode="In" Type="String" />
+      <Parameter Name="REASON_LEAVE" Mode="In" Type="String" />
+      <Parameter Name="CERT_NO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT1" ReturnType="Collection(DBERECRUITMENTModel.SP_EXPORT1_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT2">
+      <Parameter Name="BATCH_NO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORTEXCEL_GENERALNAMELIST" ReturnType="Collection(DBERECRUITMENTModel.SP_EXPORTEXCEL_GENERALNAMELIST_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_BATCHLIST_1" ReturnType="Collection(DBERECRUITMENTModel.SP_GET_BATCHLIST_1_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_BATCHLIST_2" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_GET_CONTACT_LIST1" ReturnType="Collection(DBERECRUITMENTModel.SP_GET_CONTACT_LIST1_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_CONTACT_LIST2" ReturnType="Collection(DBERECRUITMENTModel.SP_GET_CONTACT_LIST2_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_LAST_SEQ" ReturnType="Collection(Int32)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_SERVICE_YEAR" ReturnType="Collection(String)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBERECRUITMENTModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBERECRUITMENTModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_POST_NEW_USER" ReturnType="Collection(DBERECRUITMENTModel.SP_POST_NEW_USER_Result)">
+      <Parameter Name="USER_ID" Mode="In" Type="String" />
+      <Parameter Name="USER_NAME" Mode="In" Type="String" />
+      <Parameter Name="USER_GROUP" Mode="In" Type="String" />
+      <Parameter Name="USER_CREATOR" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_ALL_USER_TABLE">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_BATCHSTATUS" ReturnType="Collection(DBERECRUITMENTModel.SP_UPDATE_BATCHSTATUS_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_CANDIDATE_STATUS" ReturnType="Collection(DBERECRUITMENTModel.SP_UPDATE_CANDIDATE_STATUS_Result)">
+      <Parameter Name="INVITATIONEMP" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+      <Parameter Name="REMARK" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_INV_CODE" ReturnType="Collection(DBERECRUITMENTModel.SP_UPDATE_INV_CODE_Result)">
+      <Parameter Name="BatchEmp" Mode="In" Type="String" />
+      <Parameter Name="InvitatioEmp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_LOGFILE_TELEGRAM" ReturnType="Collection(DBERECRUITMENTModel.SP_UPDATE_LOGFILE_TELEGRAM_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+      <Parameter Name="FileName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="SP_UPLOAD_SINGLE_BATCH" ReturnType="Collection(DBERECRUITMENTModel.SP_UPLOAD_SINGLE_BATCH_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+      <Parameter Name="BatchCategory" Mode="In" Type="String" />
+      <Parameter Name="InvitationDate" Mode="In" Type="String" />
+      <Parameter Name="RequestDate" Mode="In" Type="String" />
+      <Parameter Name="StatusBatch" Mode="In" Type="String" />
+      <Parameter Name="UpdateBy" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPLOAD_SINGLE_BATCH_2" ReturnType="Collection(DBERECRUITMENTModel.SP_UPLOAD_SINGLE_BATCH_2_Result)">
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+      <Parameter Name="InvitationDate" Mode="In" Type="String" />
+      <Parameter Name="BatchEmp" Mode="In" Type="String" />
+      <Parameter Name="NameEmp" Mode="In" Type="String" />
+      <Parameter Name="PhoneEmp" Mode="In" Type="String" />
+      <Parameter Name="DOBEmp" Mode="In" Type="String" />
+      <Parameter Name="InvitationEmp" Mode="In" Type="String" />
+      <Parameter Name="StatusEmp" Mode="In" Type="String" />
+      <Parameter Name="UpdateBy" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_EXPORT_GENERANAMELIST" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_EXPORT_GENERANAMELIST_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GET_CANDIDATE_DETAILS" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GET_CANDIDATE_DETAILS_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GET_GENERANAMELIST" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GET_GENERANAMELIST_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GET_INTERVIEWBOARD_SCOREBOARD">
+      <Parameter Name="BATCHEMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GETBATCH_DROPDOWN" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_WEB_GETBATSTAT_DROPDOWN" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_WEB_GETCATEGORY_DROPDOWN" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_WEB_GETEMPSTAT_DROPDOWN" ReturnType="Collection(String)" />
+    <FunctionImport Name="SP_WEB_GETREPORT_FORM1" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GETREPORT_FORM1_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="BATCHCATEGORY" Mode="In" Type="String" />
+      <Parameter Name="BATCHSTATUS" Mode="In" Type="String" />
+      <Parameter Name="FROM" Mode="In" Type="String" />
+      <Parameter Name="TO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GETUNIQUE" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GETUNIQUE_Result)">
+      <Parameter Name="UNIQUEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_GETUSERINFO" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_GETUSERINFO_Result)">
+      <Parameter Name="USEID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WEB_REPORT_TABLE" ReturnType="Collection(DBERECRUITMENTModel.SP_WEB_REPORT_TABLE_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetBatchInfo" ReturnType="Collection(DBERECRUITMENTModel.spGetBatchInfo_Result)">
+      <Parameter Name="GetType" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="BatchNo" Mode="In" Type="String" />
+      <Parameter Name="BatchStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetBatchList" ReturnType="Collection(String)">
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetBatchList2" ReturnType="Collection(String)">
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_1" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_1_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_NIK" Mode="In" Type="String" />
+      <Parameter Name="EMP_GANDER" Mode="In" Type="String" />
+      <Parameter Name="EMP_MARITAL" Mode="In" Type="String" />
+      <Parameter Name="EMP_HEIGHT" Mode="In" Type="String" />
+      <Parameter Name="EMP_WEIGHT" Mode="In" Type="String" />
+      <Parameter Name="EMP_BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_BIRTHDATE" Mode="In" Type="String" />
+      <Parameter Name="EMP_RELIGION" Mode="In" Type="String" />
+      <Parameter Name="EMP_RACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="EMP_TELEGRAM" Mode="In" Type="String" />
+      <Parameter Name="EMP_WHATSAPP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_2" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_2_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_NOKK" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_ALIVE" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_FATHER_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_AGE" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_JOB" Mode="In" Type="String" />
+      <Parameter Name="EMP_NIK_FATHER" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_BIRTHDAY" Mode="In" Type="String" />
+      <Parameter Name="EMP_FATHER_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_ALIVE" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_MOTHER_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_AGE" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_JOB" Mode="In" Type="String" />
+      <Parameter Name="EMP_NIK_MOTHER" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_BIRTHPLACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_BIRTHDAY" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTHER_MOBILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_3" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_3_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_ISFAMILY" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_WIFE_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_WIFE_NIK" Mode="In" Type="String" />
+      <Parameter Name="EMP_WIFE_BIRTH_PLACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_WIFE_BIRTH_DATE" Mode="In" Type="String" />
+      <Parameter Name="EMP_WIFE_MOBILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_4" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_4_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_REL" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_MOBILE" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_ADDR" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_RT" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_RW" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_PROVINSI" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_KABUPATEN" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_KECAMATAN" Mode="In" Type="String" />
+      <Parameter Name="EMP_EM_KELURAHAN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_5" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_5_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_LAST_EDU" Mode="In" Type="String" />
+      <Parameter Name="EMP_SCHOOL_NAME" Mode="In" Type="String" />
+      <Parameter Name="EMP_SCHOOL_MAJOR" Mode="In" Type="String" />
+      <Parameter Name="EMP_FACULTY" Mode="In" Type="String" />
+      <Parameter Name="EMP_GRADUATE_YEAR" Mode="In" Type="String" />
+      <Parameter Name="EMP_GRADUATE_PLACE" Mode="In" Type="String" />
+      <Parameter Name="EMP_AVG_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_CERT_NO" Mode="In" Type="String" />
+      <Parameter Name="EMP_HOLD_WILLINGLY" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_7" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_7_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_MOTIVASI" Mode="In" Type="String" />
+      <Parameter Name="EMP_KOMITMEN" Mode="In" Type="String" />
+      <Parameter Name="EMP_CRIME" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_MENTAL_DISEASE" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_WORKED_ON_SHIMANO" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_SHAMANO_START" Mode="In" Type="String" />
+      <Parameter Name="EMP_SHIMANO_END" Mode="In" Type="String" />
+      <Parameter Name="EMP_STUDY_PLAN" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_SAPORCOMP" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_8" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_8_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_ACCOUNT_BCA" Mode="In" Type="String" />
+      <Parameter Name="EMP_ACCOUNT_NPWP" Mode="In" Type="String" />
+      <Parameter Name="EMP_ACCOUNT_EFIN" Mode="In" Type="String" />
+      <Parameter Name="EMP_ACCOUNT_BPJS_KES" Mode="In" Type="String" />
+      <Parameter Name="EMP_ACCOUNT_BPJS_TKJ" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_CANDIDATE_DETAILS_SAVE_9" ReturnType="Collection(DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_9_Result)">
+      <Parameter Name="USERID" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="EMP_PERSONALITY" Mode="In" Type="String" />
+      <Parameter Name="EMP_THINKING_STY" Mode="In" Type="String" />
+      <Parameter Name="EMP_WORKING_STY" Mode="In" Type="String" />
+      <Parameter Name="EMP_TEST_IQ" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_TEST_MTH" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_TEST_ACC" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_TEST_ENG" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_WRITTEN_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_TEST_1" Mode="In" Type="String" />
+      <Parameter Name="EMP_TIME_TEST_1" Mode="In" Type="String" />
+      <Parameter Name="EMP_TEST_2" Mode="In" Type="String" />
+      <Parameter Name="EMP_TIME_TEST_2" Mode="In" Type="String" />
+      <Parameter Name="EMP_PRACTICAL_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_REMARK" Mode="In" Type="String" />
+      <Parameter Name="EMP_MEMORY_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="EMP_ATTN_EMP" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_MDCL_TST" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_FIN_DES" Mode="In" Type="Boolean" />
+      <Parameter Name="EMP_SUM_REMARK" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_GET_DASHBOARD_DETAIL" ReturnType="Collection(DBERECRUITMENTModel.WEB_GET_DASHBOARD_DETAIL_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_GET_EDU" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_GET_PERSONALITY" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_GET_RACE" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_GET_RELIGION" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_GET_STATUS_DETAIL" ReturnType="Collection(String)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_GET_THINKING_STY" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_GET_WORKING_STY" ReturnType="Collection(String)" />
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_EDUCATION" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_EDUCATION_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="LAST_EDU" Mode="In" Type="String" />
+      <Parameter Name="SCHOOL_NAME" Mode="In" Type="String" />
+      <Parameter Name="SCHOOL_MAJOR" Mode="In" Type="String" />
+      <Parameter Name="AVG_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="CERT_NO" Mode="In" Type="String" />
+      <Parameter Name="PHOTO_CERT" Mode="In" Type="String" />
+      <Parameter Name="HOLD_WILLINGLY" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_FINAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_FINAL_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="FINALRESULT" Mode="In" Type="Boolean" />
+      <Parameter Name="FINALREMARK" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_MEMORY" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_MEMORY_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="MEMORY_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_OTHER" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_OTHER_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="SAPORCOMP" Mode="In" Type="Boolean" />
+      <Parameter Name="COLLEGE" Mode="In" Type="Boolean" />
+      <Parameter Name="EYEGLASSES" Mode="In" Type="Boolean" />
+      <Parameter Name="EYECHECK" Mode="In" Type="Boolean" />
+      <Parameter Name="EYEVALUE" Mode="In" Type="Int32" />
+      <Parameter Name="SMOKING" Mode="In" Type="Boolean" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_PERSONAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_PERSONAL_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="RACE" Mode="In" Type="String" />
+      <Parameter Name="RELIGION" Mode="In" Type="String" />
+      <Parameter Name="WANO" Mode="In" Type="String" />
+      <Parameter Name="GENDER" Mode="In" Type="String" />
+      <Parameter Name="AGE" Mode="In" Type="Int32" />
+      <Parameter Name="RESIDENCE" Mode="In" Type="String" />
+      <Parameter Name="LEFTHANDED" Mode="In" Type="Boolean" />
+      <Parameter Name="HEIGHT" Mode="In" Type="Int32" />
+      <Parameter Name="WEIGHT" Mode="In" Type="Int32" />
+      <Parameter Name="PERSONALITY" Mode="In" Type="String" />
+      <Parameter Name="THINKING_STY" Mode="In" Type="String" />
+      <Parameter Name="WORKING_STY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_PRACTICAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_PRACTICAL_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="TEST_1" Mode="In" Type="String" />
+      <Parameter Name="TIME_1" Mode="In" Type="String" />
+      <Parameter Name="TEST_2" Mode="In" Type="String" />
+      <Parameter Name="TIME_2" Mode="In" Type="String" />
+      <Parameter Name="REMARK" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_WRITTEN" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_WRITTEN_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="TEST_IQ" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_MATH" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_ACC" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_ENG" Mode="In" Type="Int32" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR_Result)">
+      <Parameter Name="BATCH_NO" Mode="In" Type="String" />
+      <Parameter Name="WA_NO" Mode="In" Type="String" />
+      <Parameter Name="TEST_IQ" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_MATH" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_ACC" Mode="In" Type="Int32" />
+      <Parameter Name="TEST_ENG" Mode="In" Type="Int32" />
+      <Parameter Name="WRITTEN_SCORE" Mode="In" Type="Int32" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR" ReturnType="Collection(DBERECRUITMENTModel.WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR_Result)">
+      <Parameter Name="BATCH_NO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_SAVE_DETAIL_REPORT" ReturnType="Collection(DBERECRUITMENTModel.WEB_SAVE_DETAIL_REPORT_Result)">
+      <Parameter Name="REPORT_ID" Mode="In" Type="String" />
+      <Parameter Name="REPORT_STATUS" Mode="In" Type="String" />
+      <Parameter Name="REPORT_ACTION" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_SETDIGIT" ReturnType="Collection(String)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_SHOWDIGIT" ReturnType="Collection(String)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_SUBMIT_USER_GENERAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_SUBMIT_USER_GENERAL_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_UPDATE_PTM" ReturnType="Collection(DBERECRUITMENTModel.WEB_UPDATE_PTM_Result)">
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="PERSONALITY" Mode="In" Type="String" />
+      <Parameter Name="THINKING_STY" Mode="In" Type="String" />
+      <Parameter Name="WORKING_STY" Mode="In" Type="String" />
+      <Parameter Name="MDCL_TST" Mode="In" Type="Boolean" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_UPDATE_USER_GENERAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_UPDATE_USER_GENERAL_Result)">
+      <Parameter Name="BATCH_NO" Mode="In" Type="String" />
+      <Parameter Name="BATCH_EMP" Mode="In" Type="String" />
+      <Parameter Name="NAME_EMP" Mode="In" Type="String" />
+      <Parameter Name="GANDER" Mode="In" Type="String" />
+      <Parameter Name="NO_EMP" Mode="In" Type="String" />
+      <Parameter Name="DOE" Mode="In" Type="String" />
+      <Parameter Name="DOJ" Mode="In" Type="String" />
+      <Parameter Name="TAX" Mode="In" Type="String" />
+      <Parameter Name="TIER" Mode="In" Type="String" />
+      <Parameter Name="DEPT" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WEB_VERIFY_USER_GENERAL" ReturnType="Collection(DBERECRUITMENTModel.WEB_VERIFY_USER_GENERAL_Result)">
+      <Parameter Name="BATCHNO" Mode="In" Type="String" />
+      <Parameter Name="USERID" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="DESKTOP_GET_BATCH_DETAIL_Result">
+    <Property Type="String" Name="BatchNo" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="InvitationDate" Nullable="false" />
+    <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+    <Property Type="String" Name="BatchEmp" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NameEmp" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PhoneEmp" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="DOBEmp" Nullable="true" />
+    <Property Type="String" Name="InvitationEmp" Nullable="true" />
+    <Property Type="String" Name="StatusEmp" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="GET_MOBILE_DASHBOARD_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="MESSAGEHEADER" Nullable="true" />
+    <Property Type="String" Name="MESSAGEBODY" Nullable="true" />
+    <Property Type="String" Name="IMAGEDASHBOARD" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GET_MOBILE_GETPARENTS_Result">
+    <Property Type="String" Name="NOKK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FATHER_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MOTHER_NAME" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetContactList1_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONEEMP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="BATCHEMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="INVITATIONEMP" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetContactList2_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONEEMP" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_ADDITIONALFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="45" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_EDUCATIONFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="36" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_FAMILYFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="38" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_LANGUAGEFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="39" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_PERSONALFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_CHECK_CANEDIT_WORKEXPFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="38" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_GET_GENDER_Result">
+    <Property Type="String" Name="VALUE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TEXT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_GET_MARITAL_Result">
+    <Property Type="String" Name="VALUE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TEXT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_GET_MOBILE_GOTOFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_MOBILE_GATENAME_UNIFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_ADDITIONALFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="68" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_EDUCATIONFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_EMERGENCYCONTACT_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_FAMILYBACKGROUND_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="34" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_FAMILYFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_HEALTH_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="28" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_LANGUAGEFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_PERSONALFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_REFERENCE_PERSON_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="31" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_REPORT_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_SIBLINGSFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_SPOUSE_CHILD_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_SPOUSE_WIFE_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="26" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_USERDOCUMENT_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="91" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_USERUNIFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="95" />
+  </ComplexType>
+  <ComplexType Name="MOBILE_SAVE_WORKEXPFORM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="SP_EXPORT1_Result">
+    <Property Type="String" Name="NAME_EMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="BATCH_NO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="BATCH_EMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NAME_EMP1" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PERSONALITY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="THINKING_STY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="WORKING_STY" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="MDCL_TST" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_EXPORTEXCEL_GENERALNAMELIST_Result">
+    <Property Type="String" Name="BATCH_NO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BATCH_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAME_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NO_EMP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DOE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TIER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DEPT" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_GET_BATCHLIST_1_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONEEMP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="BATCHEMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="INVITATIONEMP" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GET_CONTACT_LIST1_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONEEMP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="BATCHEMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="INVITATIONEMP" Nullable="true" />
+    <Property Type="String" Name="STATUSEMP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="REMARK" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GET_CONTACT_LIST2_Result">
+    <Property Type="String" Name="NAMEEMP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PHONEEMP" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_POST_NEW_USER_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="19" />
+  </ComplexType>
+  <ComplexType Name="SP_UPDATE_BATCHSTATUS_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="14" />
+  </ComplexType>
+  <ComplexType Name="SP_UPDATE_CANDIDATE_STATUS_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="14" />
+  </ComplexType>
+  <ComplexType Name="SP_UPDATE_INV_CODE_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="39" />
+  </ComplexType>
+  <ComplexType Name="SP_UPDATE_LOGFILE_TELEGRAM_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="14" />
+  </ComplexType>
+  <ComplexType Name="SP_UPLOAD_SINGLE_BATCH_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="22" />
+  </ComplexType>
+  <ComplexType Name="SP_UPLOAD_SINGLE_BATCH_2_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="26" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_EXPORT_GENERANAMELIST_Result">
+    <Property Type="String" Name="GELOMBANG" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_UNDANGAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAMA_LENGKAP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NO__KARYAWAN" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DOJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KONTRAK" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="GAJI" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="KODE_PAJAK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DEPARTEMEN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NO__WA" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NO__HP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="BIRTHPLACE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="BIRTHDATE" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="UMUR" Nullable="true" />
+    <Property Type="String" Name="JENIS_KELAMIN" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="AGAMA" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="SUKU" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="TINGGI_BADAN" Nullable="true" />
+    <Property Type="Int32" Name="BERAT_BADAN" Nullable="true" />
+    <Property Type="String" Name="UKURAN_BAJU" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="UKURAN_CELANA" Nullable="true" MaxLength="3" />
+    <Property Type="Int32" Name="TEST_IQ" Nullable="true" />
+    <Property Type="Int32" Name="TEST_ENG" Nullable="true" />
+    <Property Type="Int32" Name="TEST_MATH" Nullable="true" />
+    <Property Type="Int32" Name="TEST_ACC" Nullable="true" />
+    <Property Type="Int32" Name="MEMORY" Nullable="true" />
+    <Property Type="String" Name="PENDIDIKAN_TERAKHIR" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TEMPAT_PENDIDIKAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="JURUSAN" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NILAI" Nullable="true" />
+    <Property Type="String" Name="NOMOR_IJAZAH" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ALAMAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RT" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="RW" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="KECAMATAN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="KELURAHAN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ALAMAT_LENGKAP" Nullable="true" MaxLength="263" />
+    <Property Type="String" Name="NAMA_KONTAK_DARURAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_KONTAK_DARURAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RELASI_KONTAK_DARURAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ALAMAT_KONTAK_DARURAT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RT1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RW1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PROVINSI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KOTA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KECAMATAN1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KELURAHAN1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ALAMAT_LENGKAP1" Nullable="true" MaxLength="361" />
+    <Property Type="String" Name="NOMOR_KTP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_REKENING" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_NPWP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_EFIN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_BPJS_KS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_BPJS_TKJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NOMOR_KK" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="AYAH_MASIH_HIDUP" Nullable="true" />
+    <Property Type="String" Name="NIK_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAMA_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UMUR_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TANGGAL_LAHIR_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TEMPAT_LAHIR_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PEKERJAAN_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KONTAK_AYAH" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IBU_MASIH_HIDUP" Nullable="true" />
+    <Property Type="String" Name="NIK_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAMA_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UMUR_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TANGGAL_LAHIR_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TEMPAT_LAHIR_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PEKERJAAN_IBU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KONTAK_IBU" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GET_CANDIDATE_DETAILS_Result">
+    <Property Type="String" Name="EMP_NAME" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_NIK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_MARITAL" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_RELIGION" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_HEIGHT" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EMP_WEIGHT" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EMP_BIRTHPLACE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EMP_BIRTHDATE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMP_RACE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_MOBILE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_TELEGRAM" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_WHATSAPP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_PASFOTO" Nullable="true" />
+    <Property Type="String" Name="EMP_KTPFOTO" Nullable="true" />
+    <Property Type="String" Name="EMP_NOKK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_ALIVE" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="EMP_FATHER_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_AGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_JOB" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_NIK_FATHER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_BIRTHPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_BIRTHDAY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_FATHER_MOBILE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_ALIVE" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="EMP_MOTHER_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_AGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_JOB" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_NIK_MOTHER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_BIRTHPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_BIRTHDAY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTHER_MOBILE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_PHOTOKK" Nullable="true" />
+    <Property Type="String" Name="EMP_ISFAMILY" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="EMP_WIFE_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_WIFE_NIK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_WIFE_BIRTH_PLACE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_WIFE_BIRTH_DATE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_WIFE_MOBILE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_REL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_MOBILE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_ADDR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_RT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_RW" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_PROVINSI" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_KABUPATEN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_KECAMATAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_EM_KELURAHAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_LAST_EDU" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_SCHOOL_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_SCHOOL_MAJOR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_AVG_SCORE" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_CERT_NO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_PHOTO_CERT_F" Nullable="true" />
+    <Property Type="String" Name="EMP_PHOTO_CERT_B" Nullable="true" />
+    <Property Type="String" Name="EMP_HOLD_WILLINGLY" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_FACULTY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_GRADUATE_YEAR" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="EMP_GRADUATE_PLACE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MOTIVASI" Nullable="true" />
+    <Property Type="String" Name="EMP_KOMITMEN" Nullable="true" />
+    <Property Type="String" Name="EMP_CRIME" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_MENTAL_DISEASE" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_WORKED_ON_SHIMANO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_SHAMANO_START" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="EMP_SHIMANO_END" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="EMP_STUDY_PLAN" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_SAPORCOMP" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_CL" Nullable="true" />
+    <Property Type="String" Name="EMP_CV" Nullable="true" />
+    <Property Type="String" Name="EMP_ACCOUNT_BCA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_ACCOUNT_NPWP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_ACCOUNT_EFIN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_ACCOUNT_BPJS_KES" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_ACCOUNT_BPJS_TKJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_IMG_BCA" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_NPWP" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_EFIN" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_BPJS_KES" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_BPJS_TKJ" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_SIM_C" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_VAKSIN" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_SKCK" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_SERTIFIKAT_KOMPETENSI" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_PENGALAMAN" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_SURAT_SEHAT" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_KARTU_KUNING" Nullable="true" />
+    <Property Type="String" Name="EMP_IMG_SIO" Nullable="true" />
+    <Property Type="String" Name="EMP_BATCH_EMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_INVITECODE" Nullable="true" />
+    <Property Type="String" Name="EMP_PERSONALITY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMP_THINKING_STY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMP_WORKING_STY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMP_TEST_MTH" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_TEST_ACC" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_TEST_ENG" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_TEST_IQ" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_WRITTEN_SCORE" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_TEST_1" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_TIME_TEST_1" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="EMP_TEST_2" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_TIME_TEST_2" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="EMP_PRACTICAL_SCORE" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_REMARK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_MEMORY_SCORE" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="EMP_ATTN_EMP" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_MDCL_TST" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_FIN_DES" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="EMP_SUM_REMARK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_UPDT_USER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_UPDT_TIME" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GET_GENERANAMELIST_Result">
+    <Property Type="String" Name="BATCH_NO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BATCH_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAME_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="FORM" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NO_EMP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DOE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TIER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DEPT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="STATUS" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="COMPLETED_ON" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="SEND_ON" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="VERIFY_ON" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GETREPORT_FORM1_Result">
+    <Property Type="String" Name="EMP_NAME" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EM_BIRTHPLACE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EMP_BIRTHDATE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMP_ADDRESS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_RELIGION" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_RT" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="EMP_RW" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="EMP_KELURAHAN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EMP_KECAMATAN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EMP_RACE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_MARITAL" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_HEIGHT" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EMP_WEIGHT" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="EMP_EMAIL" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_PHONE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_TELEGRAM" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_WHATSAPP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_LAST_EDU" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_SCHOOL_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_SCHOOL_MAJOR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_CERT_NO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="EMP_GRAD_YEAR" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="EMP_GRAD_COUN" Nullable="false" MaxLength="1" />
+    <Property Type="Boolean" Name="EMP_WORK_EXP" Nullable="true" />
+    <Property Type="String" Name="EMP_REF_NAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_REF_COMPANY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_REF_TITLE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_REF_MOBILE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_REF_EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="EMP_EYECHECK" Nullable="true" />
+    <Property Type="Int32" Name="EMP_EYEVALUE" Nullable="true" />
+    <Property Type="Boolean" Name="EMP_SMOKIN" Nullable="true" />
+    <Property Type="Boolean" Name="EMP_CRIME" Nullable="true" />
+    <Property Type="Boolean" Name="EMP_MENTAL_DISEASE" Nullable="true" />
+    <Property Type="String" Name="EMP_DEPARTMENT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_POSITION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EMP_PERIOD" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="EMP_TIER" Nullable="true" MaxLength="55" />
+    <Property Type="String" Name="EMP_DOJ" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="EMP_SALARY" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="EMP_ACKNOWLEDGE" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_Result">
+    <Property Type="String" Name="BATCHNO" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="TOTALINVITATION" Nullable="true" />
+    <Property Type="Int32" Name="TOTALATTENDANCE" Nullable="true" />
+    <Property Type="DateTime" Name="REQUESTDATE" Nullable="false" />
+    <Property Type="String" Name="STATUSBATCH" Nullable="true" />
+    <Property Type="DateTime" Name="INVITATIONDATE" Nullable="false" />
+    <Property Type="String" Name="CATEGORY" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="SUBCATEGORY" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL_Result">
+    <Property Type="String" Name="NAME_EMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="BATCH_EMP" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NIK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PHONE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="JAFORM" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="PREVYEAR" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="ATTN_EMP" Nullable="true" />
+    <Property Type="Boolean" Name="WRTN_TST" Nullable="true" />
+    <Property Type="Boolean" Name="PRTC_TST" Nullable="true" />
+    <Property Type="Boolean" Name="INTR_TST" Nullable="true" />
+    <Property Type="Boolean" Name="MDCL_TST" Nullable="true" />
+    <Property Type="String" Name="STATUSEMP" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GETUNIQUE_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_GETUSERINFO_Result">
+    <Property Type="String" Name="USEID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="USENAM" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="ISWINDOWS" Nullable="false" />
+    <Property Type="String" Name="BUSFUNC" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SP_WEB_REPORT_TABLE_Result">
+    <Property Type="String" Name="BATCH_NO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BATCH_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NAME_EMP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="GANDER" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NIK" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOJ" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DOE" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TAHUN" Nullable="true" />
+    <Property Type="Int32" Name="BULAN" Nullable="true" />
+    <Property Type="Int32" Name="HARI" Nullable="true" />
+    <Property Type="String" Name="SERVICE_YEAR" Nullable="true" MaxLength="110" />
+    <Property Type="String" Name="DEPT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="STATUS" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetBatchInfo_Result">
+    <Property Type="String" Name="BatchNo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="BatchCategory" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="InvitationDate" Nullable="false" />
+    <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+    <Property Type="String" Name="StatusBatch" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UpdateBy" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="false" />
+    <Property Type="String" Name="WA_Log" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TL_Log" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalCandidate" Nullable="true" />
+    <Property Type="Int32" Name="UPLOADED" Nullable="true" />
+    <Property Type="Int32" Name="INVITED" Nullable="true" />
+    <Property Type="Int32" Name="NOTINVITED" Nullable="true" />
+    <Property Type="Int32" Name="PRESENT" Nullable="true" />
+    <Property Type="Int32" Name="ABSENT" Nullable="true" />
+    <Property Type="Int32" Name="BLACKLISTED" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_1_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_2_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_3_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_4_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_5_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_7_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_8_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_CANDIDATE_DETAILS_SAVE_9_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="WEB_GET_DASHBOARD_DETAIL_Result">
+    <Property Type="String" Name="TOTAL" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PASSED" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="FAILED" Nullable="true" MaxLength="5" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_EDUCATION_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="48" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_FINAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_MEMORY_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_OTHER_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_PERSONAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="48" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_PRACTICAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_WRITTEN_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="33" />
+  </ComplexType>
+  <ComplexType Name="WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="WEB_SAVE_DETAIL_REPORT_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="23" />
+  </ComplexType>
+  <ComplexType Name="WEB_SUBMIT_USER_GENERAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="35" />
+  </ComplexType>
+  <ComplexType Name="WEB_UPDATE_PTM_Result">
+    <Property Type="Int32" Name="SUCCESS" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="WEB_UPDATE_USER_GENERAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="WEB_VERIFY_USER_GENERAL_Result">
+    <Property Type="Int32" Name="RESULT" Nullable="false" />
+    <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="27" />
+  </ComplexType>
+</Schema>

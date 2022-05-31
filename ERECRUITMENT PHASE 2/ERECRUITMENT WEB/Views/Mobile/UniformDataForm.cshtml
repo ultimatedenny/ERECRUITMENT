@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "UNIFORM DATA FORM";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <form action="javascript:SAVEUNIFORM()">
+                <div style="text-align: center; background-color: #d3d3d3 ">
+                    <h4 id="TITLE" style="color:black"> <b>PAKAIAN / SERAGAM</b> </h4>
+                </div>
+                <div class="form-group mb-4">
+                    <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                    <br />
+                    <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="FULL_NAME">NAMA LENGKAP (SESUAI KTP) <code>*</code></label>
+                    <input type="text" class="form-control form-control-sm" id="FULL_NAME" placeholder="">
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SHIRT_SIZE">UKURAN BAJU <code>*</code></p>
+                    <select class="form-control" id="SHIRT_SIZE" required>
+                        <option value="">SELECT</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="PANTS_SIZE">UKURAN CELANA <code>*</code></p>
+                    <select class="form-control" id="PANTS_SIZE" required>
+                        <option value="">SELECT</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        GET_MOBILE_GATENAME_UNIFORM();
+    });
+
+
+
+    function SAVEUNIFORM() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_UNIFORMFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        var _SHIRT_SIZE = document.getElementById('SHIRT_SIZE').value;
+        var _PANTS_SIZE = document.getElementById('PANTS_SIZE').value;
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            SHIRT_SIZE: _SHIRT_SIZE,
+            PANTS_SIZE: _PANTS_SIZE
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'UNIFORM DATA UPDATED, PAGE WILL BE REDIRECT TO EMERGENCY CONTACT DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("EmergencyContactDataForm", "MOBILE")";
+                        }, 1000);
+                    }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEUNIFORM() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEUNIFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_MOBILE_GATENAME_UNIFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_GATENAME_UNIFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({ message: "FAILED GETTING NAME", fadeIn: 500,  overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait'}, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent'} });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                    document.getElementById("FULL_NAME").value = data.Message;
+                    document.getElementById("FULL_NAME").disabled = true;
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.blockUI({ message:  'GET_MOBILE_GATENAME_UNIFORM() ERROR: ' + request.responseText + '', fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+                    Snackbar.show({ text: 'GET_MOBILE_GATENAME_UNIFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+</script>

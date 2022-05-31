@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="ERECRUITMENT_BROADCASTER.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8" />
+  </startup>
+  <appSettings>
+    <add key="SQLCON" value="Data Source=SBM-VMSQLSQA03;Initial Catalog=DBERECRUITMENT;User ID=sa;Password=admin212" />
+	<add key="QRFOLDER" value="\\sbmb-vmdata\APPS_DATASTORE\ERECRUITMENT\ERECRUITMENT QR\" />
+	  
+	  
+    <add key="RuleName" value="sa" />
+    <add key="RulePassword" value="115659" />
+	  
+    <add key="ErrLogPath" value="C:\weefer" />
+    <add key="DefaultFormColor" value="" />
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+    <add key="PROGNAM" value="SHIMANO VS" />
+    <add key="HashKey" value="Weefer121Shimano" />
+    <add key="AllowDOPerLine" value="true" />
+    <add key="ShipmentNoPrefix" value="SHN" />
+    <add key="PalletIdPrefix" value="PL" />
+    <add key="DONoPrefix" value="DO" />
+    <add key="ReturnNoPrefix" value="PRN" />
+    <add key="CountryOfOrigin" value="ID" />
+    <add key="DefaultPath" value="C:\Expana\VDSDESKTOP" />
+    <add key="FilePath" value="C:\Expana\VDSDESKTOP" />
+    <add key="ExtendPalletSlip" value="true" />
+    <add key="IA" value="false" />
+    <add key="ApiUrl" value="http://localhost/VDSAPIDESKTOP" />
+    <add key="printLabel" value="true" />
+    <add key="printerIp" value="TSC TC200" />
+  </appSettings>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="BouncyCastle.Crypto" publicKeyToken="0e99375e54769942" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.8.9.0" newVersion="1.8.9.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <userSettings>
+    <ERECRUITMENT_BROADCASTER.Properties.Settings>
+      <setting name="TLSHARP_API_ID" serializeAs="String">
+        <value>2940259</value>
+      </setting>
+      <setting name="TLSHARP_API_HASH" serializeAs="String">
+        <value>323e8fbc78238ba9dae75b691579770b</value>
+      </setting>
+      <setting name="TLSHARP_API_SENDER" serializeAs="String">
+        <value>+6287714444433</value>
+      </setting>
+      <setting name="TLSHARP_API_AUTHCODE" serializeAs="String">
+        <value>000000</value>
+      </setting>
+      <setting name="TLSHARP_SESSION_ID" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_LASTMSGID" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_SALT" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_SESSEXP" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_SEQ" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_SESSID" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="TLSHARP_SESSION_HASH" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="APP_MSG_DEL" serializeAs="String">
+        <value>1000</value>
+      </setting>
+      <setting name="APP_MSG_FRMT" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="APP_RPT_DIR" serializeAs="String">
+        <value>\\172.18.100.125\hrd_common\20. RECRUITMENT\40. ERECRUITMENT\ERECRUITMENT LOG</value>
+      </setting>
+      <setting name="APP_RPT_PASS" serializeAs="String">
+        <value>SHIMANOIT2020</value>
+      </setting>
+      <setting name="APP_IMG_DIR" serializeAs="String">
+        <value>\\172.18.100.125\hrd_common\20. RECRUITMENT\40. ERECRUITMENT\ERECRUITMENT QR</value>
+      </setting>
+      <setting name="APP_MSG_TTL" serializeAs="String">
+        <value>TES TERTULIS</value>
+      </setting>
+      <setting name="APP_MSG_LOC" serializeAs="String">
+        <value>PT SHIMANO BATAM (PANBIL)</value>
+      </setting>
+      <setting name="APP_MSG_UNIFORM" serializeAs="String">
+        <value>KEMEJA PUTIH, BAWAHAN HITAM</value>
+      </setting>
+      <setting name="QR_MSG" serializeAs="String">
+        <value>[TITLE]
+
+Di beritahukan kepada, 
+
+[NAME]
+[PHONE]
+
+
+Agar dapat hadir dan mengikuti tes tertulis yang,
+dijadwalkan pada:
+
+[DATE]
+[TIME]
+[LOCATION]
+[UNIFORM]
+
+Adapun beberapa berkas yang WAJIB di bawa : 
+
+1.FTKP KTP &amp; KK
+2.FTKP NPWP (NPWP dapat dibuat secara online melalui https://ereg.pajak.go.id/daftar)
+3.FTKP IJAZAH TERAKHIR
+4.FTKP BUKU REK BCA (JIKA ADA)
+5.FTKP KIS/BPJS KES &amp; BPJS TK/JAMSOSTEK (JIKA ADA)
+6.FTKP SIM C (JIKA ADA)
+7.IJAZAH ASLI
+8.PAS FOTO 3X4
+9.PENA DAN LEM
+
+SEMUA WAJIB mengikuti protokol kesehatan COVID-19 dengan cara menggunakan masker 
+dan menerapkan Physical Distancing.
+
+Undangan hanya berlaku 1 (satu) kali penggunaan dengan menunjukkan pesan panggilan ini secara fisik</value>
+      </setting>
+    </ERECRUITMENT_BROADCASTER.Properties.Settings>
+  </userSettings>
+</configuration>

@@ -1,0 +1,1492 @@
+﻿
+@{
+    ViewBag.Title = "Batch Number : " + @ViewBag.BATCHNO + "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model System.Data.DataTable
+@using System.Data;
+
+<div class="layout-px-spacing" id="PrintPDF">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content widget-content-area">
+                    <div class="form-row mb-4" style="padding:10pt">
+                        <div class="col">
+                            <h6>Status</h6>
+                            <select class="form-control basic js-data-example-ajax" data-live-search="true" id="STATUSSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">SEARCH</h6>
+                            <input id="SearchText" type="text" placeholder="NIK / NAME / PHONE / BATCH EMPLOYEE" class="form-control">
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">SEARCH</h6>
+                            <button class="btn btn-outline-primary mb-2 mr-2 btn-lg form-control" onclick="SEARCH()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing" id="PrintPDF">
+            <div class="widget-content widget-content-area br-6">
+                <table id="table1" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>FULL NAME</th>
+                            <th>BATCH EMP</th>
+                            <th>GANDER</th>
+                            <th>NIK</th>
+                            <th>MOBILE NO</th>
+                            <th>JA FORM</th>
+                            <th>PRE. SERVICE YEAR</th>
+                            <th>ATTENDANCE</th>
+                            <th>WRITTEN TEST</th>
+                            <th>PRACTICAL TEST</th>
+                            <th>INVERVIEW TEST</th>
+                            <th>MEDICAL TEST</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <br />
+            <div style="text-align:end">
+                <div class="btn-group mb-2 mr-2" role="group">
+                    <button id="btndefault" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" /></svg>
+                        Generate PDF
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btndefault">
+                        <a onclick="GENERATEPDF()" class="dropdown-item"><i class="flaticon-home-fill-1 mr-1"></i>Preview Selected</a>
+                        <a href="javascript:void(0);" class="dropdown-item"><i class="flaticon-gear-fill mr-1"></i>Download Selected</a>
+                    </div>
+                </div>
+                @*<button class="btn btn-outline-primary mb-2 mr-2" onclick="GENERATEPDF()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Generate PDF
+        </button>*@
+                <button class="btn btn-outline-success mb-2 mr-2" onclick="OpenModalDMR()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Upload DMR Test
+                </button>
+                <button class="btn btn-outline-success mb-2 mr-2" onclick="OpenModalUpload()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Upload Medical & Personality
+                </button>
+                <button class="btn btn-outline-warning mb-2 mr-2" onclick="ViewDetail()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" ry="1" /></svg>
+                    Interview
+                </button>
+                @*@using (Html.BeginForm("Export", "InterviewBoard", FormMethod.Post))
+                {
+                    <input name="ExportData" />
+                    <input type="submit" id="btnSubmit" value="Export" />
+                }*@
+            </div>
+        </div>
+    </div>
+    <div class="invisible">
+        <pre id="Textbox1"></pre>
+        <pre id="Textbox2"></pre>
+    </div>
+</div>
+
+<script>
+    function bs_input_file() {
+        $(".input-file").before(
+            function () {
+                if (!$(this).prev().hasClass('input-ghost')) {
+                    var element = $("<input type='file' id='dataFile' name='upload' class='input-ghost' style='visibility:hidden; height:0'>");
+                    element.attr("name", $(this).attr("name"));
+                    element.change(function () {
+                        element.next(element).find('input').val((element.val()).split('\\').pop());
+                    });
+                    $(this).find("button.btn-choose").click(function () {
+                        element.click();
+                    });
+                    $(this).find("button.btn-reset").click(function () {
+                        element.val(null);
+                        $(this).parents(".input-file").find('input').val('');
+                    });
+                    $(this).find('input').css("cursor", "pointer");
+                    $(this).find('input').mousedown(function () {
+                        $(this).parents('.input-file').prev().click();
+                        return false;
+                    });
+                    return element;
+                }
+            }
+        );
+    }
+    $(function () {
+        bs_input_file();
+    });
+</script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload File Medical & Personality</h5>
+            </div>
+            <div class="modal-body">
+                <div style="text-align:end">
+                    <button class="btn btn-outline-primary btn-block mb-2 mr-2" onclick="DownloadSampleMedical()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        Download Sample
+                    </button>
+                </div>
+                <br />
+                @using (Html.BeginForm("Upload", "InterviewBoard", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="info2">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group" name="Fichier1">
+                            <div class="form-group">
+                                <div class="input-group input-file">
+                                    <input type="text" class="form-control" placeholder='Choose a file...' />
+                                    <button class="btn btn-outline-primary  btn-choose" type="button">Choose</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Upload" class="btn btn-outline-primary " />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary " data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DMRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload DMR</h5>
+            </div>
+            <div class="modal-body">
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <label>DMR File<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadDMR" name="UploadDMR" class="custom-file-container__custom-file__custom-file-input" accept=".html">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-warning" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                <button class="btn btn-outline-primary" type="button" onclick="UPLOADDMRFILE()" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DMRModalResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">DMR Result</h5>
+            </div>
+            <div class="modal-body">
+                <div id="DMR_RES" style="overflow-y: scroll; height: 650px">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-warning" data-dismiss="modal"><i class="flaticon-cancel-12"></i> DISCARD</button>
+                <button type="button" onclick="READROW1()" class="btn btn-outline-primary">READ ROW</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var APPNAME = '@System.Configuration.ConfigurationManager.AppSettings["APPNAME"]';
+    var TABLE_ID = "";
+
+    $(document).ready(function () {
+        GETEMPSTAT_DROPDOWN();
+        var KEYWORD = "";
+        GETTABLE(KEYWORD);
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+    });
+
+    function GETEMPSTAT_DROPDOWN() {
+        var BATCHNO = "@ViewBag.BATCHNO";
+        var URL = "@Url.Action("WEB_GET_STATUS_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCHNO + "";
+
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#STATUSSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    let option = document.createElement('option')
+                    option.value = jsonRes[j].STATUS;
+                    option.innerHTML = jsonRes[j].STATUS;
+                    document.getElementById('STATUSSELECTOR').append(option);
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+
+    function SEARCH() {
+        var VAR1 = document.getElementById('SearchText').value;
+        var VAR2 = document.getElementById('STATUSSELECTOR').value;
+        GETTABLE(VAR1);
+    }
+
+    function GETTABLE(KEYWORD) {
+        var BATCHNO = "@ViewBag.BATCHNO";
+        var VAR1 = document.getElementById('SearchText').value;
+        var VAR2 = document.getElementById('STATUSSELECTOR').value;
+        var MODEL = {
+            BATCHNO: BATCHNO,
+            KEYWORD: KEYWORD,
+            STATUS: VAR2
+        };
+        var URL = "@Url.Action("WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL", "INTERVIEWBOARD")";
+        var table = $('#table1').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "destroy": true,
+            "searching": false,
+            "paging": true,
+            "searching": false,
+            "stripeClasses": [],
+            "lengthMenu": [5, 10, 20, 30, 40, 50, 100, 200, 500, 1000],
+            "pageLength": 5,
+            "filter": false,
+            "ajax": {
+                "url": URL,
+                "type": "POST",
+                "datatype": "json",
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "data": MODEL, function (a) {
+                    return $.extend({}, a, {
+                    });
+                }
+            },
+            "columns": [
+                {
+                    "data": "BATCH_EMP", "autoWidth": true, "orderable": false, "searchable": false, "orderable": false, "checkboxes": { "selectRow": false }
+                },
+                {
+                    "render": function (data, type, full, meta) {
+                        var Icon1 = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+                        var Button1 = '<button class="btn btn-outline-info mb-2" onclick="CandidateDetails(\'' + full.BATCH_EMP + '\')">' + Icon1 + '</button>';
+                        var Final = Button1;
+                        return Final;
+                    }
+                },
+                { "data": "NAME_EMP", "autoWidth": true, "orderable": false },
+                { "data": "BATCH_EMP", "autoWidth": true, "orderable": false },
+                { "data": "GANDER", "autoWidth": true, "orderable": false },
+                { "data": "NIK", "autoWidth": true, "orderable": false },
+                { "data": "PHONE", "autoWidth": true, "orderable": false },
+                { "data": "JAFORM", "autoWidth": true, "orderable": false },
+                { "data": "PREVYEAR", "autoWidth": true, "orderable": false },
+                /*{ "data": "ATTN_EMP", "autoWidth": true, "orderable": false },*/
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.ATTN_EMP == "True") {
+                            return '<span class="badge  badge-pills outline-badge-success"> <B>PASSED</B> </span>'
+                        }
+                        else if (full.ATTN_EMP == "False") {
+                            return '<span class="badge  badge-pills outline-badge-danger"> <B>FAILED</B> </span>'
+                        }
+                        else {
+                            return '<span class="badge badge-pills outline-badge-dark"> <B>NO DATA</B> </span>'
+                        }
+                    }
+                },
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.WRTN_TST == "True") {
+                            return '<span class="badge  badge-pills outline-badge-success"> <B>PASSED</B>  </span>'
+                        }
+                        if (full.WRTN_TST == "False") {
+                            return '<span class="badge  badge-pills outline-badge-danger"> <B>FAILED</B>  </span>'
+                        }
+                        else {
+                            return '<span class="badge badge-pills outline-badge-dark"> <B>NO DATA</B>  </span>'
+                        }
+                    }
+                },
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.PRTC_TST == "True") {
+                            return '<span class="badge  badge-pills outline-badge-success"> <B>PASSED</B> </span>'
+                        }
+                        if (full.PRTC_TST == "False") {
+                            return '<span class="badge  badge-pills outline-badge-danger"> <B>FAILED</B> </span>'
+                        }
+                        else {
+                            return '<span class="badge badge-pills outline-badge-dark"> <B>NO DATA</B> </span>'
+                        }
+                    }
+                },
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.INTR_TST == "True") {
+                            return '<span class="badge  badge-pills outline-badge-success"> <B>PASSED</B> </span>'
+                        }
+                        if (full.INTR_TST == "False") {
+                            return '<span class="badge  badge-pills outline-badge-danger"> <B>FAILED</B> </span>'
+                        }
+                        else {
+                            return '<span class="badge badge-pills outline-badge-dark"> <B>NO DATA</B> </span>'
+                        }
+                    }
+                },
+                {
+                    "render": function (data, type, full, meta) {
+                        if (full.MDCL_TST == "True") {
+                            return '<span class="badge  badge-pills outline-badge-success"> <B>PASSED</B> </span>'
+                        }
+                        if (full.MDCL_TST == "False") {
+                            return '<span class="badge  badge-pills outline-badge-danger"> <B>FAILED</B> </span>'
+                        }
+                        else {
+                            return '<span class="badge badge-pills outline-badge-dark"> <B>NO DATA</B> </span>'
+                        }
+                    }
+                },
+
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<span class="badge  badge-pills outline-badge-primary"> <B>' + full.STATUSEMP + '</B> </span>'
+                    }
+                }
+            ],
+        });
+    }
+
+    function OpenModalUpload() {
+        $('#exampleModal').modal('toggle');
+    }
+
+    function OpenModalDMR() {
+        $('#DMRModal').modal('toggle');
+    }
+    /////
+    function DownloadSampleMedical() {
+        var BATCHNO = "@ViewBag.BATCHNO";
+        var CATEGORY = document.getElementById("STATUSSELECTOR").value;
+        var URL = "@Url.Action("DownloadSampleMedical", "INTERVIEWBOARD")" + "?BatchNo=" + BATCHNO + "&Category=" + CATEGORY + "";
+        window.location.href = URL;
+    }
+    function Download(type) {
+        var BATCHNO = "@ViewBag.BATCHNO";
+        var URL = "@Url.Action("Download", "INTERVIEWBOARD")" + "?type=" + type + "&BatchNo=" + BATCHNO + "";
+        window.location.href = URL;
+    }
+
+    function ViewDetail() {
+        var table = $("#table1").DataTable();
+        var form = $('#frm-example');
+        var rows_selected = table.column(0).checkboxes.selected();
+        $.each(rows_selected, function (index, rowId) {
+            $(form).append(
+                $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'id[]')
+                    .val(rowId)
+            );
+        });
+        $('#Textbox1').text(rows_selected.join(","));
+        $('#Textbox2').text($(form).serialize());
+        $('input[name="id\[\]"]', form).remove();
+        var BATCH_EMP = $('#Textbox1').text();
+
+        if (BATCH_EMP == "" || BATCH_EMP == null) {
+            Snackbar.show({ text: 'No candidate selected', pos: 'bottom-right' });
+        }
+        else if (rows_selected.length > 8){
+            Snackbar.show({ text: 'Maximum numbers have been reached!', pos: 'bottom-right' });
+        }
+        else {
+            var URL = "@Url.Action("ScoreBoard", "INTERVIEWBOARD")" + "?BATCH_EMP=" + BATCH_EMP;;
+            window.location.href = URL;
+        }
+    }
+
+    function GENERATEPDF() {
+        /*Snackbar.show({ text: 'THIS FUNCTION ARE NOT AVAILABLE AT THIS MOMENT', pos: 'bottom-right' });*/
+        var table = $("#table1").DataTable();
+        var form = $('#frm-example');
+        var rows_selected = table.column(0).checkboxes.selected();
+        $.each(rows_selected, function (index, rowId) {
+            $(form).append(
+                $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'id[]')
+                    .val(rowId)
+            );
+        });
+        $('#Textbox1').text(rows_selected.join(","));
+        $('#Textbox2').text($(form).serialize());
+        $('input[name="id\[\]"]', form).remove();
+        var BATCH_EMP = $('#Textbox1').text();
+
+        if (BATCH_EMP == "" || BATCH_EMP == null) {
+            Snackbar.show({ text: 'No candidate selected', pos: 'bottom-right' });
+        }
+        else if (rows_selected.length > 1){
+            Snackbar.show({ text: 'Maximum numbers have been reached!', pos: 'bottom-right' });
+        }
+        else {
+            var URL = '@Url.Action("PersonalParticularForm", "Report")?BATCH_EMP=' + BATCH_EMP;
+            window.location.href = URL;
+        }
+    }
+
+    function UPLOADDMRFILE() {
+        $.blockUI({
+            message: "UPLOADING DMR FILE..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadDMR").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_DMR", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    $('#DMRModal').modal('hide');
+                    $('#DMRModalResult').modal('toggle');
+                    document.getElementById("DMR_RES").innerHTML = data.Message;
+                    TABLE_ID = data.DMRID;
+                    $.unblockUI();
+                }
+                else {
+                    Snackbar.show({ text: 'UPLOADDMRFILE() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'UPLOADDMRFILE() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW1() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 22) {
+            $.blockUI({ message: "WRITING DMR(1-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 2; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+
+                DATAROW[i - 2] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(1-20)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 2; i < 22; i++) {
+            var OBJECT_CELL = TABLE.rows.item(i).cells;
+            var _WHATSAPP = OBJECT_CELL[0].innerText;
+            var _KODESOAL = OBJECT_CELL[1].innerText;
+            var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+            var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+            var _AGAMA = OBJECT_CELL[4].innerText;
+            var _USIA = OBJECT_CELL[5].innerText;
+            var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+            var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+            var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+            var _BERATBADAN = OBJECT_CELL[9].innerText;
+            var _IQ = OBJECT_CELL[10].innerText;
+            var _MTK = OBJECT_CELL[11].innerText;
+            var _ACC = OBJECT_CELL[12].innerText;
+            var _ENG = OBJECT_CELL[13].innerText;
+            var _TOTAL = OBJECT_CELL[14].innerText;
+
+            //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+            //    i = 2;
+            //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+            //    break;
+            //}
+
+            DATAROW[i-2] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+        }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW1() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 22) {
+                        READROW2();
+                    }
+                    else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW1() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW1() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW1() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW2() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 42) {
+            $.blockUI({ message: "WRITING DMR(21-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 22; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 22] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(21-40)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 22; i < 42; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 22] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW2() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 42) {
+                        READROW3();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW2() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW2() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW2() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW3() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 62) {
+            $.blockUI({ message: "WRITING DMR(41-" + TABLE.rows.length+")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 42; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 42] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(41-60)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 42; i < 62; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 42] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW3() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 62) {
+                        READROW4();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW3() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW3() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW3() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW4() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 82) {
+            $.blockUI({ message: "WRITING DMR(61-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 62; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 62] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(61-80)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 62; i < 82; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 62] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW4() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 82) {
+                        READROW5();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW4() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW4() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW4() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW5() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 102) {
+            $.blockUI({ message: "WRITING DMR(81-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 82; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 82] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(81-100)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 82; i < 102; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 82] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW5() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 102) {
+                        READROW6();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW5() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW5() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW5() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW6() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 122) {
+            $.blockUI({ message: "WRITING DMR(100-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 102; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 102] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(100-120)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 102; i < 122; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 102] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW6() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 122) {
+                        READROW7();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW6() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW6() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW6() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW7() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 142) {
+            $.blockUI({ message: "WRITING DMR(120-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 122; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 122] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(120-140)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 122; i < 142; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 122] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW7() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 142) {
+                        READROW8();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW6() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW7() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW7() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW8() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 162) {
+            $.blockUI({ message: "WRITING DMR(140-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 142; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 142] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(140-160)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 142; i < 162; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 142] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW8() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 162) {
+                        READROW9();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW8() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW8() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW8() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW9() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 182) {
+            $.blockUI({ message: "WRITING DMR(160-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 162; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 162] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(160-180)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 162; i < 182; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 162] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW9() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 182) {
+                        READROW10();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW9() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW9() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW9() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function READROW10() {
+        var DATAROW = new Array();
+        var TABLE = document.getElementById(TABLE_ID);
+        if (TABLE.rows.length < 202) {
+            $.blockUI({ message: "WRITING DMR(182-" + TABLE.rows.length + ")...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 182; i < TABLE.rows.length; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 182] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        else {
+            $.blockUI({ message: "WRITING DMR(181-200)...", fadeIn: 500, overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' }, css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' } });
+            for (i = 182; i < 202; i++) {
+                var OBJECT_CELL = TABLE.rows.item(i).cells;
+                var _WHATSAPP = OBJECT_CELL[0].innerText;
+                var _KODESOAL = OBJECT_CELL[1].innerText;
+                var _TANGGALUJIAN = OBJECT_CELL[2].innerText;
+                var _PENDIDIKAN = OBJECT_CELL[3].innerText;
+                var _AGAMA = OBJECT_CELL[4].innerText;
+                var _USIA = OBJECT_CELL[5].innerText;
+                var _JENISKELAMIN = OBJECT_CELL[6].innerText;
+                var _TEMPATTINGGAL = OBJECT_CELL[7].innerText;
+                var _TINGGIBADAN = OBJECT_CELL[8].innerText;
+                var _BERATBADAN = OBJECT_CELL[9].innerText;
+                var _IQ = OBJECT_CELL[10].innerText;
+                var _MTK = OBJECT_CELL[11].innerText;
+                var _ACC = OBJECT_CELL[12].innerText;
+                var _ENG = OBJECT_CELL[13].innerText;
+                var _TOTAL = OBJECT_CELL[14].innerText;
+                //if (_WHATSAPP.includes("*") || _KODESOAL.includes("*") || _TANGGALUJIAN.includes("*")) {
+                //    i = 2;
+                //    Snackbar.show({ text: 'READROW() ERROR: * VALUE DETECTED, PLEASE RE-SCAN !! OR MANUAL EDIT !!', pos: 'bottom-right' });
+                //    break;
+                //}
+                DATAROW[i - 182] = { BATCH_NO: "@ViewBag.BATCHNO", WHATSAPP: _WHATSAPP, KODESOAL: _KODESOAL, TANGGALUJIAN: _TANGGALUJIAN, PENDIDIKAN: _PENDIDIKAN, AGAMA: _AGAMA, USIA: _USIA, JENISMLEMIN: _JENISKELAMIN, TEMPATTINGGAL: _TEMPATTINGGAL, TINGGIBADAN: _TINGGIBADAN, BERATBADAN: _BERATBADAN, IQ: _IQ, MTK: _MTK, ACC: _ACC, ENG: _ENG, TOTAL: _TOTAL };
+            }
+        }
+        var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR", "INTERVIEWBOARD")";
+        var DATA = JSON.stringify({ 'MODEL': DATAROW });
+        var DATA2 = JSON.parse(JSON.stringify(DATAROW))
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: DATA,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'READROW9() SUCCESS: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    if (TABLE.rows.length > 202) {
+                        Snackbar.show({ text: 'MAXIMIM DMR ROW IS 200 !', pos: 'bottom-right' });
+                        RELOAD();
+                    } else {
+                        RELOAD();
+                    }
+                }
+                else {
+                    Snackbar.show({ text: 'READROW9() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            failure: function (data) {
+                Snackbar.show({ text: 'READROW9() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                $.unblockUI();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'READROW9() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+
+    function RELOAD() {
+        setTimeout(function () {
+            Snackbar.show({ text: 'PAGE WILL REFRESH IN 3 SECOND', pos: 'bottom-right' });
+            location.reload();
+        }, 3000);
+    }
+
+    function CandidateDetails(BATCH_EMP) {
+        var PARAM1 = BATCH_EMP;
+        var URL = '@Url.Action("CandidateDetails", "InterviewBoard")?' + "BATCH_EMP=" + PARAM1;
+        window.location.href = URL;
+    }
+
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='ExportData']").val($("#PrintPDF").html());
+        });
+    });
+
+
+</script>
+

@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "EmergencyContactDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>KONTAK DARURAT</b> </h4>
+            </div>
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+            </div>
+
+            <form action="javascript:SAVEEMERGENCY()">
+                <div class="form-group mb-4">
+                    <p for="EM_NAME">NAMA LENGKAP (SESUAI KTP) <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="EM_NAME" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_REL">HUBUNGAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="EM_REL" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_JOB">PEKERJAAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="EM_JOB" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_MOBILE">NOMOR HP <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="EM_MOBILE" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_ADDR">ALAMAT</p>
+                    <input type="text" class="form-control form-control-sm" id="EM_ADDR" placeholder="">
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <p>BLOK <code>*</code></p>
+                        <input type="text" class="form-control" id="EM_BLOK" placeholder="" required>
+                    </div>
+                    <div class="col">
+                        <p>NOMOR <code>*</code></p>
+                        <input type="text" class="form-control" id="EM_NO" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <p for="EM_RW">RT <code>*</code></p>
+                        <input type="number" class="form-control" id="EM_RW" maxlength="3" placeholder="000" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                    </div>
+                    <div class="col">
+                        <p for="EM_RT">RW <code>*</code></p>
+                        <input type="number" class="form-control" id="EM_RT" maxlength="3" placeholder="000" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;">
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_PROVINSI">PROVINSI <code>*</code></p>
+                    <select class="form-control" id="EM_PROVINSI" ONCHANGE="GET_CITY()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_KABUPATEN">KABUPATEN / KOTA <code>*</code></p>
+                    <select class="form-control" id="EM_KABUPATEN" ONCHANGE="GET_DISTRICT()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_KECAMATAN">KECAMATAN <code>*</code></p>
+                    <select class="form-control" id="EM_KECAMATAN" ONCHANGE="GET_VILLAGE()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_KELURAHAN">KELURAHAN</p>
+                    <select class="form-control" id="EM_KELURAHAN"> </select>
+                </div>
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        GET_PROVINCE();
+    });
+
+    function SAVEEMERGENCY() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_EMERGENCYCONTACT", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        var EM_NAME = document.getElementById('EM_NAME').value;
+        var EM_REL = document.getElementById('EM_REL').value;
+        var EM_MOBILE = document.getElementById('EM_MOBILE').value;
+        var EM_ADDR = document.getElementById('EM_ADDR').value;
+        var EM_RW = document.getElementById('EM_RW').value;
+        var EM_RT = document.getElementById('EM_RT').value;
+
+        var EM_JOB = document.getElementById('EM_JOB').value;
+        var EM_BLOK = document.getElementById('EM_BLOK').value;
+        var EM_NO = document.getElementById('EM_NO').value;
+
+        var VAL1 = document.getElementById("EM_PROVINSI");
+        var VAL2 = document.getElementById("EM_KABUPATEN");
+        var VAL3 = document.getElementById("EM_KECAMATAN");
+        var VAL4 = document.getElementById("EM_KELURAHAN");
+
+        var EM_PROVINSI  = VAL1.options[VAL1.selectedIndex].innerHTML;
+        var EM_KABUPATEN = VAL2.options[VAL2.selectedIndex].innerHTML;
+        var EM_KECAMATAN = VAL3.options[VAL3.selectedIndex].innerHTML;
+        var EM_KELURAHAN = VAL4.options[VAL4.selectedIndex].innerHTML;
+
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            EM_NAME: EM_NAME,
+            EM_REL: EM_REL,
+            EM_JOB: EM_JOB,
+            EM_MOBILE: EM_MOBILE,
+            EM_ADDR: EM_ADDR,
+            EM_BLOK: EM_BLOK,
+            EM_NO: EM_NO,
+            EM_RW: EM_RW,
+            EM_RT: EM_RT,
+            EM_PROVINSI: EM_PROVINSI,
+            EM_KABUPATEN: EM_KABUPATEN,
+            EM_KECAMATAN: EM_KECAMATAN,
+            EM_KELURAHAN: EM_KELURAHAN,
+        };
+
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'EMERGENCY DATA UPDATED, PAGE WILL BE REDIRECT TO FAMILY BACKGROUND CONTACT DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("FamilyBackgroundDataForm", "MOBILE")";
+                        }, 1000);
+                    }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEEMERGENCY() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEEMERGENCY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_PROVINCE() {
+       var URL = "@Url.Action("WEB_GET_MD_PROVINCIES", "MASTERDATA")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_PROVINSI').append(option);
+                var JSONDATA = JSON.stringify(data);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_PROVINSI').append(option);
+                }
+                document.getElementById("EM_PROVINSI").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_PROVINCE() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_CITY() {
+        var ID = document.getElementById("EM_PROVINSI").value;
+        var URL = "@Url.Action("WEB_GET_MD_REGENCIES", "MASTERDATA")" + "?ID_PROVINCIES="+ID+"";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("EM_KABUPATEN").innerHTML = "";
+                document.getElementById("EM_KECAMATAN").innerHTML = "";
+                document.getElementById("EM_KELURAHAN").innerHTML = "";
+
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_KABUPATEN').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_KABUPATEN').append(option);
+                }
+                document.getElementById("EM_KABUPATEN").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_CITY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_DISTRICT() {
+        var ID = document.getElementById("EM_KABUPATEN").value;
+        var URL = "@Url.Action("WEB_GET_MD_DISTRICTS", "MASTERDATA")" + "?ID_REGENCIES="+ID+"";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("EM_KECAMATAN").innerHTML = "";
+                document.getElementById("EM_KELURAHAN").innerHTML = "";
+
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_KECAMATAN').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_KECAMATAN').append(option);
+                }
+                document.getElementById("EM_KECAMATAN").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_DISTRICT() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_VILLAGE() {
+        var ID = document.getElementById("EM_KECAMATAN").value;
+        var URL = "@Url.Action("WEB_GET_MD_VILLAGES", "MASTERDATA")" + "?ID_DISTRICTS="+ID+"";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("EM_KELURAHAN").innerHTML = "";
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_KELURAHAN').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_KELURAHAN').append(option);
+                }
+                document.getElementById("EM_KELURAHAN").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_VILLAGE() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+
+</script>

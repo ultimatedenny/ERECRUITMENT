@@ -1,0 +1,1318 @@
+﻿@model ERECRUITMENT_WEB.Models.INTERVIEWSCOREBOARD_COMPLETED
+@{
+    ViewBag.Title = "Score Board";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="layout-px-spacing">
+        <div class="row layout-top-spacing">
+            <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+                <div id="tabs">
+                    <ul class="nav nav-pills mb-4 mt-3  justify-content-center" id="INTERVIEW-tab" role="tablist">
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="PersonalSelected()" class="nav-link mb-2 text-center active" id="PERSONAL_TAB" data-toggle="pill" href="#PERSONAL" role="tab" aria-controls="rounded-pills-icon-home" aria-selected="false">PERSONAL</a>
+                        </li>
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="EducationSelected()" class="nav-link mb-2 text-center" id="EDUCATION_TAB" data-toggle="pill" href="#EDUCATION" role="tab" aria-controls="rounded-pills-icon-profile" aria-selected="false">EDUCATION</a>
+                        </li>
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="WrittenSelected()" class="nav-link mb-2 text-center" id="WRITTEN_TAB" data-toggle="pill" href="#WRITTEN" role="tab" aria-controls="rounded-pills-icon-contact" aria-selected="true">WRITTEN TEST</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="PracticalSelected()" class="nav-link mb-2 text-center" id="PRACTICAL_TAB" data-toggle="pill" href="#PRACTICAL" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">PRACTICAL TEST</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="MemorySelected()" class="nav-link mb-2 text-center" id="MEMORY_TAB" data-toggle="pill" href="#MEMORY" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">MEMORY TEST</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="OtherSelected()" class="nav-link mb-2 text-center" id="OTHER_TAB" data-toggle="pill" href="#OTHER" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">OTHERS</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="FinalSelected()" class="nav-link mb-2 text-center" id="FINAL_TAB" data-toggle="pill" href="#FINAL" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">FINAL</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <a onclick="CameraSelected()" class="nav-link mb-2 text-center" id="CAMERTA_TAB" data-toggle="pill" href="#CAMERA" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">CAMERA</a>
+                        </li>
+
+                        <li class="nav-item ml-2 mr-2">
+                            <button onclick="CANCEL()" id="CancelButton" class="btn btn-outline-warning mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" /></svg></button>
+                            <button onclick="SAVE()" id="SaveButton" class="btn btn-outline-success mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg></button>
+                            <button onclick="SETDIGITNUMBER()" id="GENERATERANDOM" class="btn btn-outline-primary mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="INTERVIEW-tabContent">
+                        <div class="tab-pane fade active show" id="PERSONAL" role="tabpanel" aria-labelledby="rounded-pills-icon-home-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="EDUCATION" role="tabpanel" aria-labelledby="EDUCATION-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="WRITTEN" role="tabpanel" aria-labelledby="WRITTEN-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="PRACTICAL" role="tabpanel" aria-labelledby="PRACTICAL-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="MEMORY" role="tabpanel" aria-labelledby="MEMORY-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="OTHER" role="tabpanel" aria-labelledby="OTHER-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="FINAL" role="tabpanel" aria-labelledby="FINAL-tab">
+
+                        </div>
+                        <div class="tab-pane fade" id="CAMERA" role="tabpanel" aria-labelledby="CAMERA-tab">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="MainRow">
+
+                </div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle" style="color:transparent">Camera</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="my_camera" style="text-align:center; justify-content:center"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                                <button type="button" onclick="SAVE_CAPTURE()" class="btn btn-primary">Capture</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var APPNAME = '@System.Configuration.ConfigurationManager.AppSettings["APPNAME"]';
+        var TOTAL = 0;
+        var CURR = 0;
+
+        $(document).ready(function () {
+            GETDATA();
+        });
+
+        function GETDATA() {
+            var BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var URL = "@Url.Action("WEB_GETSCOREBOARD", "INTERVIEWBOARD")" + "?BATCH_EMP=" + BATCH_EMP;
+            //var URL = APPNAME + "/InterviewBoard/WEB_GETSCOREBOARD?BATCH_EMP=" + BATCH_EMP;
+            $.ajax({
+                url: URL,
+                type: 'POST',
+                success: function (data) {
+                    TOTAL = data.length;
+                    var stringHTML = "";
+                    $.blockUI({
+                        message: "LOADING..",
+                        fadeIn: 500,
+                        overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' },
+                        css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' }
+                    });
+                    for (var i = 0; i < data.length; i++) {
+                        stringHTML += '<div class="col-sm-4 col-md-4 col-lg-3">';
+                        stringHTML += '<div class="card bg-white p-3 mb-4 shadow">';
+                        stringHTML += '<div style="padding:10pt; background-color:#e3e4eb">';
+                        stringHTML += '<div>';
+                        stringHTML += '<div style="text-align:center;">';
+                        stringHTML += '<b><h4 id="NAME_EMP_LABEL_[' + i + ']">' + data[i].NAME_EMP + '</h4></b>';
+                        stringHTML += '<span class="badge badge-primary"><b><a id="BATCH_EMP_LABEL_[' + i + ']">' + data[i].BATCH_EMP + '</a></b></span>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="personal_section_[' + i + ']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> RACE </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="RACE_SELECTOR_[' + i + ']"></select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += ' <div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> RELIGION </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="RELIGION_SELECTOR_[' + i + ']" ></select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> WHATSAPP </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="WA_LABEL_[' + i + ']" placeholder="" value="' + data[i].PHONE+'">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> GENDER </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="GENDER_SELECTOR_[' + i + ']"">';
+                        stringHTML += '<option value="MALE">MALE</option>';
+                        stringHTML += '<option value="FEMALE">FEMALE</option>';
+                        stringHTML += '</select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> AGE </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="AGE_LABEL_[' + i +']" placeholder="" value="' + data[i].AGE+'">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> ADDRESS </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="ADDR_LABEL_[' + i + ']" placeholder="" value="' + data[i].ADDRESS + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> LEFT HAND </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="LEFTH_SELECTOR_[' + i + ']"">';
+                        stringHTML += '<option value="true">YES</option>';
+                        stringHTML += '<option value="false">NO</option>';
+                        stringHTML += '</select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label class="col-sm-3 col-form-label col-form-label-sm"> HEIGHT </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" max=200 class="form-control form-control-sm" id="HEIGHT_LABEL_[' + i + ']" placeholder="" value="' + data[i].HEIGHT + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label class="col-sm-3 col-form-label col-form-label-sm"> WEIGHT </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input  type="number" max=200 class="form-control form-control-sm" id="WEIGHT_LABEL_[' + i + ']" placeholder="" value="' + data[i].WEIGHT + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm"> PERSONALITY </label>';
+                        stringHTML += '<div class="col-sm-8">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="PERSONALITY_SELECTOR_[' + i + ']" placeholder="" value="' + data[i].PERSONALITY + '">';
+/*                        stringHTML += '<select class="form-control" id="PERSONALITY_SELECTOR_[' + i + ']"></select>';*/
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm"> THINGKING STYLE </label>';
+                        stringHTML += '<div class="col-sm-8">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="THINKING_SELECTOR_[' + i + ']" placeholder="" value="' + data[i].THINKING_STY + '">';
+                        //stringHTML += '<select class="form-control" id="THINKING_SELECTOR_[' + i + ']"></select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm"> WORKING STYLE </label>';
+                        stringHTML += '<div class="col-sm-8">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="WORKING_SELECTOR_[' + i + ']" placeholder="" value="' + data[i].WORKING_STY + '">';
+                        //stringHTML += '<select class="form-control" id="WORKING_SELECTOR_[' + i + ']"></select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="education_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">LAST EDU.</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="LASTEDU_SELECTOR_[' + i +']"></select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">SCHOOL NAME</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="SCHOOL_NAME_[' + i + ']" placeholder="" value="' + data[i].SCHOOL_NAME + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">MAJOR</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="SCHOOL_MAJOR_[' + i + ']" placeholder="" value="' + data[i].SCHOOL_MAJOR + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">AVG. SCORE</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input  type="number" max=100 class="form-control form-control-sm" id="AVG_SCORE_[' + i + ']" placeholder="" value="' + data[i].AVG_SCORE + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">CERT. NO.</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="CERT_NO_[' + i + ']" placeholder="" value="' + data[i].CERT_NO + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2" hidden>';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> Img </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="PHOTO_CERT_[' + i + ']" placeholder="" value="' + data[i].PHOTO_CERT + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">HOLD</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<select class="form-control" id="HOLD_WILLINGLY_[' + i + ']"">';
+                        stringHTML += '<option value="true">YES</option>';
+                        stringHTML += '<option value="false">NO</option>';
+                        stringHTML += '</select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        
+                        
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="written_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> IQ </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" min="0" max="100" class="form-control form-control-sm" id="IQ_LABEL_[' + i + ']" placeholder="" value="' + data[i].TEST_IQ + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">MATH</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" max=100 class="form-control form-control-sm" id="MATH_LABEL_[' + i + ']" placeholder="" value="' + data[i].TEST_MTH + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">ACCURACY</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" min="0" max="100" class="form-control form-control-sm" id="ACC_LABEL_[' + i + ']" placeholder="" value="' + data[i].TEST_ACC + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">ENGLISH</label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" min="0" max="100" class="form-control form-control-sm" id="ENG_LABEL_[' + i + ']" placeholder="" value="' + data[i].TEST_ENG + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="practical_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> TEST 1 </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        //stringHTML += '<input type="text" class="form-control form-control-sm" id="PTC_1_[' + i + ']" placeholder="">';
+
+                        stringHTML += '<select class="form-control" id="PTC_1_[' + i + ']"">';
+                        stringHTML += '<option value="PASSED">PASSED</option>';
+                        stringHTML += '<option value="FAILED">FAILED</option>';
+                        stringHTML += '</select>';
+
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> TIME 1 </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="TIME_1_[' + i + ']" value="' + data[i].TIME_TEST_1 + '" placeholder="">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> TEST 2 </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        //stringHTML += '<input type="text" class="form-control form-control-sm" id="PTC_2_[' + i + ']" placeholder="">';
+
+                        stringHTML += '<select class="form-control" id="PTC_2_[' + i + ']"">';
+                        stringHTML += '<option value="PASSED">PASSED</option>';
+                        stringHTML += '<option value="FAILED">FAILED</option>';
+                        stringHTML += '</select>';
+
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> TIME 2 </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="TIME_2_[' + i + ']" value="' + data[i].TIME_TEST_2 + '" placeholder="">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<div class="col-sm-12">';
+                        stringHTML += '<textarea class="form-control" id="REMARK_PRAC_[' + i + ']" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 172px;" placeholder="ANY REMARK">' + data[i].REMARK + '</textarea>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="memory_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group" style="text-align: center;">';
+                        stringHTML += '<h4><a id="NUMBER_MEM_[' + i + ']"> ' + data[i].DIGITS + ' </a></h4>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"> SCORE </label>';
+                        stringHTML += '<div class="col-sm-9">';
+                        stringHTML += '<input type="number" class="form-control form-control-sm" id="SCORE_MEM_[' + i + ']" placeholder="" step="20" max="100" value="' + data[i].MEMORY_SCORE + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="other_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> SAP / COMPUTER </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<label class="switch s-icons s-outline  s-outline-primary  mb-6 mr-1">';
+                        stringHTML += '<input type="checkbox" id="SAP_[' + i +']">';
+                        stringHTML += '<span class="slider round"></span>';
+                        stringHTML += '</label>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> COLLEGE </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<label class="switch s-icons s-outline  s-outline-primary  mb-6 mr-1">';
+                        stringHTML += '<input type="checkbox" id="COLLEGE_[' + i +']">';
+                        stringHTML += '<span class="slider round"></span>';
+                        stringHTML += '</label>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> EYE GLASSES </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<label class="switch s-icons s-outline  s-outline-primary  mb-6 mr-1">';
+                        stringHTML += '<input type="checkbox" id="EYE_GLASS_[' + i +']">';
+                        stringHTML += '<span class="slider round"></span>';
+                        stringHTML += '</label>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> EYE CHECK </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<label class="switch s-icons s-outline  s-outline-primary  mb-6 mr-1">';
+                        stringHTML += '<input type="checkbox" id="EYE_CHECK_[' + i +']">';
+                        stringHTML += '<span class="slider round"></span>';
+                        stringHTML += '</label>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> MYOPIC VALUE </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<div>';
+                        stringHTML += '<input type="number" class="form-control form-control-sm" id="MYOPIC_VALUE_[' + i + ']" placeholder="" value="' + data[i].EYEVALUE + '">';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm"> SMOKING </label>';
+                        stringHTML += '<div class="col-sm-6">';
+                        stringHTML += '<label class="switch s-icons s-outline  s-outline-primary  mb-6 mr-1">';
+                        stringHTML += '<input type="checkbox" id="SMOKING_CHECK_[' + i +']">';
+                        stringHTML += '<span class="slider round"></span>';
+                        stringHTML += '</label>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div id="final_section_[' + i +']" style="padding-top:10pt">';
+                        stringHTML += '<h5 style="text-align:center">FINAL DECISSION</h5>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<div class="col-sm-12">';
+                        stringHTML += '<select class="form-control" id="FINAL_RESULT_SELECTOR_[' + i +']">';
+                        stringHTML += '<option value="true">PASSED</option>';
+                        stringHTML += '<option value="false">FAILED</option>';
+                        stringHTML += '</select>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<h5 style="text-align:center">REMARK</h5>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<div class="col-sm-12">';
+                        stringHTML += '<textarea class="form-control" id="REMARK_TEXT_[' + i + ']" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 172px;">' + data[i].FINALREMARK + '</textarea>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        ///
+                        stringHTML += '<div id="camera_section_[' + i + ']" style="padding-top:10pt">';
+                        stringHTML += '<h5 style="text-align:center">CAMERA</h5>';
+                        stringHTML += '<div class="row mb-4">';
+                        stringHTML += '<div class="col">';
+                        stringHTML += '<button onclick="CAPTURE('+ i +')"  id="CAPTURE_BUTTON_[' + i + ']" class="btn btn-outline-primary btn-block mb-4 mr-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></button>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="col">';
+                        stringHTML += '<button onclick="RETAKE()"   id="RETAKE_BUTTON_[' + i + ']"   class="btn btn-outline-warning btn-block mb-4 mr-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>';
+                        stringHTML += '</div>';
+/*                        stringHTML += '<div id="MY_CAMERA_[' + i + ']" style="text-align:center; justify-content:center"></div>';*/
+                        stringHTML += '</div>';
+                        stringHTML += '<h5 style="text-align:center">RESULT</h5>';
+                        stringHTML += '<div class="form-group row  mb-2">';
+                        stringHTML += '<div class="col-sm-12">';
+                        stringHTML += '<div id="RESULT_[' + i + ']">.</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                    }
+                    $("#MainRow").html(stringHTML);
+                    PersonalSelected();
+                    for (var i = 0; i < TOTAL; i++) {
+                        var ss = $(".basic").select2({
+                            tags: true,
+                        });
+                        $("input[id='WEIGHT_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 200,
+                            step: 1
+                        });
+                        $("input[id='HEIGHT_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 200,
+                            step: 1
+                        });
+                        $("input[id='AVG_SCORE_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 100,
+                            step: 1
+                        });
+                        //AVG_SCORE_LABEL_
+                        $("input[id='MATH_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 100,
+                            step: 1 });
+                        $("input[id='IQ_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 200,
+                            step: 1 });
+                        $("input[id='ACC_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 100,
+                            step: 1 });
+                        $("input[id='ENG_LABEL_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 100,
+                            step: 1 });
+                        $("input[id='SCORE_MEM_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: 0,
+                            max: 100,
+                            step: 20 });
+                        $("input[id='MYOPIC_VALUE_[" + i + "]']").TouchSpin({
+                            verticalbuttons: true,
+                            min: -100,
+                            max: 100,
+                            step: 1 });
+                        //MYOPIC_VALUE_
+
+                        $("input[id='TIME_1_[" + i + "]']").inputmask("99:99");
+                        $("input[id='TIME_2_[" + i + "]']").inputmask("99:99");
+                        document.getElementById("RACE_SELECTOR_[" + i + "]").value = data[i].REMARK;
+                    }
+                    GETRACE();
+                },
+                error: {
+                    function(request, status, error) {
+                        alert(request.responseText);
+                    }
+                }
+            });
+        }
+
+        function GETRACE() {
+            var URL = "@Url.Action("WEB_GET_RACE", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_RACE";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].RACE, data[j].RACE, true, true);
+                            document.getElementById('RACE_SELECTOR_[' + i + ']').append(option);
+                        }
+                    }
+                    GETRELIGION();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETRACE() ERROR: ' + request.responseText +'', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function GETRELIGION() {
+            var URL = "@Url.Action("WEB_GET_RELIGION", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_RELIGION";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].RELIGION, data[j].RELIGION, true, true);
+                            document.getElementById('RELIGION_SELECTOR_[' + i + ']').append(option);
+                        }
+                    }
+                    GETEDUCATION();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETRELIGION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function GETEDUCATION() {
+            var URL = "@Url.Action("WEB_GET_EDU", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_EDU";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].EDUCATION, data[j].EDUCATION, true, true);
+                            document.getElementById('LASTEDU_SELECTOR_[' + i +']').append(option);
+                        }
+                    }
+                    SETDROPDOWN();
+                    //GETPERSONALITY();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETEDUCATION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function GETPERSONALITY() {
+            var URL = "@Url.Action("WEB_GET_PERSONALITY", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_PERSONALITY";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].PERSONALITY, data[j].PERSONALITY, true, true);
+                            document.getElementById('PERSONALITY_SELECTOR_[' + i + ']').append(option);
+                        }
+                    }
+                    GETTHINKING_STY();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETPERSONALITY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function GETTHINKING_STY() {
+            var URL = "@Url.Action("WEB_GET_THINKING_STY", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_THINKING_STY";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].THINKING_STY, data[j].THINKING_STY, true, true);
+                            document.getElementById('THINKING_SELECTOR_[' + i + ']').append(option);
+                        }
+                    }
+                    GETWORKING_STY();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETTHINKING_STY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function GETWORKING_STY() {
+            var URL = "@Url.Action("WEB_GET_WORKING_STY", "MASTERDATA")";
+            //var URL = APPNAME + "/MasterData/WEB_GET_WORKING_STY";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    var s = '';
+                    for (var i = 0; i < TOTAL; i++) {
+                        for (var j = 0; j < data.length; j++) {
+                            var option = new Option(data[j].WORKING_STY, data[j].WORKING_STY, true, true);
+                            document.getElementById('WORKING_SELECTOR_[' + i + ']').append(option);
+                        }
+                    }
+                    SETDROPDOWN();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETWORKING_STY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function SETDROPDOWN() {
+            var BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var URL = "@Url.Action("WEB_GETSCOREBOARD", "INTERVIEWBOARD")" + "?BATCH_EMP=" + BATCH_EMP;
+            //var URL = APPNAME + "/InterviewBoard/WEB_GETSCOREBOARD?BATCH_EMP=" + BATCH_EMP;
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        document.getElementById("RACE_SELECTOR_[" + i + "]").value = data[i].RACE;
+                        document.getElementById("RELIGION_SELECTOR_[" + i + "]").value = data[i].RELIGION;
+                        document.getElementById("GENDER_SELECTOR_[" + i + "]").value = data[i].GANDER;
+                        document.getElementById("LEFTH_SELECTOR_[" + i + "]").value = data[i].LEFT_HANDED;
+                        document.getElementById("LASTEDU_SELECTOR_[" + i + "]").value = data[i].LAST_EDU;
+                        //document.getElementById("PERSONALITY_SELECTOR_[" + i + "]").value = data[i].PERSONALITY;
+                        //document.getElementById("THINKING_SELECTOR_[" + i + "]").value = data[i].THINKING_STY;
+                        //document.getElementById("WORKING_SELECTOR_[" + i + "]").value = data[i].WORKING_STY;
+                        document.getElementById("PTC_1_[" + i + "]").value = data[i].TEST_1;
+                        document.getElementById("PTC_2_[" + i + "]").value = data[i].TEST_2;
+                        document.getElementById("HOLD_WILLINGLY_[" + i + "]").value = data[i].HOLD_WILLINGLY;
+                        document.getElementById("FINAL_RESULT_SELECTOR_[" + i + "]").value = data[i].FINALRESULT;
+                    }
+                    SETOTHERSWITHCES();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'SETDROPDOWN() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+        function SETOTHERSWITHCES() {
+            var BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var URL = "@Url.Action("WEB_GETSCOREBOARD", "INTERVIEWBOARD")" + "?BATCH_EMP=" + BATCH_EMP;
+            //var URL = APPNAME + "/InterviewBoard/WEB_GETSCOREBOARD?BATCH_EMP=" + BATCH_EMP;
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var SAP = $("input[id='SAP_[" + i + "]']");
+                        var COLLEGE = $("input[id='COLLEGE_[" + i + "]']");
+                        var EYE_GLASS = $("input[id='EYE_GLASS_[" + i + "]']");
+                        var EYE_CHECK = $("input[id='EYE_CHECK_[" + i + "]']");
+                        var SMOKING_CHECK = $("input[id='SMOKING_CHECK_[" + i + "]']");
+                        SAP.prop("checked", data[i].SAPORCOMP);
+                        COLLEGE.prop("checked", data[i].COLLEGE);
+                        EYE_GLASS.prop("checked", data[i].EYEGLASSES);
+                        EYE_CHECK.prop("checked", data[i].EYECHECK);
+                        SMOKING_CHECK.prop("checked", data[i].SMOKING);
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'SETOTHERSWITHCES() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+            $.unblockUI();
+        }
+        function SETDIGITNUMBER() {
+            if (CURR == 5) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    //var URL = APPNAME + "/InterviewBoard/WEB_SETDIGIT?BATCH_EMP=" + _BATCH_EMP;
+                    var URL = "@Url.Action("WEB_SETDIGIT", "INTERVIEWBOARD")" + "?BATCH_EMP=" + _BATCH_EMP;
+                    $.ajax({
+                        url: URL,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function (data) {
+
+                        },
+                        error: {
+                            function(request, status, error) {
+                                Snackbar.show({ text: 'SETDIGITNUMBER() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                            }
+                        }
+                    });
+                }
+                $.blockUI({
+                    message: "GENERATING NEW NUMBER..",
+                    fadeIn: 500,
+                    overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' },
+                    css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' }
+                });
+                GETDATA();
+                setTimeout(function () {
+                    $.unblockUI();
+                    MemorySelected();
+                }, 3000);
+            }
+            else {
+                Snackbar.show({ text: 'CANNOT GENERATE OUTSIDE MEMORY TEST', pos: 'bottom-right' });
+            }
+        }
+
+        function SAVE() {
+            $.blockUI({
+                message: "SAVING..",
+                fadeIn: 500,
+                overlayCSS: {backgroundColor: '#1b2024',opacity: 0.8,zIndex: 1200,cursor: 'wait'},
+                css: {border: 0,color: '#fff',zIndex: 1201,padding: 0,backgroundColor: 'transparent'}
+            });
+            if (CURR == 1) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _RACE = document.getElementById("RACE_SELECTOR_[" + i + "]").value;
+                    var _RELIGION = document.getElementById("RELIGION_SELECTOR_[" + i + "]").value;
+                    var _WA = document.getElementById("WA_LABEL_[" + i + "]").value;
+                    var _GENDER = document.getElementById("GENDER_SELECTOR_[" + i + "]").value;
+                    var _AGE = document.getElementById("AGE_LABEL_[" + i + "]").value;
+                    var _RESIDENCE = document.getElementById("ADDR_LABEL_[" + i + "]").value;
+                    var _LEFTHAND = document.getElementById("LEFTH_SELECTOR_[" + i + "]").value;
+
+                    var _HEIGHT = document.getElementById("HEIGHT_LABEL_[" + i + "]").value;
+                    var _WEIGHT = document.getElementById("WEIGHT_LABEL_[" + i + "]").value;
+                    var _PERSONALITY = document.getElementById("PERSONALITY_SELECTOR_[" + i + "]").value;
+                    var _THINKING_STY = document.getElementById("THINKING_SELECTOR_[" + i + "]").value;
+                    var _WORKING_STY = document.getElementById("WORKING_SELECTOR_[" + i + "]").value;
+
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        RACE: _RACE,
+                        PHONE: _WA,
+                        WHATSAPP: _WA,
+                        GANDER: _GENDER,
+                        AGE: _AGE,
+                        RELIGION: _RELIGION,
+                        ADDRESS: _RESIDENCE,
+
+                        LEFT_HANDED: _LEFTHAND,
+                        HEIGHT: _HEIGHT,
+                        WEIGHT: _WEIGHT,
+                        PERSONALITY: _PERSONALITY,
+                        THINKING_STY: _THINKING_STY,
+                        WORKING_STY: _WORKING_STY
+                    };
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    //var URL = APPNAME + "/InterviewBoard/WEB_INTERVIEWBOARD_SAVE"
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING PROFILE FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING PROFILE FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 2) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _LASTEDU = document.getElementById("LASTEDU_SELECTOR_[" + i + "]").value;
+
+                    var _SCHOOL_NAME = document.getElementById("SCHOOL_NAME_[" + i + "]").value;
+                    var _SCHOOL_MAJOR = document.getElementById("SCHOOL_MAJOR_[" + i + "]").value;
+                    var _AVG_SCORE = document.getElementById("AVG_SCORE_[" + i + "]").value;
+                    var _CERT_NO = document.getElementById("CERT_NO_[" + i + "]").value;
+                    var _PHOTO_CERT = document.getElementById("PHOTO_CERT_[" + i + "]").value;
+                    var _HOLD_WILLINGLY = document.getElementById("HOLD_WILLINGLY_[" + i + "]").value;
+
+                    //var _HEIGHT = document.getElementById("HEIGHT_LABEL_[" + i + "]").value;
+                    //var _WEIGHT = document.getElementById("WEIGHT_LABEL_[" + i + "]").value;
+                    //var _PERSONALITY = document.getElementById("PERSONALITY_SELECTOR_[" + i + "]").value;
+                    //var _THINKING_STY = document.getElementById("THINKING_SELECTOR_[" + i + "]").value;
+                    //var _WORKING_STY = document.getElementById("WORKING_SELECTOR_[" + i + "]").value;
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        LAST_EDU: _LASTEDU,
+                        SCHOOL_NAME: _SCHOOL_NAME,
+                        SCHOOL_MAJOR: _SCHOOL_MAJOR,
+                        AVG_SCORE: _AVG_SCORE,
+                        CERT_NO: _CERT_NO,
+                        PHOTO_CERT: _PHOTO_CERT,
+                        HOLD_WILLINGLY: _HOLD_WILLINGLY
+
+                    };
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING EDUCATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING EDUCATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 3) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _TEST_IQ = document.getElementById("IQ_LABEL_[" + i + "]").value;
+                    var _TEST_MTH = document.getElementById("MATH_LABEL_[" + i + "]").value;
+                    var _TEST_ACC = document.getElementById("ACC_LABEL_[" + i + "]").value;
+                    var _TEST_ENG = document.getElementById("ENG_LABEL_[" + i + "]").value;
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        TEST_IQ: _TEST_IQ,
+                        TEST_MTH: _TEST_MTH,
+                        TEST_ACC: _TEST_ACC,
+                        TEST_ENG: _TEST_ENG
+                    };
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING WRITTEN TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING WRITTEN TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 4) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _PTC_1 = document.getElementById("PTC_1_[" + i + "]").value;
+                    var _TIME_1 = document.getElementById("TIME_1_[" + i + "]").value;
+                    var _PTC_2 = document.getElementById("PTC_2_[" + i + "]").value;
+                    var _TIME_2 = document.getElementById("TIME_2_[" + i + "]").value;
+                    var _REMARK = document.getElementById("REMARK_PRAC_[" + i + "]").value;
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        TEST_1: _PTC_1,
+                        TIME_TEST_1: _TIME_1,
+                        TEST_2: _PTC_2,
+                        TIME_TEST_2: _TIME_2,
+                        REMARK: _REMARK
+                    };
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING PRACTICAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING PRACTICAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 5) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _MEMORY_SCORE = document.getElementById("SCORE_MEM_[" + i + "]").value;
+
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        MEMORY_SCORE: _MEMORY_SCORE,
+                    };
+
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING MEMORY TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING MEMORY TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 6) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _SAP = document.getElementById("SAP_[" + i + "]").checked;
+                    var _COLLEGE = document.getElementById("COLLEGE_[" + i + "]").checked;
+                    var _EYEGLASSES = document.getElementById("EYE_GLASS_[" + i + "]").checked;
+                    var _EYECHECK = document.getElementById("EYE_CHECK_[" + i + "]").checked;
+                    var _EYEVALUE = document.getElementById("MYOPIC_VALUE_[" + i + "]").value;
+                    var _SMOKING = document.getElementById("SMOKING_CHECK_[" + i + "]").checked;
+
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        SAPORCOMP: _SAP,
+                        COLLEGE: _COLLEGE,
+                        EYEGLASSES: _EYEGLASSES,
+                        EYECHECK: _EYECHECK,
+                        EYEVALUE: _EYEVALUE,
+                        SMOKING: _SMOKING,
+                    };
+
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING OTHER TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING OTHER TEST FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else if (CURR == 7) {
+                for (var i = 0; i < TOTAL; i++) {
+                    var __BATCH_EMP = document.getElementById("BATCH_EMP_LABEL_[" + i + "]");
+                    var _BATCH_EMP = (__BATCH_EMP.innerText || __BATCH_EMP.textContent);
+                    var __NAME_EMP = $("#NAME_EMP_LABEL_[" + i + " ]");
+                    var _NAME_EMP = (__NAME_EMP.innerText || __NAME_EMP.textContent);
+                    var _FINAL = document.getElementById("FINAL_RESULT_SELECTOR_[" + i + "]").value;
+                    var _REMARK = document.getElementById("REMARK_TEXT_[" + i + "]").value;
+
+                    var MODEL = {
+                        BATCH_NO: "",
+                        BATCH_EMP: _BATCH_EMP,
+                        NAME_EMP: _NAME_EMP,
+                        FINALRESULT: _FINAL,
+                        FINALREMARK: _REMARK,
+                    };
+                    var URL = "@Url.Action("WEB_INTERVIEWBOARD_SAVE", "INTERVIEWBOARD")";
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: '{MODEL: ' + JSON.stringify(MODEL) + ', TYPE: ' + CURR + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            setTimeout(function () { $.unblockUI(); }, 1500);
+                            Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                        },
+                        failure: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING FINAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        },
+                        error: function (response) {
+                            $.unblockUI();
+                            Snackbar.show({ text: 'SAVING FINAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                        }
+                    });
+                }
+            }
+            else {
+                $.unblockUI();
+                Snackbar.show({ text: 'UNKNOWN CURRENT STATE, FAILED TO SAVE', pos: 'bottom-right' });
+            }
+        }
+
+        function PersonalSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "block";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 1;
+        }
+
+        function EducationSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "block";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 2;
+        }
+
+        function WrittenSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "block";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 3;
+        }
+
+        function PracticalSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "block";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 4;
+        }
+
+        function MemorySelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "block";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 5;
+        }
+
+        function OtherSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "block";
+                final_section.style.display = "none";
+                camera_section.style.display = "none";
+            }
+            CURR = 6;
+        }
+
+        function FinalSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "block";
+                camera_section.style.display = "none";
+            }
+            CURR = 7;
+        }
+
+        function CameraSelected() {
+            for (var i = 0; i < TOTAL; i++) {
+                var personal_section = document.getElementById("personal_section_[" + i + "]");
+                var education_section = document.getElementById("education_section_[" + i + "]");
+                var written_section = document.getElementById("written_section_[" + i + "]");
+                var practical_section = document.getElementById("practical_section_[" + i + "]");
+                var memory_section = document.getElementById("memory_section_[" + i + "]");
+                var other_section = document.getElementById("other_section_[" + i + "]");
+                var final_section = document.getElementById("final_section_[" + i + "]");
+                var camera_section = document.getElementById("camera_section_[" + i + "]");
+
+                personal_section.style.display = "none";
+                education_section.style.display = "none";
+                practical_section.style.display = "none";
+                written_section.style.display = "none";
+                memory_section.style.display = "none";
+                other_section.style.display = "none";
+                final_section.style.display = "none";
+                camera_section.style.display = "block";
+            }
+            CURR = 8;
+        }
+
+        function CANCEL() {
+            history.back();
+        }
+
+        function CAPTURE(i) {
+            $('#exampleModalCenter').modal('show');
+            $("#exampleModalCenterTitle").text(i);
+            Webcam.set({
+                width: 180,
+                height: 320,
+                image_format: 'jpeg',
+                jpeg_quality: 100,
+                constraints: {
+                    width: 180, // { exact: 320 },
+                    height: 320, // { exact: 180 },
+                    facingMode: 'user',
+                    frameRate: 30
+                }
+            });
+            Webcam.attach('#my_camera');
+        }
+        function SAVE_CAPTURE() {
+            var i = $("#exampleModalCenterTitle").text();
+            var RESULT = document.getElementById("RESULT_[" + i + "]");
+            Webcam.snap(function (data_uri) {
+                RESULT.innerHTML = '<img src="' + data_uri + '"/>';
+            });
+        }
+
+    </script>

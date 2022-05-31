@@ -1,0 +1,712 @@
+﻿
+@{
+    ViewBag.Title = "IdentityForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA DIRI</b> </h4>
+            </div>
+            <br />
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+
+            <form action="javascript:UploadKTP()">
+                <div class="form-group mb-4">
+                    <p>NAMA LENGKAP <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="FULLNAME" placeholder="" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p>NOMOR KTP (NIK) <code>*</code> </p>
+                    <input type="number" class="form-control form-control-sm " id="NIK" maxlength="16" placeholder="16 Digit NIK KTP" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;">
+                </div>
+                <div class="row form-group mb-4">
+                    <div class="col">
+                        <p>MASA BERLAKU<code>*</code></p>
+                        <select class="form-control" onchange="MASA_BERLAKU_CHANGED()" id="EXPIRE_TYPE" required>
+                            <option value="">SELECT</option>
+                            <option value="true">SEUMUR HIDUP</option>
+                            <option value="false">TIDAK</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <p>HINGGA<code>*</code></p>
+                        <input type="date" class="form-control" id="EXPIRE_DATE" required>
+                    </div>
+                </div>
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <p>FOTO KTP (SISI BELAKANG) <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></b></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadKTP" name="UploadKTP" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="GENDER">JENIS KELAMIN <code>*</code></p>
+                    <select class="form-control" id="GENDER" required></select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="MARITAL">STATUS PERKAWINAN <code>*</code></p>
+                    <select class="form-control" id="MARITAL" required></select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="AGE">UMUR <code>*</code></p>
+                    <input id="AGE" type="number" value="" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="HEIGHT">TINGGI BADAN (CM) <code>*</code></p>
+                    <input id="HEIGHT" type="number" value="" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="WEIGHT">BERAT BADAN (KG) <code>*</code></p>
+                    <input id="WEIGHT" type="number" value="" required>
+                </div>
+                @*<div class="form-group mb-4">
+                    <p for="LEFT_HANDED">TANGAN KIDAL ? <code>*</code></p>
+                    <select class="form-control" id="LEFT_HANDED" required>
+                        <option value="">SELECT</option>
+                        <option value="true">YES (YA)</option>
+                        <option value="false">NO (TIDAK)</option>
+                    </select>
+                </div>*@
+                <div class="form-group mb-4">
+                    <p for="BIRTHPLACE">TEMPAT LAHIR <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="BIRTHPLACE" placeholder="" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="BIRTHDATE">TANGGAL LAHIR <code>*</code></p>
+                    <input id="BIRTHDATE" value="" class="form-control" type="text" placeholder="Select Date.." required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="RACE">SUKU <code>*</code></p>
+                    <select class="form-control" id="RACE" required> </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="RELIGION">AGAMA <code>*</code></p>
+                    <select class="form-control" id="RELIGION" required> </select>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="MOBILE">NOMOR HP <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="MOBILE" placeholder="0812345678" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="WHATSAPP">WHATSAPP <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="WHATSAPP" placeholder="0812345678" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="TELEGRAM">TELEGRAM <code>*</code></p>
+                    <input type="number" class="form-control form-control-sm" id="TELEGRAM" placeholder="0812345678" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="LINKEDIN">LINKED ID </p>
+                    <input type="text" class="form-control form-control-sm" id="LINKEDIN" placeholder="https://www.linkedin.com/in/username">
+                </div>
+                <div class="form-group mb-4">
+                    <p for="EMAIL">ALAMAT SUREL (EMAIL) <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="EMAIL" placeholder="username@domain.com" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="ADDRESS">ALAMAT <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="ADDRESS" placeholder="" required>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <p>BLOK <code>*</code></p>
+                        <input type="text" class="form-control" id="BLOK" placeholder="" required>
+                    </div>
+                    <div class="col">
+                        <p>NOMOR <code>*</code></p>
+                        <input type="text" class="form-control" id="NOMOR" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <p for="RT">RT <code>*</code></p>
+                        <input type="text" class="form-control" id="RT" maxlength="3" placeholder="000"  required>
+                    </div>
+                    <div class="col">
+                        <p for="RW">RW <code>*</code></p>
+                        <input type="text" class="form-control" id="RW" maxlength="3" placeholder="000" required>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_PROVINSI">PROVINSI <code>*</code></p>
+                    <select class="form-control" id="EM_PROVINSI" ONCHANGE="GET_CITY()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="EM_KABUPATEN">KOTA / KABUPATEN <code>*</code></p>
+                    <select class="form-control" id="EM_KABUPATEN" ONCHANGE="GET_DISTRICT()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="DISTRICT">KECAMATAN <code>*</code></p>
+                    <select class="form-control" id="DISTRICT" ONCHANGE="GET_VILLAGE()" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="VILLAGE">KELURAHAN <code>*</code></p>
+                    <select class="form-control" id="VILLAGE" required> </select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="STATUSRUMAH">TINGGAL BERSAMA <code>*</code></p>
+                    <select class="form-control" id="STATUSRUMAH" required>
+                        <option value="">SELECT</option>
+                        <option value="TINGGAL SENDIRI">TINGGAL SENDIRI</option>
+                        <option value="BERSAMA KELUARGA">BERSAMA KELUARGA</option>
+                    </select>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="mySecondImage">
+                    <p>FOTO DIRI (PAS FOTO) <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></b></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadPASFOTO" name="UploadPASFOTO" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        document.getElementById("SAVEBUTTON").disabled = false;
+        $('#NIK').maxlength();
+        $('#RT').maxlength();
+        $('#RW').maxlength();
+        //$('#NIK').inputmask("9999999999999999");
+        //$('#RT').inputmask("999");
+        //$('#RW').inputmask("999");
+        var firstUpload  = new FileUploadWithPreview('myFirstImage');
+        var secondUpload = new FileUploadWithPreview('mySecondImage');
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+        $("input[id='HEIGHT']").TouchSpin({
+            initval: 0,
+            min: 0,
+            max: 200,
+        });
+        $("input[id='WEIGHT']").TouchSpin({
+            initval: 0,
+            min: 0,
+            max: 200,
+        });
+        $("input[id='AGE']").TouchSpin({
+            initval: 0,
+            min: 0,
+            max: 100,
+        });
+        flatpickr(document.getElementById('BIRTHDATE'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        flatpickr(document.getElementById('EXPIRE_DATE'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        //EXPIRE_DATE
+        //flatpickr('#BIRTHDATE', { dateFormat: 'd.m.Y' })
+        //document.getElementById("LEFT_HANDED").value = "";
+        GETGENDER();
+        //GET_MOBILE_CANEDIT_PERSONALFORM();
+    });
+    function MASA_BERLAKU_CHANGED() {
+        var EXPIRE_TYPE = document.getElementById('EXPIRE_TYPE').value;
+        if (EXPIRE_TYPE == true || EXPIRE_TYPE == 'true') {
+            document.getElementById("EXPIRE_DATE").disabled = true;
+        }
+        else {
+            document.getElementById("EXPIRE_DATE").disabled = false;
+        }
+    }
+    function GET_MOBILE_CANEDIT_PERSONALFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_PERSONALFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                    GETGENDER();
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_PERSONALFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UploadKTP() {
+        $.blockUI({
+            message: "UPLOADING KTP..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadKTP").get(0);
+        var files = fileUpload.files;
+        if (files.length == 0) {
+            $.unblockUI();
+            Snackbar.show({ text: 'PASTIKAN ANDA MENGUPLOAD FOTO KTP', pos: 'bottom-right' });
+        }
+        else {
+            for (var i = 0; i < files.length; i++) {
+                fileData.append('File', files[i]);
+            }
+            var URL = "@Url.Action("UPLOAD_KTP", "MOBILE")";
+            var X = "";
+            $.ajax({
+                url: URL,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        $.unblockUI();
+                        UploadPASFOTO();
+                    }
+                    else {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+    }
+
+    function UploadPASFOTO() {
+        $.blockUI({
+            message: "UPLOADING PAS FOTO..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadPASFOTO").get(0);
+        var files = fileUpload.files;
+        if (files.length == 0) {
+            $.unblockUI();
+            Snackbar.show({ text: 'PASTIKAN ANDA MENGUPLOAD PAS FOTO', pos: 'bottom-right' });
+        }
+        else {
+             for (var i = 0; i < files.length; i++) {
+                fileData.append('File', files[i]);
+             }
+            var URL = "@Url.Action("UPLOAD_PASFOTO", "MOBILE")";
+            $.ajax({
+                url: URL,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        $.unblockUI();
+                        SAVEPERSONALDATA();
+                    }
+                    else {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'UPLOADPASFOTO() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'SAVEPERSONALDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+    }
+
+    function GETGENDER() {
+        var URL = "@Url.Action("MOBILE_GET_GENDER", "MASTERDATA")";
+        $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    document.getElementById("GENDER").innerHTML = "";
+                    var option = new Option("SELECT", "", false, false);
+                    document.getElementById('GENDER').append(option);
+                    for (var i = 0; i < data.length; i++) {
+                        var option = new Option(data[i].TEXT, data[i].VALUE, false, false);
+                        document.getElementById('GENDER').append(option);
+                    }
+                    document.getElementById("GENDER").value = "";
+                    GETMARITAL();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETGENDER() ERROR: ' + request.responseText +'', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+
+    function GETMARITAL() {
+        var URL = "@Url.Action("MOBILE_GET_MARITAL", "MASTERDATA")";
+        $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("MARITAL").innerHTML = "";
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('MARITAL').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].TEXT, data[i].VALUE, false, false);
+                    document.getElementById('MARITAL').append(option);
+                }
+                document.getElementById("MARITAL").value = "";
+                GETRELIGION();
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GETMARITAL() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+            });
+    }
+
+    function GETRELIGION() {
+        var URL = "@Url.Action("WEB_GET_RELIGION", "MASTERDATA")";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    document.getElementById("RELIGION").innerHTML = "";
+                    var option = new Option("SELECT", "", false, false);
+                    document.getElementById('RELIGION').append(option);
+                    for (var i = 0; i < data.length; i++) {
+                        var option = new Option(data[i].RELIGION, data[i].RELIGION, false, false);
+                        document.getElementById('RELIGION').append(option);
+                    }
+                    document.getElementById("RELIGION").value = "";
+                    GETRACE();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETRELIGION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+
+    function GETRACE() {
+        var URL = "@Url.Action("WEB_GET_RACE", "MASTERDATA")";
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    document.getElementById("RACE").innerHTML = "";
+                    var option = new Option("SELECT", "", false, false);
+                    document.getElementById('RACE').append(option);
+                    for (var i = 0; i < data.length; i++) {
+                        var option = new Option(data[i].RACE, data[i].RACE, false, false);
+                        document.getElementById('RACE').append(option);
+                    }
+                    document.getElementById("RACE").value = "";
+                    GET_PROVINCE();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETRACE() ERROR: ' + request.responseText +'', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+
+    function SAVEPERSONALDATA() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var URL = "@Url.Action("MOBILE_SAVE_PERSONALFORM", "MOBILE")";
+
+        var _NIK = document.getElementById('NIK').value;
+        var _EXPIRE_TYPE = document.getElementById('EXPIRE_TYPE').value;
+        var _EXPIRE_DATE = document.getElementById('EXPIRE_DATE').value;
+        var _RACE = document.getElementById('RACE').value;
+        var _RELIGION = document.getElementById('RELIGION').value;
+        var _PHONE = document.getElementById('MOBILE').value;
+        var _EMAIL = document.getElementById('EMAIL').value;
+        var _WHATSAPP = document.getElementById('WHATSAPP').value;
+        var _TELEGRAM = document.getElementById('TELEGRAM').value;
+        var _LINKEDIN = document.getElementById('LINKEDIN').value;
+        var _GANDER = document.getElementById('GENDER').value;
+        var _AGE = document.getElementById('AGE').value;
+        var _HEIGHT = document.getElementById('HEIGHT').value;
+        var _WEIGHT = document.getElementById('WEIGHT').value;
+        var _MARITAL = document.getElementById('MARITAL').value;
+        var _BIRTHPLACE = document.getElementById('BIRTHPLACE').value;
+        var _BIRTHDATE = document.getElementById('BIRTHDATE').value;
+        var _LEFT_HANDED = false
+        var _ADDRESS = document.getElementById('ADDRESS').value;
+        var _BLOK = document.getElementById('BLOK').value;
+        var _NOMOR = document.getElementById('NOMOR').value;
+        var _RT = document.getElementById('RT').value;
+        var _RW = document.getElementById('RW').value;
+        var _DISTRICT = document.getElementById('DISTRICT').value;
+        var _VILLAGE = document.getElementById('VILLAGE').value;
+        var _STATUSRUMAH = document.getElementById('STATUSRUMAH').value;
+
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            NIK: _NIK,
+            EXPIRE_TYPE: _EXPIRE_TYPE,
+            EXPIRE_DATE: _EXPIRE_DATE,
+            RACE: _RACE,
+            RELIGION: _RELIGION,
+            PHONE: _PHONE,
+            EMAIL: _EMAIL,
+            WHATSAPP: _WHATSAPP,
+            TELEGRAM: _TELEGRAM,
+            LINKEDIN: _LINKEDIN,
+            GANDER: _GANDER,
+            MARITAL: _MARITAL,
+            AGE: _AGE,
+            HEIGHT: _HEIGHT,
+            WEIGHT: _WEIGHT,
+            BIRTHPLACE: _BIRTHPLACE,
+            BIRTHDATE: _BIRTHDATE,
+            LEFT_HANDED: _LEFT_HANDED,
+            ADDRESS: _ADDRESS,
+            BLOK: _BLOK,
+            NOMOR: _NOMOR,
+            RT: _RT,
+            RW: _RW,
+            KECAMATAN: _DISTRICT,
+            KELURAHAN: _VILLAGE,
+            HOME_STATUS: _STATUSRUMAH
+        };
+
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'PERSONAL DATA UPDATED, PAGE WILL BE REDIRECT TO FAMILY DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("FamilyDataForm", "MOBILE")";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEPERSONALDATA() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEPERSONALDATA() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_PROVINCE() {
+        var URL = "@Url.Action("WEB_GET_MD_PROVINCIES", "MASTERDATA")";
+/*      var URL = "http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json";*/
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_PROVINSI').append(option);
+                var JSONDATA = JSON.stringify(data);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_PROVINSI').append(option);
+                }
+                document.getElementById("EM_PROVINSI").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_PROVINCE() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_CITY() {
+        var ID = document.getElementById("EM_PROVINSI").value;
+        var URL = "@Url.Action("WEB_GET_MD_REGENCIES", "MASTERDATA")" + "?ID_PROVINCIES="+ID+"";
+        //var URL = "http://www.emsifa.com/api-wilayah-indonesia/api/regencies/" + ID + ".json";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("EM_KABUPATEN").innerHTML = "";
+                document.getElementById("DISTRICT").innerHTML = "";
+                document.getElementById("VILLAGE").innerHTML = "";
+
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('EM_KABUPATEN').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('EM_KABUPATEN').append(option);
+                }
+                document.getElementById("EM_KABUPATEN").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_CITY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_DISTRICT() {
+        var ID = document.getElementById("EM_KABUPATEN").value;
+        var URL = "@Url.Action("WEB_GET_MD_DISTRICTS", "MASTERDATA")" + "?ID_REGENCIES="+ID+"";
+        //var URL = "http://www.emsifa.com/api-wilayah-indonesia/api/districts/" + ID + ".json";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("DISTRICT").innerHTML = "";
+                document.getElementById("VILLAGE").innerHTML = "";
+
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('DISTRICT').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('DISTRICT').append(option);
+                }
+                document.getElementById("DISTRICT").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_CITY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GET_VILLAGE() {
+        var ID = document.getElementById("DISTRICT").value;
+        /*var URL = "http://www.emsifa.com/api-wilayah-indonesia/api/villages/" + ID + ".json";*/
+        var URL = "@Url.Action("WEB_GET_MD_VILLAGES", "MASTERDATA")" + "?ID_DISTRICTS="+ID+"";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                document.getElementById("VILLAGE").innerHTML = "";
+                var option = new Option("SELECT", "", false, false);
+                document.getElementById('VILLAGE').append(option);
+                for (var i = 0; i < data.length; i++) {
+                    var option = new Option(data[i].NAME, data[i].ID, false, false);
+                    document.getElementById('VILLAGE').append(option);
+                }
+                document.getElementById("VILLAGE").value = "";
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_CITY() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+</script>

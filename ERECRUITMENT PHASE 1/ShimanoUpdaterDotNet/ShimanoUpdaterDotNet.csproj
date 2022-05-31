@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    
+    <PropertyGroup>
+        <ProjectGuid>{FB9E7E6B-B19F-4F37-A708-2996190CEF13}</ProjectGuid>
+        <OutputType>library</OutputType>
+        <TargetFrameworks>net20;net35;net40;net45</TargetFrameworks>
+        <UseWindowsForms>true</UseWindowsForms>
+        <RootNamespace>ShimanoUpdaterDotNet</RootNamespace>
+        <AssemblyTitle>ShimanoUpdaterDotNet</AssemblyTitle>
+        <Company>SHIMANO</Company>
+        <Product>ShimanoUpdater.Net</Product>
+        <Copyright>Copyright © 2021</Copyright>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <SignAssembly>false</SignAssembly>
+        <NeutralLanguage>en</NeutralLanguage>
+        <PackageId>ShimanoUpdater.Net</PackageId>
+        <IncludeSymbols>true</IncludeSymbols>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>ShimanoUpdaterDotNet</Title>
+        <Authors>DENI ANDREAN</Authors>
+        <Description>ShimanoUpdaterDotNet</Description>
+        <PackageProjectUrl></PackageProjectUrl>
+        <PackageTags></PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageOutputPath>build</PackageOutputPath>
+        <DocumentationFile>$(OutputPath)\$(Configuration)\ShimanoUpdaterDotNet.xml</DocumentationFile>
+        <AssemblyName>ShimanoUpdaterDotNet</AssemblyName>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <OutputPath>build\lib</OutputPath>
+        <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DebugType>full</DebugType>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(TargetFramework)' != 'net20' ">
+        <DefineConstants>NETWPF</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' != 'net20' ">
+        <Reference Include="WindowsBase" />
+        <Reference Include="PresentationFramework" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net20' OR '$(TargetFramework)' == 'net35' ">
+        <Compile Remove="JsonFilePersistenceProvider.cs" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net40' OR '$(TargetFramework)' == 'net45' ">
+        <PackageReference Include="Resource.Embedder" Version="1.2.8">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <Reference Include="System.Xaml" />
+        <Reference Include="System.Runtime.Serialization" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="build\lib" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Resource.Embedder" Version="2.1.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    
+</Project>

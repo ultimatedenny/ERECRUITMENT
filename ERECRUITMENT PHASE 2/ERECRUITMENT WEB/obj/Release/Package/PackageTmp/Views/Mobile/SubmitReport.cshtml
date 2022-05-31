@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "SubmitReport";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>E-RECRUITMENT REPORT</b> </h4>
+            </div>
+            <br />
+
+            <div class="form-group mb-4">
+                <label for="CATEGORY">KATEGORI<code>*</code></label>
+                <select type="text" class="form-control form-control-sm" id="CATEGORY" placeholder="" required>
+                    <option value="0">Tindakan Penipuan</option>
+                    <option value="1">Tindakan Penyuapan</option>
+                    <option value="2">Tindakan Menjual Lowongan Pekerjaan</option>
+                    <option value="3">Tindakan Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="DESCRIPTION">DESKRIPSI<code>*</code></label>
+                <textarea class="form-control form-control-sm" id="DESCRIPTION" placeholder="MAKSIMAL 4000 karakter" maxlength="4000" required></textarea>
+                <p style="font-size:10pt; color:red"><i>Jelaskan dengan detail mengenai waktu, lokasi, dan orang yang terlibat di kejadian tersebut.</i></p>
+            </div>
+
+            <div class="custom-file-container" data-upload-id="myFirstImage">
+                <label>FOTO / GAMBAR TERKAIT<code href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</code></label>
+                <label class="custom-file-container__custom-file">
+                    <input type="file" id="REPORT_UPLOAD" name="REPORT_UPLOAD" class="custom-file-container__custom-file__custom-file-input" accept="image/*" required>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview"></div>
+            </div>
+
+            <button type="button" onclick="UPLOAD_BUKTI()" name="SUBMITBUTTON" id="SUBMITBUTTON" class="btn btn-block btn-primary">SUBMIT</button>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+    });
+
+    function UPLOAD_BUKTI() {
+        $.blockUI({
+            message: "UPLOADING FOTO..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#REPORT_UPLOAD").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD_REPORT", "MOBILE")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    SUBMIT();
+                    location.reload();
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BUKTI() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'UPLOAD_BUKTI() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function SUBMIT() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var URL = "@Url.Action("MOBILE_SAVE_REPORT", "MOBILE")";
+        var REPORT_CATE = document.getElementById('CATEGORY').value;
+        var REPORT_DESC = document.getElementById('DESCRIPTION').value;
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            REPORT_CATE: REPORT_CATE,
+            REPORT_DESC: REPORT_DESC
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                   $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+</script>

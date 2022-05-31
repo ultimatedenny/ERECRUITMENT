@@ -1,0 +1,423 @@
+﻿
+@{
+    ViewBag.Title = "General Name List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content widget-content-area">
+                    <div class="form-row mb-10" style="padding:10pt">
+                        <div class="col">
+                            <h6>BATCH</h6>
+                            <select class="form-control basic js-data-example-ajax" id="BATCHSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6>STATUS</h6>
+                            <select class="form-control basic js-data-example-ajax" id="STATUSSELECTOR">
+                                <option value="">ALL</option>
+                                <option value="OUTSTANDING">OUTSTANDING</option>
+                                <option value="SUBMITTED">SUBMITTED</option>
+                                <option value="COMPLETED">COMPLETED</option>
+                                <option value="CLOSED">CLOSED</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">KEYWORD</h6>
+                            <input class="form-control basic" id="KEYWORD" placeholder="BATCH EMP / NAME" />
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">SEARCH</h6>
+                            <button class="btn btn-outline-primary mb-2 mr-2 btn-lg" onclick="SEARCH()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                <table id="table1" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>BATCH NO</th>
+                            <th>BATCH EMP</th>
+                            <th>NAME</th>
+                            <th>GENDER</th>
+                            <th>FORM</th>
+                            <th>EMPLOYEE NO</th>
+                            <th>DOJ</th>
+                            <th>DOE</th>
+                            <th>TAX</th>
+                            <th>TIER</th>
+                            <th>DEPT</th>
+                            <th>STATUS</th>
+                            <th>COMPLETED ON</th>
+                            <th>SEND ON</th>
+                            <th>VERIFY ON</th>
+                            <th>DETAILS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <br />
+            <div style="text-align:end">
+                <button class="btn btn-outline-primary mb-2 mr-2" onclick="GENERATEEXCEL()" id="EXCEL_BTN">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" /></svg>
+                    EXPORT EXCEL
+                </button>
+                <button class="btn btn-outline-warning mb-2 mr-2" onclick="MODALOPEN()" id="UPLOAD_BTN">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    UPLOAD
+                </button>
+                <button class="btn btn-outline-success mb-2 mr-2" onclick="SUBMIT()" id="SUBMIT_BTN">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    SUBMIT
+                </button>
+                <button class="btn btn-outline-success mb-2 mr-2" onclick="VERIFY()" id="VERIFY_BTN">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    VERIFY
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="GeneralNameListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload General Name List</h5>
+            </div>
+            <div class="modal-body">
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <label>Excel File<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadDMR" name="UploadDMR" class="custom-file-container__custom-file__custom-file-input" accept="files/*">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                <button type="button" onclick="DOWNLOADSAMPLEFILE()" class="btn btn-outline-warning">Download</button>
+                <button type="button" onclick="UPLOADEXCELFILE()" class="btn btn-outline-success">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+        GETGRUPVIEW();
+        GETBATCH_DROPDOWN();
+    });
+    function GETGRUPVIEW() {
+        var URL = "@Url.Action("WEB_GETGRUPVIEW", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                if (data == "SYSTEM-ADMIN") {
+                    document.getElementById("EXCEL_BTN").style.visibility  = "visible";
+                    document.getElementById("UPLOAD_BTN").style.visibility = "visible";
+                    document.getElementById("SUBMIT_BTN").style.visibility = "visible";
+                    document.getElementById("VERIFY_BTN").style.visibility = "visible";
+
+                    document.getElementById("SUBMIT_BTN").remove();
+                }
+                else if (data == "SYSTEM-HRD") {
+                    //document.getElementById("EXCEL_BTN").style.visibility = "visible";
+                    //document.getElementById("UPLOAD_BTN").style.visibility = "visible";
+                    //document.getElementById("SUBMIT_BTN").style.visibility = "visible";
+                    //document.getElementById("VERIFY_BTN").style.visibility = "hidden";
+
+                    //document.getElementById("EXCEL_BTN").remove();
+                    //document.getElementById("UPLOAD_BTN").remove();
+                    //document.getElementById("SUBMIT_BTN").remove();
+                    document.getElementById("VERIFY_BTN").remove();
+                }
+                else if (data == "SYSTEM-HRM") {
+                    //document.getElementById("EXCEL_BTN").style.visibility = "visible";
+                    //document.getElementById("UPLOAD_BTN").style.visibility = "visible";
+                    //document.getElementById("SUBMIT_BTN").style.visibility = "hidden";
+                    //document.getElementById("VERIFY_BTN").style.visibility = "visible";
+
+                    //document.getElementById("EXCEL_BTN").remove();
+                    //document.getElementById("UPLOAD_BTN").remove();
+                    document.getElementById("SUBMIT_BTN").remove();
+                    /*document.getElementById("VERIFY_BTN").remove();*/
+                }
+                else if (data == "SYSTEM-USER") {
+                    //document.getElementById("EXCEL_BTN").style.visibility = "hidden";
+                    //document.getElementById("UPLOAD_BTN").style.visibility = "hidden";
+                    //document.getElementById("SUBMIT_BTN").style.visibility = "hidden";
+                    //document.getElementById("VERIFY_BTN").style.visibility = "hidden";
+
+                    document.getElementById("EXCEL_BTN").remove();
+                    document.getElementById("UPLOAD_BTN").remove();
+                    document.getElementById("SUBMIT_BTN").remove();
+                    document.getElementById("VERIFY_BTN").remove();
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function GETTABLE() {
+        var STATUS  = $("#STATUSSELECTOR").val();
+        var KEYWORD = $("#KEYWORD").val();
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("WEB_GET_TABLE_GENERAL", "GENERALNAMELIST")";
+        var MODEL = {
+            BATCHNO: BATCHNO,
+            STATUS: STATUS,
+            KEYWORD: KEYWORD
+        };
+        var table = $('#table1').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "destroy": true,
+            "searching": false,
+            "paging": false,
+            "searching": false,
+            "stripeClasses": [],
+            "lengthMenu": [10, 20, 30, 40, 50, 100, 200, 500, 1000],
+            "pageLength": 10,
+            "filter": false,
+            "ajax": {
+                "url": URL,
+                "type": "POST",
+                "datatype": "json",
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "data": MODEL, function (a) {
+                    return $.extend({}, a, {
+                    });
+                }
+            },
+            "columns": [
+                { "data": "BATCH_NO", "autoWidth": true, "orderable": false },
+                { "data": "BATCH_EMP", "autoWidth": true, "orderable": false },
+                { "data": "NAME_EMP", "autoWidth": true, "orderable": false },
+                { "data": "GANDER", "autoWidth": true, "orderable": false },
+                { "data": "FORM", "autoWidth": true, "orderable": false },
+                { "data": "NO_EMP", "autoWidth": true, "orderable": false },
+                { "data": "DOE", "autoWidth": true, "orderable": false },
+                { "data": "DOJ", "autoWidth": true, "orderable": false },
+                { "data": "TAX", "autoWidth": true, "orderable": false },
+                { "data": "TIER", "autoWidth": true, "orderable": false },
+                { "data": "DEPT", "autoWidth": true, "orderable": false },
+                { "data": "STATUS", "autoWidth": true, "orderable": false },
+                { "data": "COMPLETED_ON", "autoWidth": true, "orderable": false },
+                { "data": "SEND_ON", "autoWidth": true, "orderable": false },
+                { "data": "VERIFY_ON", "autoWidth": true, "orderable": false },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button class="btn btn-outline-primary mb-2" onclick="CandidateDetails(\'' + full.BATCH_EMP + '\')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>'
+                    }
+                },
+            ],
+        });
+    }
+    function SEARCH() {
+        GETTABLE();
+    }
+    function GETBATCH_DROPDOWN() {
+        var URL = "@Url.Action("WEB_GETBATCH_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#BATCHSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    var option = document.createElement('option')
+                    option.value = jsonRes[j].BATCHNO;
+                    option.innerHTML = jsonRes[j].BATCHNO;
+                    document.getElementById('BATCHSELECTOR').append(option);
+                }
+                var ss = $(".basic").select2({
+                    tags: true,
+                });
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+        GETTABLE();
+    }
+    function GENERATEEXCEL() {
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("DOWNLOAD", "INTERVIEWBOARD")" + "?type=1&BatchNo=" + BATCHNO + "";
+        window.location.href = URL;
+    }
+    function SUBMIT() {
+        $.blockUI({
+            message: "SUBMITING..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("WEB_SUBMIT_USER_GENERAL", "GENERALNAMELIST")?BATCHNO=" + BATCHNO;
+        $.ajax({
+            type: "POST",
+            url: URL,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function VERIFY() {
+        $.blockUI({
+            message: "VERIFYING..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("WEB_VERIFY_USER_GENERAL", "GENERALNAMELIST")?BATCHNO=" + BATCHNO;
+        $.ajax({
+            type: "POST",
+            url: URL,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+    function MODALOPEN(){
+        $('#GeneralNameListModal').modal('toggle');
+    }
+    function DOWNLOADSAMPLEFILE() {
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("DOWNLOAD", "GENERALNAMELIST")" + "?BATCHNO=" + BATCHNO + "";
+        window.location.href = URL;
+    }
+    function UPLOADEXCELFILE() {
+        $.blockUI({
+            message: "UPLOADING EXCEL FILE..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadDMR").get(0);
+        var files = fileUpload.files;
+        for (var i = 0; i < files.length; i++) {
+            fileData.append('File', files[i]);
+        }
+        var URL = "@Url.Action("UPLOAD", "GENERALNAMELIST")";
+        $.ajax({
+            url: URL,
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: fileData,
+            success: function (data) {
+                if (data.Result == true) {
+                    Snackbar.show({ text: 'UPLOADEXCELFILE() MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                    GETTABLE();
+                    $('#GeneralNameListModal').modal('toggle');
+                }
+                else {
+                    Snackbar.show({ text: 'UPLOADEXCELFILE() MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'UPLOADEXCELFILE() MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                    $.unblockUI();
+                }
+            }
+        });
+    }
+    function CandidateDetails(BATCH_EMP) {
+        var PARAM1 = BATCH_EMP;
+        var URL = '@Url.Action("CandidateDetails", "InterviewBoard")?' + "BATCH_EMP=" + PARAM1;
+        window.location.href = URL;
+    }
+</script>

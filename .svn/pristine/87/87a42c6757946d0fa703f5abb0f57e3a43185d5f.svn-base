@@ -1,0 +1,55 @@
+﻿@using ERECRUITMENT_WEB.Models
+@model LoginMobileViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Mobile_Login.cshtml";
+}
+<div class="layout-px-spacing" padding-top:-10px">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <br />
+            <br />
+            <div style="text-align:center">
+                <H3> E-RECRUITMENT </H3>
+                <img src="~/Crox/shimanologo2021.png" width="30%" />
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div style="text-align:center">
+                @using (Html.BeginForm("Index", "Mobile", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <H6> HARAP MASUK MENGGUNAKAN NOMOR UNDANGAN YANG DIBAGIKAN MELALUI WHATSAPP/TELEGRAM </H6>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.UniqueId, new { @class = "form-control", @placeholder = "ER-0000-000-000-XXXXXXX-00000000000000", @maxlength = "39" })
+                    @Html.ValidationMessageFor(m => m.UniqueId, "", new { @class = "text-danger" })
+                    <br />
+                    <button id="BTNSUBMIT" class="btn btn-primary mb-2 mr-2 btn-lg" type="submit" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                        MASUK
+                    </button>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+            if (Math.min(window.screen.width, window.screen.height) > 768) {
+                document.getElementById("BTNSUBMIT").style.visibility = "hidden";
+                setTimeout(function () {
+                        Snackbar.show({ text: 'UNABLE TO ACCESS MOBILE FROM WEB VERSION, YOU WILL BE BROUGHT TO WEB VERSION', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.replace('@Url.Action("Login", "Account")');
+                        }, 4000);
+                }, 500);
+            }
+        })
+</script>

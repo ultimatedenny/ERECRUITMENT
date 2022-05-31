@@ -1,0 +1,15 @@
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\VisualStudioTabControl.dll.config
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\VisualStudioTabControl.dll
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\VisualStudioTabControl.pdb
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\AutoUpdater.NET.dll
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\System.Net.Http.dll
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\AutoUpdater.NET.pdb
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\AutoUpdater.NET.xml
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\bin\Release\System.Net.Http.xml
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.csprojAssemblyReference.cache
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.Properties.Resources.resources
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.csproj.GenerateResource.cache
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.csproj.CoreCompileInputs.cache
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.csproj.CopyComplete
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.dll
+C:\Users\sbm_deni\Downloads\WhatsAppNETClient-master\src\VisualStudioTabControl\obj\Release\VisualStudioTabControl.pdb

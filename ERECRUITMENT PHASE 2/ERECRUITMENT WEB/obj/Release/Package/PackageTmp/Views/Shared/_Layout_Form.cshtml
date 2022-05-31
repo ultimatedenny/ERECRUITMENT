@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>ERECRUITMENT - PT SHIMANO BATAM</title>
+    <link rel="icon" type="image/x-icon" href="~/Crox/assets/img/favicon.ico" />
+    <script src="~/Crox/assets/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="~/Crox/plugins/jquery-ui/jquery-ui.min.js"></script>
+</head>
+<body>
+
+    @RenderBody()
+
+    <script>
+        document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey || e.keyCode == 123) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        });
+        //eval(function (p, a, c, k, e, d) { e = function (c) { return c.toString(36) }; if (!''.replace(/^/, String)) { while (c--) { d[c.toString(a)] = k[c] || c.toString(a) } k = [function (e) { return d[e] }]; e = function () { return '\\w+' }; c = 1 }; while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } } return p }('(3(){(3 a(){8{(3 b(2){7((\'\'+(2/2)).6!==1||2%5===0){(3(){}).9(\'4\')()}c{4}b(++2)})(0)}d(e){g(a,f)}})()})();', 17, 17, '||i|function|debugger|20|length|if|try|constructor|||else|catch||5000|setTimeout'.split('|'), 0, {}))
+        $(document).ready(function () {
+            App.init();
+        });
+    </script>
+    <script src="~/Crox/bootstrap/js/popper.min.js"></script>
+    <script src="~/Crox/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Crox/assets/js/app.js"></script>
+    <script src="~/Crox/plugins/highlight/highlight.pack.js"></script>
+    <script src="~/Crox/assets/js/custom.js"></script>
+</body>
+</html>

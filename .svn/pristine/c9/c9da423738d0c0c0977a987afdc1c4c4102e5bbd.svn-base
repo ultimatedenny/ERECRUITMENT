@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-content widget-content-area">
+                    <div class="form-row mb-10" style="padding:10pt">
+                        <div class="col">
+                            <h6>BATCH</h6>
+                            <select class="form-control basic js-data-example-ajax" id="BATCHSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6>STATUS</h6>
+                            <select class="form-control basic js-data-example-ajax" id="STATUSSELECTOR">
+                                <option value="">ALL</option>
+                                <option value="OPEN">OPEN</option>
+                                <option value="CLOSE">CLOSE</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">SEARCH</h6>
+                            <button class="btn btn-outline-primary mb-2 mr-2 btn-lg" onclick="SEARCH()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                <table id="table1" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>BATCH NO</th>
+                            <th>BATCH EMP</th>
+                            <th>NAME</th>
+                            <th>ID</th>
+                            <th>CATEGORY</th>
+                            <th>STATUS</th>
+                            <th>UPDATE TIME</th>
+                            <th>UPDATE USER</th>
+                            <th>DETAILS</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <br />
+            <div style="text-align:end">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="REPORTDETAILMODAL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">REPORT DETAIL</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-4">
+                    <label for="REPORT_ID">REPORT ID</label>
+                    <input type="text" class="form-control form-control-sm" id="REPORT_ID" placeholder="">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="REPORT_CATE">CATEGORY</label>
+                    <select type="text" class="form-control form-control-sm" id="REPORT_CATE" placeholder="">
+                        <option value="0">Tindakan Penipuan</option>
+                        <option value="1">Tindakan Penyuapan</option>
+                        <option value="2">Tindakan Menjual Lowongan Pekerjaan</option>
+                        <option value="3">Tindakan Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="REPORT_DESC">REPORT DESC</label>
+                    <textarea type="text" class="form-control form-control-sm" id="REPORT_DESC" placeholder=""></textarea>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="REPORT_STATUS">REPORT STATUS</label>
+                    <select type="text" class="form-control form-control-sm" id="REPORT_STATUS" placeholder="">
+                        <option value="OPEN">OPEN</option>
+                        <option value="CLOSE">CLOSE</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="REPORT_ACTION">ACTION TAKEN</label>
+                    <input type="text" class="form-control form-control-sm" id="REPORT_ACTION" placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                <button type="button" onclick="SAVEDATA()" class="btn btn-outline-success">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GETBATCH_DROPDOWN();
+    });
+    function GETTABLE() {
+        var STATUS  = $("#STATUSSELECTOR").val();
+        var URL = "@Url.Action("WEB_GETTABLE_REPORT", "INTERVIEWBOARD")";
+        var MODEL = {
+            STATUS: STATUS
+        };
+        var table = $('#table1').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "destroy": true,
+            "searching": false,
+            "paging": false,
+            "searching": false,
+            "stripeClasses": [],
+            "lengthMenu": [10, 20, 30, 40, 50, 100, 200, 500, 1000],
+            "pageLength": 10,
+            "filter": false,
+            "ajax": {
+                "url": URL,
+                "type": "POST",
+                "datatype": "json",
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "data": MODEL, function(a) {
+                    return $.extend({}, a, {
+                    });
+                }
+            },
+            "columns": [
+                { "data": "BATCH_NO", "autoWidth": true, "orderable": false },
+                { "data": "BATCH_EMP", "autoWidth": true, "orderable": false },
+                { "data": "NAME_EMP", "autoWidth": true, "orderable": false },
+                { "data": "REPORT_ID", "autoWidth": true, "orderable": false },
+                { "data": "REPORT_CATE", "autoWidth": true, "orderable": false },
+                { "data": "REPORT_STATUS", "autoWidth": true, "orderable": false },
+                { "data": "UPDT_TIME", "autoWidth": true, "orderable": false },
+                { "data": "UPDT_USER", "autoWidth": true, "orderable": false },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button class="btn btn-outline-primary mb-2" onclick="OPENDETAILS(\'' + full.REPORT_ID + '\')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>'
+                    }
+                },
+            ],
+        });
+    }
+
+    function OPENDETAILS(REPORT_ID) {
+        document.getElementById('REPORT_ID').value = REPORT_ID;
+        document.getElementById('REPORT_ID').disabled = true;
+        GETDATA();
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+    }
+
+    function SEARCH() {
+        GETTABLE();
+    }
+
+    function GETBATCH_DROPDOWN() {
+        var URL = "@Url.Action("WEB_GETBATCH_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#BATCHSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    var option = document.createElement('option')
+                    option.value = jsonRes[j].BATCHNO;
+                    option.innerHTML = jsonRes[j].BATCHNO;
+                    document.getElementById('BATCHSELECTOR').append(option);
+                }
+                GETTABLE();
+                var ss = $(".basic").select2({
+                    tags: true,
+                });
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+
+
+    function SAVEDATA() {
+        $.blockUI({
+            message: "UPDATING..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var URL = "@Url.Action("WEB_SAVE_DETAIL_REPORT", "INTERVIEWBOARD")";
+        var REPORT_ID     = document.getElementById('REPORT_ID').value;
+        var REPORT_ACTION = document.getElementById('REPORT_ACTION').value;
+        var REPORT_STATUS = document.getElementById('REPORT_STATUS').value;
+        var MODEL = {
+            REPORT_ID: REPORT_ID,
+            REPORT_ACTION: REPORT_ACTION,
+            REPORT_STATUS: REPORT_STATUS
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                    $('#REPORTDETAILMODAL').modal('toggle');
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'MESSAGE: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GETDATA() {
+        var REPORTID = document.getElementById('REPORT_ID').value;
+        var URL = "@Url.Action("WEB_GET_DETAIL_REPORT", "INTERVIEWBOARD")?REPORTID=" + REPORTID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                $('#REPORTDETAILMODAL').modal('toggle');
+                document.getElementById('REPORT_CATE').value = data[0].REPORT_CATE;
+                document.getElementById('REPORT_DESC').value = data[0].REPORT_DESC;
+                document.getElementById('REPORT_STATUS').value = data[0].REPORT_STATUS;
+                document.getElementById('REPORT_ACTION').value = data[0].REPORT_ACTION;
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+    }
+
+</script>

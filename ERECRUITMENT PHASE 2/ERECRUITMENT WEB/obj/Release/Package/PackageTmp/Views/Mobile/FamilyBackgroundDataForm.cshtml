@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "FamilyBackgroundDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA ORANGTUA</b> </h4>
+            </div>
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+            </div>
+            <form action="javascript:SAVEFAMILYBACKGROUND()">
+                <div class="form-group mb-4">
+                    <label for="NO_KK">NOMOR KARTU KELUARGA <code>*</code></label>
+                    <input type="number" class="form-control form-control-sm" id="NO_KK" maxlength="16" placeholder="">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="FATHER_ALIVE">APAKAH AYAH ANDA MASIH HIDUP ? <code>*</code></label>
+                    <select class="form-control" id="FATHER_ALIVE" onchange="FATHER_ALIVE_CHG()">
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div id="FATHER_DIV">
+                    <div class="form-group mb-4">
+                        <label for="NIK_FATHER">NIK AYAH <code>*</code></label>
+                        <input type="number" class="form-control form-control-sm" id="NIK_FATHER" maxlength="16" placeholder="16 Digit NIK" required pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="FATHER_NAME">NAMA AYAH</label>
+                        <input type="text" class="form-control form-control-sm" id="FATHER_NAME" placeholder="">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="FATHER_BIRTHPLACE">TEMPAT LAHIR AYAH</label>
+                        <input type="text" class="form-control form-control-sm" id="FATHER_BIRTHPLACE" placeholder="">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="FATHER_BIRTHDAY">TANGGAL LAHIR AYAH </label>
+                        <input id="FATHER_BIRTHDAY" value="" class="form-control" type="text" placeholder="pilih tanggal" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="FATHER_MOBILE">NO. HP AYAH</label>
+                        <input type="text" class="form-control form-control-sm" id="FATHER_MOBILE" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="MOTHER_ALIVE">APAKAH IBU ANDA MASIH HIDUP ? <code>*</code></label>
+                    <select class="form-control" id="MOTHER_ALIVE" onchange="MOTHER_ALIVE_CHG()">
+                        <option value="">SELECT</option>
+                        <option value="true">YA</option>
+                        <option value="false">TIDAK</option>
+                    </select>
+                </div>
+
+                <div id="MOTHER_DIV">
+                    <div class="form-group mb-4">
+                        <label for="NIK_MOTHER">NIK IBU <code>*</code></label>
+                        <input type="number" class="form-control form-control-sm" id="NIK_MOTHER" maxlength="16" placeholder="16 Digit NIK" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="MOTHER_NAME">NAMA IBU <code>*</code></label>
+                        <input type="text" class="form-control form-control-sm" id="MOTHER_NAME" placeholder="">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="MOTHER_BIRTHPLACE">TEMPAT LAHIR IBU</label>
+                        <input type="text" class="form-control form-control-sm" id="MOTHER_BIRTHPLACE" placeholder="">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="MOTHER_BIRTHDAY">TANGGAL LAHIR IBU </label>
+                        <input id="MOTHER_BIRTHDAY" value="" class="form-control" type="text" placeholder="pilih tanggal" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="MOTHER_MOBILE">NO. HP IBU</label>
+                        <input type="text" class="form-control form-control-sm" id="MOTHER_MOBILE" placeholder="">
+                    </div>
+                </div>
+
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    var ISFATHERALIVE = true;
+    var ISMOTHERALIVE = true;
+
+    $(document).ready(function () {
+
+        document.getElementById("FATHER_NAME").disabled = true;
+        document.getElementById("MOTHER_NAME").disabled = true;
+        document.getElementById("NO_KK").disabled = true;
+        flatpickr(document.getElementById('FATHER_BIRTHDAY'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        flatpickr(document.getElementById('MOTHER_BIRTHDAY'), {
+            disableMobile: "true",
+            dateFormat: "d-m-Y"
+        });
+        $('#NO_KK').maxlength();
+        $('#NIK_MOTHER').maxlength();
+        $('#NIK_FATHER').maxlength();
+
+        GET_PARENTS();
+
+        if (ISFATHERALIVE == true) {
+            document.getElementById("NIK_FATHER").disabled = false;
+            document.getElementById("FATHER_BIRTHPLACE").disabled = false;
+            document.getElementById("FATHER_BIRTHDAY").disabled = false;
+            document.getElementById("FATHER_MOBILE").disabled = false;
+
+
+            document.querySelector('#NIK_FATHER').required = true;
+            document.querySelector('#FATHER_BIRTHPLACE').required = true;
+            document.querySelector('#FATHER_BIRTHDAY').required = true;
+            document.querySelector('#FATHER_MOBILE').required = true;
+        }
+        else {
+            document.getElementById("NIK_FATHER").disabled = true;
+            //document.getElementById("FATHER_BIRTHPLACE").disabled = true;
+            //document.getElementById("FATHER_BIRTHDAY").disabled = true;
+            document.getElementById("FATHER_MOBILE").disabled = true;
+
+            document.querySelector('#NIK_FATHER').required = false;
+            document.querySelector('#FATHER_BIRTHPLACE').required = false;
+            document.querySelector('#FATHER_BIRTHDAY').required = false;
+            document.querySelector('#FATHER_MOBILE').required = false;
+        }
+
+        if (ISMOTHERALIVE == true) {
+            document.getElementById("NIK_MOTHER").disabled = false;
+            document.getElementById("MOTHER_BIRTHPLACE").disabled = false;
+            document.getElementById("MOTHER_BIRTHDAY").disabled = false;
+            document.getElementById("MOTHER_MOBILE").disabled = false;
+
+            document.querySelector('#NIK_MOTHER').required = true;
+            document.querySelector('#MOTHER_BIRTHPLACE').required = true;
+            document.querySelector('#MOTHER_BIRTHDAY').required = true;
+            document.querySelector('#MOTHER_MOBILE').required = true;
+        }
+        else {
+            document.getElementById("NIK_MOTHER").disabled = true;
+            //document.getElementById("MOTHER_BIRTHPLACE").disabled = true;
+            //document.getElementById("MOTHER_BIRTHDAY").disabled = true;
+            document.getElementById("MOTHER_MOBILE").disabled = true;
+
+            document.querySelector('#NIK_MOTHER').required = false;
+            document.querySelector('#MOTHER_BIRTHPLACE').required = false;
+            document.querySelector('#MOTHER_BIRTHDAY').required = false;
+            document.querySelector('#MOTHER_MOBILE').required = false;
+        }
+
+        GET_PARENTS();
+    });
+
+    function GET_PARENTS() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_GETPARENTS", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == true) {
+                    document.getElementById("FATHER_NAME").value = data.Data.FATHER_NAME;
+                    document.getElementById("MOTHER_NAME").value = data.Data.MOTHER_NAME;
+                    document.getElementById("NO_KK").value = data.Data.NOKK;
+                }
+                else {
+                    Snackbar.show({ text: 'GET_PARENTS() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_PARENTS() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function FATHER_ALIVE_CHG() {
+        if (document.getElementById("FATHER_ALIVE").value == false || document.getElementById("FATHER_ALIVE").value == 'false' || document.getElementById("FATHER_ALIVE").value == '') {
+            document.getElementById("NIK_FATHER").disabled = true;
+            //document.getElementById("FATHER_BIRTHPLACE").disabled = true;
+            //document.getElementById("FATHER_BIRTHDAY").disabled = true;
+            document.getElementById("FATHER_MOBILE").disabled = true;
+
+            document.getElementById("NIK_FATHER").value = "";
+            document.getElementById("FATHER_BIRTHPLACE").value = "";
+            document.getElementById("FATHER_BIRTHDAY").value = "";
+            document.getElementById("FATHER_MOBILE").value = "";
+            ISFATHERALIVE = false;
+
+            document.querySelector('#NIK_FATHER').required = false;
+            document.querySelector('#FATHER_BIRTHPLACE').required = false;
+            document.querySelector('#FATHER_BIRTHDAY').required = false;
+            document.querySelector('#FATHER_MOBILE').required = false;
+        }
+        else {
+            document.getElementById("NIK_FATHER").disabled = false;
+            document.getElementById("FATHER_BIRTHPLACE").disabled = false;
+            document.getElementById("FATHER_BIRTHDAY").disabled = false;
+            document.getElementById("FATHER_MOBILE").disabled = false;
+            ISFATHERALIVE = true;
+
+            document.querySelector('#NIK_FATHER').required = true;
+            document.querySelector('#FATHER_BIRTHPLACE').required = true;
+            document.querySelector('#FATHER_BIRTHDAY').required = true;
+            document.querySelector('#FATHER_MOBILE').required = true;
+        }
+    }
+
+    function MOTHER_ALIVE_CHG() {
+        if (document.getElementById("MOTHER_ALIVE").value == false || document.getElementById("MOTHER_ALIVE").value == 'false' || document.getElementById("MOTHER_ALIVE").value == '') {
+            document.getElementById("NIK_MOTHER").disabled = true;
+            //document.getElementById("MOTHER_BIRTHPLACE").disabled = true;
+            //document.getElementById("MOTHER_BIRTHDAY").disabled = true;
+            document.getElementById("MOTHER_MOBILE").disabled = true;
+
+            document.getElementById("NIK_MOTHER").value = "";
+            document.getElementById("MOTHER_BIRTHPLACE").value = "";
+            document.getElementById("MOTHER_BIRTHDAY").value = "";
+            document.getElementById("MOTHER_MOBILE").value = "";
+            ISMOTHERALIVE = false;
+
+            document.querySelector('#NIK_MOTHER').required = false;
+            document.querySelector('#MOTHER_BIRTHPLACE').required = false;
+            document.querySelector('#MOTHER_BIRTHDAY').required = false;
+            document.querySelector('#MOTHER_MOBILE').required = false;
+        }
+        else {
+            document.getElementById("NIK_MOTHER").disabled = false;
+            document.getElementById("MOTHER_BIRTHPLACE").disabled = false;
+            document.getElementById("MOTHER_BIRTHDAY").disabled = false;
+            document.getElementById("MOTHER_MOBILE").disabled = false;
+            ISMOTHERALIVE = true;
+
+            document.querySelector('#NIK_MOTHER').required = true;
+            document.querySelector('#MOTHER_BIRTHPLACE').required = true;
+            document.querySelector('#MOTHER_BIRTHDAY').required = true;
+            document.querySelector('#MOTHER_MOBILE').required = true;
+        }
+    }
+
+    function SAVEFAMILYBACKGROUND() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_FAMILYBACKGROUND", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+
+        var FATHER_NIK = "";
+        var FATHER_BIRTHPLACE = "";
+        var FATHER_BIRTHDATE = "";
+        var FATHER_MOBILE = "";
+
+        var MOTHER_NIK = "";
+        var MOTHER_BIRTHPLACE = "";
+        var MOTHER_BIRTHDATE = "";
+        var MOTHER_MOBILE = "";
+
+        if(ISFATHERALIVE == true){
+            FATHER_NIK = document.getElementById('NIK_FATHER').value;
+            FATHER_BIRTHPLACE = document.getElementById('FATHER_BIRTHPLACE').value;
+            FATHER_BIRTHDATE = document.getElementById('FATHER_BIRTHDAY').value;
+            FATHER_MOBILE = document.getElementById('FATHER_MOBILE').value;
+        }
+
+        if (ISMOTHERALIVE == true) {
+            MOTHER_NIK = document.getElementById('NIK_MOTHER').value;
+            MOTHER_BIRTHPLACE = document.getElementById('MOTHER_BIRTHPLACE').value;
+            MOTHER_BIRTHDATE = document.getElementById('MOTHER_BIRTHDAY').value;
+            MOTHER_MOBILE = document.getElementById('MOTHER_MOBILE').value;
+        }
+
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            FATHER_ALIVE: ISFATHERALIVE,
+            FATHER_NIK: FATHER_NIK,
+            FATHER_BIRTHPLACE: FATHER_BIRTHPLACE,
+            FATHER_BIRTHDATE: FATHER_BIRTHDATE,
+            FATHER_MOBILE: FATHER_MOBILE,
+
+            MOTHER_ALIVE: ISMOTHERALIVE,
+            MOTHER_NIK: MOTHER_NIK,
+            MOTHER_BIRTHPLACE: MOTHER_BIRTHPLACE,
+            MOTHER_BIRTHDATE: MOTHER_BIRTHDATE,
+            MOTHER_MOBILE: MOTHER_MOBILE
+        };
+
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'FAMILY BACKGROUND DATA UPDATED, PAGE WILL BE REDIRECT TO SPOUSE DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("SpouseDataForm", "MOBILE")";
+                        }, 1000);
+                    }, 2000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEFAMILYBACKGROUND() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEFAMILYBACKGROUND() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+
+    }
+
+</script>

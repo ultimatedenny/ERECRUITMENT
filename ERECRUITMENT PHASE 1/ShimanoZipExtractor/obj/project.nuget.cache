@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "R+485NsHWHp/swEBlfhHpfGstIJ//nbyQwoD6NNZ/lRrghBbatinzksBJCkloFDJEY11qNhYb2sPYPrHm9XARQ==",
+  "success": true,
+  "projectFilePath": "D:\\Project Deni\\EREQRUITMENT\\ShimanoZipExtractor\\ShimanoZipExtractor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sbm_deni\\.nuget\\packages\\ilrepack.lib.msbuild.task\\2.0.18.2\\ilrepack.lib.msbuild.task.2.0.18.2.nupkg.sha512",
+    "C:\\Users\\sbm_deni\\.nuget\\packages\\zipstorer\\3.6.0\\zipstorer.3.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewBag.Title = "EducationDataForm";
+    Layout = "~/Views/Shared/_Layout_Mobile.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+
+            <div style="text-align: center; background-color: #d3d3d3 ">
+                <h4 id="TITLE" style="color:black"> <b>DATA PENDIDIKAN</b> </h4>
+            </div>
+
+            <div class="form-group mb-4">
+                <label style="color:black; font-size:8pt"><b><u>CATATAN</u></b></label>
+                <br />
+                <label style="color:red; font-size:8pt"><b><i>* WAJIB DIISI</i></b></label>
+                <br />
+                <label style="color:black; font-size:8pt"><b>HANYA FORMAT FILE <code>.PDF</code> YANG DI DUKUNG</b></label>
+            </div>
+
+            <form action="javascript:UploadIjazah_F()">
+                <div class="form-group mb-4">
+                    <p for="LASTEDU_SELECTOR">PENDIDIKAN TERAKHIR<code>*</code></p>
+                    <select class="form-control" id="LASTEDU_SELECTOR" required></select>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SCHOOL_NAME">NAMA SEKOLAH / PERGURUAN TINGGI <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="SCHOOL_NAME" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SCHOOL_FACULTY">FAKULTAS <code>*</code></p>
+                    <code for="">* Jika SMA atau MA, harap memilih IPA / IPS.</code>
+                    <input type="text" class="form-control form-control-sm" id="SCHOOL_FACULTY" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="SCHOOL_MAJOR">JURUSAN <code>*</code></p>
+                    <code for="">* Jika SMA atau MA, harap samakan dengan fakultas.</code>
+                    <input type="text" class="form-control form-control-sm" id="SCHOOL_MAJOR" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="GRADUATE_YEAR">TAHUN KELULUSAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="GRADUATE_YEAR" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="GRADUATE_COUNTRY">NEGARA KELULUSAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="GRADUATE_COUNTRY" placeholder="eg: Indonesia" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="GRADUATE_DISTRICT">PROVISI KELULUSAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="GRADUATE_DISTRICT" placeholder="eg: Kepulauan Riau" required>
+                </div>
+                <div class="form-group mb-4">
+                    <p for="GRADUATE_CITY">KOTA KELULUSAN <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="GRADUATE_CITY" placeholder="eg: Batam" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="AVG_SCORE">NILAI RATA-RATA / IPK <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="AVG_SCORE" placeholder="" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="CERT_NO">NOMOR IJAZAH <code>*</code></p>
+                    <input type="text" class="form-control form-control-sm" id="CERT_NO" placeholder="" required>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="myFirstImage">
+                    <p for="CERT_NO">FOTO IJAZAH TERAKHIR (SISI DEPAN) <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></b></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadIjazah_F" name="UploadKK" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="custom-file-container" data-upload-id="mySecondImage">
+                    <p for="CERT_NO">FOTO IJAZAH TERAKHIR (SISI BELAKANG) <code>*</code><b><a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image"> (X)</a></b></p>
+                    <label class="custom-file-container__custom-file">
+                        <input type="file" id="UploadIjazah_B" name="UploadKK" class="custom-file-container__custom-file__custom-file-input" accept=".pdf" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <p for="">APAKAH ANDA BERSEDIA UNTUK MEMBERIKAN IJAZAH TERAKHIR UNTUK DI TAHAN SELAMA MENJALANI MASA KONTRAK ?<code>*</code></p>
+                    <select class="form-control" id="HOLD_WILLINGLY" required>
+                        <option value=""></option>
+                        <option value="true">BERSEDIA</option>
+                        <option value="false">TIDAK BERSEDIA</option>
+                    </select>
+                    <br />
+                    <i><label style="font-size:10pt" for="">DENGAN MENYETUJUI INI ANDA BERARTI TELAH MENANDATANGANI SECARA DIGITAL</label></i>
+                </div>
+                <button type="submit" name="SAVEBUTTON" id="SAVEBUTTON" class="btn btn-block btn-primary">SIMPAN & LANJUTKAN</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var firstUpload = new FileUploadWithPreview('myFirstImage');
+        var secondUpload = new FileUploadWithPreview('mySecondImage');
+        //GET_MOBILE_CANEDIT_EDUCATIONFORM();
+        GETEDUCATION();
+    });
+
+    function GET_MOBILE_CANEDIT_EDUCATIONFORM() {
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("GET_MOBILE_CANEDIT_EDUCATIONFORM", "MOBILE")" + "?INVITATION=" + UNIQUEID;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.Result == false) {
+                    $.blockUI({
+                        message: data.Message,
+                        fadeIn: 500,
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            zIndex: 1201,
+                            padding: 0,
+                            backgroundColor: 'transparent'
+                        }
+                    });
+                    $("#SAVEBUTTON").remove();
+                }
+                else {
+                    document.getElementById("SAVEBUTTON").disabled = false;
+                    GETEDUCATION();
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    Snackbar.show({ text: 'GET_MOBILE_CANEDIT_EDUCATIONFORM() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function GETEDUCATION() {
+        var URL = "@Url.Action("WEB_GET_EDU", "MASTERDATA")";
+        $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    //for (var j = 0; j < data.length; j++) {
+                    //    var option = new Option(data[j].EDUCATION, data[j].EDUCATION, true, true);
+                    //    document.getElementById('LASTEDU_SELECTOR').append(option);
+                    //}
+                    document.getElementById("LASTEDU_SELECTOR").innerHTML = "";
+                    var option = new Option("SELECT", "", false, false);
+                    document.getElementById('LASTEDU_SELECTOR').append(option);
+                    for (var i = 0; i < data.length; i++) {
+                        var option = new Option(data[i].EDUCATION, data[i].EDUCATION, true, true);
+                        document.getElementById('LASTEDU_SELECTOR').append(option);
+                    }
+                    document.getElementById("LASTEDU_SELECTOR").value = "";
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETEDUCATION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+
+    function SAVEEDUCATION() {
+        $.blockUI({
+            message: "SAVING DATA..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var URL = "@Url.Action("MOBILE_SAVE_EDUCATIONFORM", "MOBILE")";
+        var _LASTEDU_SELECTOR = document.getElementById('LASTEDU_SELECTOR').value;
+        var _SCHOOL_NAME= document.getElementById('SCHOOL_NAME').value;
+        var _SCHOOL_MAJOR = document.getElementById('SCHOOL_MAJOR').value;
+        var _SCHOOL_FACULTY = document.getElementById('SCHOOL_FACULTY').value;
+        var _GRADUATE_YEAR = document.getElementById('GRADUATE_YEAR').value;
+        var _GRADUATE_PLACE = "";
+
+        var _GRADUATE_COUNTRY = document.getElementById('GRADUATE_COUNTRY').value;
+        var _GRADUATE_DISTRICT = document.getElementById('GRADUATE_DISTRICT').value;
+        var _GRADUATE_CITY = document.getElementById('GRADUATE_CITY').value;
+
+        var _AVG_SCORE= document.getElementById('AVG_SCORE').value;
+        var _CERT_NO = document.getElementById('CERT_NO').value;
+        var _HOLD_WILLINGLY = document.getElementById('HOLD_WILLINGLY').value;
+        var UNIQUEID = "@ViewBag.UNIQUEID";
+        var MODEL = {
+            BATCH_EMP: UNIQUEID,
+            LAST_EDU: _LASTEDU_SELECTOR,
+            SCHOOL_NAME: _SCHOOL_NAME,
+            SCHOOL_MAJOR: _SCHOOL_MAJOR,
+            SCHOOL_FACULTY: _SCHOOL_FACULTY,
+            GRADUATE_YEAR: _GRADUATE_YEAR,
+            GRADUATE_PLACE: _GRADUATE_PLACE,
+            GRADUATE_COUNTRY: _GRADUATE_COUNTRY,
+            GRADUATE_DISTRICT: _GRADUATE_DISTRICT,
+            GRADUATE_CITY: _GRADUATE_CITY,
+            AVG_SCORE: _AVG_SCORE,
+            CERT_NO: _CERT_NO,
+            HOLD_WILLINGLY: _HOLD_WILLINGLY
+        };
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data.Result == true) {
+                    $.unblockUI();
+                    setTimeout(function () {
+                        Snackbar.show({ text: 'EDUCATION DATA UPDATED, PAGE WILL BE REDIRECT TO LANGUAGE DATA FORM.', pos: 'bottom-right' });
+                        setTimeout(function () {
+                             window.location.href = "@Url.Action("LanguageDataForm", "MOBILE")";
+                        }, 500);
+                    }, 1000);
+                }
+                else {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEEDUCATION() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVEEDUCATION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                }
+            }
+        });
+    }
+
+    function UploadIjazah_F() {
+        $.blockUI({
+            message: "UPLOADING IJAZAH DEPAN..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadIjazah_F").get(0);
+        var files = fileUpload.files;
+        if (files.length == 0) {
+            $.unblockUI();
+            Snackbar.show({ text: 'PASTIKAN ANDA MENGUPLOAD IJAZAH DEPAN', pos: 'bottom-right' });
+        }
+        else {
+            for (var i = 0; i < files.length; i++) {
+                fileData.append('File', files[i]);
+            }
+            var URL = "@Url.Action("UPLOAD_IJAZAH_F", "MOBILE")";
+            $.ajax({
+                url: URL,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        $.unblockUI();
+                        UploadIjazah_B();
+                    }
+                    else {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'UPLOADIJAZAH_F() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'UPLOADIJAZAH_F() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+    }
+
+    function UploadIjazah_B() {
+        $.blockUI({
+            message: "UPLOADING IJAZAH BELAKANG..",
+            fadeIn: 500,
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                zIndex: 1201,
+                padding: 0,
+                backgroundColor: 'transparent'
+            }
+        });
+        var fileData = new FormData();
+        var fileUpload = $("#UploadIjazah_B").get(0);
+        var files = fileUpload.files;
+
+        if (files.length == 0) {
+            $.unblockUI();
+            Snackbar.show({ text: 'PASTIKAN ANDA MENGUPLOAD IJAZAH BELAKANG', pos: 'bottom-right' });
+        }
+        else {
+            for (var i = 0; i < files.length; i++) {
+                fileData.append('File', files[i]);
+            }
+            var URL = "@Url.Action("UPLOAD_IJAZAH_B", "MOBILE")";
+            $.ajax({
+                url: URL,
+                method: 'POST',
+                contentType: false,
+                processData: false,
+                data: fileData,
+                success: function (data) {
+                    if (data.Result == true) {
+                        $.unblockUI();
+                        SAVEEDUCATION();
+                    }
+                    else {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'UPLOADIJAZAH_B() ERROR: ' + data.Message + '', pos: 'bottom-right' });
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        $.unblockUI();
+                        Snackbar.show({ text: 'UploadIjazah_B() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+        }
+    }
+
+</script>
+

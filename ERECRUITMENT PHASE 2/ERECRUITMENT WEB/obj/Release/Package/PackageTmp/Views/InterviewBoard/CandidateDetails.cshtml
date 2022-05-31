@@ -1,0 +1,2648 @@
+﻿
+@{
+    ViewBag.Title = "Candidate Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div id="tabs">
+                <ul class="nav nav-pills mb-4 mt-3  justify-content-center" id="INTERVIEW-tab" role="tablist">
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB1_SELECTED()" class="nav-link mb-2 text-center active" id="EMP_INFO" data-toggle="pill" href="#EMP_INFO_CONTENT" role="tab" aria-controls="rounded-pills-icon-home" aria-selected="false">INFORMATIONS</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB2_SELECTED()" class="nav-link mb-2 text-center" id="EMP_FAM" data-toggle="pill" href="#EMP_FAM_CONTENT" role="tab" aria-controls="rounded-pills-icon-profile" aria-selected="false">FAMILY</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB3_SELECTED()" class="nav-link mb-2 text-center" id="EMP_SPS" data-toggle="pill" href="#EMP_SPS_CONTENT" role="tab" aria-controls="rounded-pills-icon-contact" aria-selected="true">SPOUSE</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB4_SELECTED()" class="nav-link mb-2 text-center" id="EMP_EMG" data-toggle="pill" href="#EMP_EMG_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">EMERGENCY CONTACT</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB5_SELECTED()" class="nav-link mb-2 text-center" id="EMP_EDU" data-toggle="pill" href="#EMP_EDU_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">EDUCATION & LANGUAGE</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB6_SELECTED()" class="nav-link mb-2 text-center" id="EMP_WRE" data-toggle="pill" href="#EMP_WRE_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">WORK EXPERIANCE</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB7_SELECTED()" class="nav-link mb-2 text-center" id="EMP_ADD" data-toggle="pill" href="#EMP_ADD_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">ADDTIONAL</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB8_SELECTED()" class="nav-link mb-2 text-center" id="EMP_DOC" data-toggle="pill" href="#EMP_DOC_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">DOCUMENTS</a>
+                    </li>
+                    <li class="nav-item ml-2 mr-2">
+                        <a onclick="TAB9_SELECTED()" class="nav-link mb-2 text-center" id="EMP_STS" data-toggle="pill" href="#EMP_STS_CONTENT" role="tab" aria-controls="rounded-pills-icon-settings" aria-selected="false">STATUS</a>
+                    </li>
+                </ul>
+
+                <div style="text-align:end">
+                    <button class="btn btn-outline-success mb-2 mr-2" onclick="SAVE()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    </button>
+                </div>
+
+                <div class="tab-content" id="INTERVIEW-tabContent"  height:100%">
+                    <div class="tab-pane fade active show" id="EMP_INFO_CONTENT" role="tabpanel" aria-labelledby="rounded-pills-icon-home-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_NAME" class="col-sm-2 col-form-label col-form-label-sm">Full Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_NAME" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKPASFOTO()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_NIK" class="col-sm-2 col-form-label col-form-label-sm">NIK</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_NIK" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKKTPFOTO()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_GANDER" class="col-sm-2 col-form-label col-form-label-sm">Gander</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_GANDER">
+                                            <option value="MALE">MALE</option>
+                                            <option value="FEMALE">FEMALE</option>
+                                        </select>
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_GANDER" placeholder="">*@
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_MARITAL" class="col-sm-2 col-form-label col-form-label-sm">Martial Status</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EMP_MARITAL"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_HEIGHT" class="col-sm-2 col-form-label col-form-label-sm">Height (CM)</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_HEIGHT" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WEIGHT" class="col-sm-2 col-form-label col-form-label-sm">Weight (KG)</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WEIGHT" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_BIRTHPLACE" class="col-sm-2 col-form-label col-form-label-sm">Place of Birth</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_BIRTHPLACE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_BIRTHDATE" class="col-sm-2 col-form-label col-form-label-sm">Date of Birth</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_BIRTHDATE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_RELIGION" class="col-sm-2 col-form-label col-form-label-sm">Religion</label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_RELIGION" placeholder="">*@
+                                        <select class="form-control" id="EMP_RELIGION"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_RACE" class="col-sm-2 col-form-label col-form-label-sm">Ethnic / Race</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EMP_RACE"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_ADDRESS" class="col-sm-2 col-form-label col-form-label-sm">Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ADDRESS" placeholder="ADDRESS">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="" class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_BLOK" placeholder="BLOCK">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_NOMOR" placeholder="NO">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_RW" placeholder="RW">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_RT" placeholder="RT">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_MOBILE" class="col-sm-2 col-form-label col-form-label-sm">Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_MOBILE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_TELEGRAM" class="col-sm-2 col-form-label col-form-label-sm">Telegram</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TELEGRAM" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WHATSAPP" class="col-sm-2 col-form-label col-form-label-sm">Whatsapp</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WHATSAPP" placeholder="">
+                                    </div>
+                                    <button onclick="CHATWA()" class="btn btn-outline-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_EMAIL" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EMAIL" placeholder="">
+                                    </div>
+                                    <button onclick="MAILTO()" class="btn btn-outline-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_LINKEDIN" class="col-sm-2 col-form-label col-form-label-sm">Linkedin</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_LINKEDIN" placeholder="">
+                                    </div>
+                                    <button onclick="GOTOLINKEDIN()" class="btn btn-outline-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="" class="col-sm-2 col-form-label col-form-label-sm">Uniform Size</label>
+                                    <div class="col-sm-1">
+                                        <label for="" class="col-sm-2 col-form-label col-form-label-sm">Shirt</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="EMP_SHIRT_SIZE" required>
+                                            <option value="">SELECT</option>
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <label for="" class="col-sm-2 col-form-label col-form-label-sm">Pants</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="EMP_PANTS_SIZE" required>
+                                            <option value="">SELECT</option>
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_FAM_CONTENT" role="tabpanel" aria-labelledby="FAMILY-tab">
+
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-heading">
+                                <h5 class="" style="color: rgb(136 142 168)">Family Card</h5>
+                            </div>
+                            <div class="widget-content">
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_NOKK" class="col-sm-2 col-form-label col-form-label-sm">NO. KK</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_NOKK" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKKKFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row layout-top-spacing">
+                            <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10 layout-spacing">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-heading">
+                                        <h5 class="" style="color: rgb(136 142 168)">Father</h5>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Alive ?</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control " id="EMP_FATHER_ALIVE">
+                                                    <option value="true">YES</option>
+                                                    <option value="false">NO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_NAME" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">NIK</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_NIK_FATHER" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Age</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_AGE" placeholder="">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Job</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_JOB" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Birth Place</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_BIRTHPLACE" placeholder="">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Birthday</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_BIRTHDAY" placeholder="">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Mobile</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_FATHER_MOBILE" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-10 col-md-10 col-sm-10 col-10 layout-spacing" style="margin-right:0px">
+                                <div class="statbox widget box box-shadow">
+                                    <div class="widget-heading">
+                                        <h5 class="" style="color: rgb(136 142 168)">Mother</h5>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Alive ?</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" id="EMP_MOTHER_ALIVE">
+                                                    <option value="true">YES</option>
+                                                    <option value="false">NO</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_NAME" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">NIK</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_NIK_MOTHER" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Age</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_AGE" placeholder="">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Job</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_JOB" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Birth Place</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_BIRTHPLACE" placeholder="">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Birthday</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_BIRTHDAY" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row  mb-4">
+                                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Mobile</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-sm" id="EMP_MOTHER_MOBILE" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-heading">
+                                <h5 class="" style="color: rgb(136 142 168)">Siblings</h5>
+                            </div>
+
+                            <div class="widget-content" id="SIBLINGS_DIV">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="EMP_SPS_CONTENT" role="tabpanel" aria-labelledby="SPOUSE-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_ISFAMILY" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Are you married?
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_ISFAMILY">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WIFE_NAME" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Spouse’s Name
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WIFE_NAME" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WIFE_NIK" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Spouse’s ID No.
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WIFE_NIK" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WIFE_BIRTH_PLACE" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Spouse’s Birth of Place
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WIFE_BIRTH_PLACE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WIFE_BIRTH_DATE" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Spouse’s Date of Birth
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WIFE_BIRTH_DATE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_WIFE_MOBILE" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Spouse’s Mobile No.
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WIFE_MOBILE" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary" onclick="CEKKKFOTO()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                        <br />
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-heading">
+                                <h5 class="" style="color: rgb(136 142 168)">Childs</h5>
+                            </div>
+                            <div class="widget-content" id="CHILD_DIV">
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_EMG_CONTENT" role="tabpanel" aria-labelledby="EMERGENCY-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Full Name
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_NAME" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Relationship
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_REL" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Mobile No.
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_MOBILE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Address
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_ADDR" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        RT
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_RT" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        RW
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_RW" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Province
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_PROVINSI" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        City / Regency
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_KABUPATEN" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        District
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_KECAMATAN" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Village
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EM_KELURAHAN" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_EDU_CONTENT" role="tabpanel" aria-labelledby="EDUCATION-tab">
+
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-heading">
+                                <h5 class="" style="color: rgb(136 142 168)">Education</h5>
+                            </div>
+                            <div class="widget-content">
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Last Education
+                                    </label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_LAST_EDU" placeholder="">*@
+                                        <select class="form-control " id="EMP_LAST_EDU"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Institution Name
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_SCHOOL_NAME" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Major
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_SCHOOL_MAJOR" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Faculty
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_FACULTY" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Graduate Year
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control form-control-sm" id="EMP_GRADUATE_YEAR" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4" hidden>
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Graduate Place
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_GRADUATE_PLACE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Graduate Place
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_GRADUATE_COUNTRY" placeholder="Country">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_GRADUATE_DISTRICT" placeholder="Province">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_GRADUATE_CITY" placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Avarage Score
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_AVG_SCORE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Certificate No.
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_CERT_NO" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKCEERTFOTO_F()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        Front
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn btn-outline-primary" onclick="CEKCEERTFOTO_B()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        Back
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Holding Certificate
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_HOLD_WILLINGLY">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-heading">
+                                <h5 class="" style="color: rgb(136 142 168)">Languages</h5>
+                            </div>
+                            <div class="widget-content" id="LANGUAGE_DIV">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_WRE_CONTENT" role="tabpanel" aria-labelledby="WORKEXP-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header" id="WORK_EXPERIENCE_DIV">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_ADD_CONTENT" role="tabpanel" aria-labelledby="ADDITIONAL-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_MOTIVASI" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Motivation
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_MOTIVASI" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_KOMITMEN" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Commitment
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_KOMITMEN" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_LEFT_HANDED" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Left-handed
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_LEFT_HANDED">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="EMP_CRIME" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Criminal act / Criminal punishment?
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_CRIME">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Suffered from a physical or mental illness
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_MENTAL_DISEASE">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Worked in PT Shimano Batam
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_WORKED_ON_SHIMANO">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Start of contract Shimano
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_SHAMANO_START" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        End of contract Shimano
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_SHIMANO_END" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Computer / ERP (SAP or other ERP)
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_SAPORCOMP">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Visual disturbance
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_EYE_CHECK">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Myopic value
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_EYE_VALUE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Eye Glasses
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_EYE_GLASSES">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Further education plan
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_STUDY_PLAN">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Smoking
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_SMOKING">
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        Last smoking
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_LAST_SMOKING" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_DOC_CONTENT" role="tabpanel" aria-labelledby="DOCUMENT-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        COVER LATTER
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKCLFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        CURRICULUM VITAE
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKCVFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        BANK ACCOUNT (BCA)
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ACCOUNT_BCA" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKBCAFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        NPWP ACCOUNT
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ACCOUNT_NPWP" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKNPWPFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        EFIN ACCOUNT
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ACCOUNT_EFIN" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKEFINFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        BPJS KES ACCOUNT
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ACCOUNT_BPJS_KES" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKBPJSKESFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        BPJS TKJ ACCOUNT
+                                    </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_ACCOUNT_BPJS_TKJ" placeholder="">
+                                    </div>
+                                    <button class="btn btn-outline-primary" onclick="CEKBPJSTKJFOTO()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        DRIVING LICENSE
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKSIMFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        COVID 2ND VACCINE
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKVAKSINFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        SKCK
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKSKCKFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        OTHER CERTIFICATE
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKSERTIFIKATFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        WORKING EXPERIENCES
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKWORKEXPFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        HEALTH DOCUMENT
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKKESEHATANFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        JOB SEEKERS IDENTIFICATION CARD (KARTU KUNING)
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKKUNINGFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        OPERATOR CARD (SIO)
+                                    </label>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-primary" onclick="CEKSIOFOTO()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMP_STS_CONTENT" role="tabpanel" aria-labelledby="STATUS-tab">
+                        <div class="statbox widget box box-shadow">
+                            <div class="widget-header">
+
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        HRD NO.
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_BATCH_EMP" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        INVITATION CODE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_INVITECODE" placeholder="" style="color: transparent; text-shadow: 0 0 8px #000;" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PERSONALITY STYLE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_PERSONALITY" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        THINKING STYLE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_THINKING_STY" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        WORKING STYLE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WORKING_STY" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        IQ SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TEST_IQ" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        MATH SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TEST_MTH" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        ACCURACY SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TEST_ACC" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        ENGLISH SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TEST_ENG" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        WRITTEN SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_WRITTEN_SCORE" placeholder="" style="color: transparent; text-shadow: 0 0 8px #000;" readonly>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PRACTICAL TEST 1
+                                    </label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_TEST_1" placeholder="">*@
+                                        <select class="form-control " id="EMP_TEST_1">
+                                            <option value="PASSED">PASSED</option>
+                                            <option value="FAILED">FAILED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                       PRACTICAL TIME 1
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TIME_TEST_1" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PRACTICAL TEST 2
+                                    </label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_TEST_2" placeholder="">*@
+                                        <select class="form-control " id="EMP_TEST_2">
+                                            <option value="PASSED">PASSED</option>
+                                            <option value="FAILED">FAILED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PRACTICAL TIME 2
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_TIME_TEST_2" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PRACTICAL SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_PRACTICAL_SCORE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        PRACTICAL REMARK
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_REMARK" placeholder="">
+                                    </div>
+                                </div>
+                                @*  *@
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        MEMORY SCORE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_MEMORY_SCORE" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        ATTENDANCE
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control " id="EMP_ATTN_EMP">
+                                            <option value="true">PRESENT</option>
+                                            <option value="false">ABSENT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        MEDICAL
+                                    </label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_MDCL_TST" placeholder="">*@
+                                        <select class="form-control " id="EMP_MDCL_TST">
+                                            <option value="true">PASSED</option>
+                                            <option value="false">FAILED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        FINAL DESSSION
+                                    </label>
+                                    <div class="col-sm-10">
+                                        @*<input type="text" class="form-control form-control-sm" id="EMP_FIN_DES" placeholder="">*@
+                                        <select class="form-control " id="EMP_FIN_DES">
+                                            <option value="true">PASSED</option>
+                                            <option value="false">FAILED</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        REMARK
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_SUM_REMARK" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        UPDATE BY
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_UPDT_USER" placeholder="" readonly> 
+                                    </div>
+                                </div>
+                                <div class="form-group row  mb-4">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">
+                                        UPDATE TIME
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="EMP_UPDT_TIME" placeholder="" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="MainRow">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="IMAGE_MODAL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Document</h5>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <iframe id="my_iframe" width="1100" height="860"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Dismiss</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var APPNAME = '@System.Configuration.ConfigurationManager.AppSettings["APPNAME"]';
+    var CURRENT = 0;
+    var TOTAL_SIBLINGS = 0;
+    var TOTAL_LANGUAGES = 0;
+    $(document).ready(function () {
+        GETRELIGION();
+        GETDETAILS('@ViewBag.BATCH_EMP');
+        TAB1_SELECTED();
+    });
+    function CHATWA() {
+        var number0 = document.getElementById("EMP_WHATSAPP").value;
+        var number1 = number0.substr(2);
+        var number2 = '+628' + number1;
+        var api = 'https://web.whatsapp.com/send?phone=';
+        var url = api + number2;
+        window.open(url).focus();
+    }
+    function MAILTO() {
+        var email  = document.getElementById("EMP_EMAIL").value;
+        var format = 'mailto:'
+        var url = format + email;
+        window.location.href = url;
+    }
+    function GOTOLINKEDIN() {
+        var url = document.getElementById("EMP_LINKEDIN").value;
+        window.open(url).focus();
+    }
+    function GETDETAILS(BATCH_EMP) {
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById("EMP_NAME").value = data[0].EMP_NAME;
+                document.getElementById("EMP_NIK").value = data[0].EMP_NIK;
+                document.getElementById("EMP_GANDER").value = data[0].EMP_GANDER;
+                document.getElementById("EMP_MARITAL").value = data[0].EMP_MARITAL;
+                document.getElementById("EMP_HEIGHT").value = data[0].EMP_HEIGHT;
+                document.getElementById("EMP_WEIGHT").value = data[0].EMP_WEIGHT;
+                document.getElementById("EMP_BIRTHPLACE").value = data[0].EMP_BIRTHPLACE;
+                document.getElementById("EMP_BIRTHDATE").value = data[0].EMP_BIRTHDATE;
+                document.getElementById("EMP_RELIGION").value = data[0].EMP_RELIGION;
+                document.getElementById("EMP_RACE").value = data[0].EMP_RACE;
+                document.getElementById("EMP_MOBILE").value = data[0].EMP_MOBILE;
+                document.getElementById("EMP_TELEGRAM").value = data[0].EMP_TELEGRAM;
+                document.getElementById("EMP_WHATSAPP").value = data[0].EMP_WHATSAPP;
+
+                document.getElementById("EMP_EMAIL").value = data[0].EMP_EMAIL;
+                document.getElementById("EMP_LINKEDIN").value = data[0].EMP_LINKEDIN;
+
+                document.getElementById("EMP_ADDRESS").value = data[0].EMP_ADDRESS;
+                document.getElementById("EMP_BLOK").value = data[0].EMP_BLOK;
+                document.getElementById("EMP_NOMOR").value = data[0].EMP_NOMOR;
+                document.getElementById("EMP_RW").value = data[0].EMP_RW;
+                document.getElementById("EMP_RT").value = data[0].EMP_RT;
+                document.getElementById("EMP_SHIRT_SIZE").value = data[0].EMP_SHIRT_SIZE;
+                document.getElementById("EMP_PANTS_SIZE").value = data[0].EMP_PANTS_SIZE;
+
+                document.getElementById("EMP_NOKK").value = data[0].EMP_NOKK;
+                document.getElementById("EMP_FATHER_ALIVE").value = data[0].EMP_FATHER_ALIVE;
+                document.getElementById("EMP_FATHER_NAME").value = data[0].EMP_FATHER_NAME;
+                document.getElementById("EMP_FATHER_AGE").value = data[0].EMP_FATHER_AGE;
+                document.getElementById("EMP_FATHER_JOB").value = data[0].EMP_FATHER_JOB;
+                document.getElementById("EMP_NIK_FATHER").value = data[0].EMP_NIK_FATHER;
+                document.getElementById("EMP_FATHER_BIRTHPLACE").value = data[0].EMP_FATHER_BIRTHPLACE;
+                document.getElementById("EMP_FATHER_BIRTHDAY").value = data[0].EMP_FATHER_BIRTHDAY;
+                document.getElementById("EMP_FATHER_MOBILE").value = data[0].EMP_FATHER_MOBILE;
+                document.getElementById("EMP_MOTHER_ALIVE").value = data[0].EMP_MOTHER_ALIVE;
+                document.getElementById("EMP_MOTHER_NAME").value = data[0].EMP_MOTHER_NAME;
+                document.getElementById("EMP_MOTHER_AGE").value = data[0].EMP_MOTHER_AGE;
+                document.getElementById("EMP_MOTHER_JOB").value = data[0].EMP_MOTHER_JOB;
+                document.getElementById("EMP_NIK_MOTHER").value = data[0].EMP_NIK_MOTHER;
+                document.getElementById("EMP_MOTHER_BIRTHPLACE").value = data[0].EMP_MOTHER_BIRTHPLACE;
+                document.getElementById("EMP_MOTHER_BIRTHDAY").value = data[0].EMP_MOTHER_BIRTHDAY;
+                document.getElementById("EMP_MOTHER_MOBILE").value = data[0].EMP_MOTHER_MOBILE;
+
+                document.getElementById("EMP_ISFAMILY").value = data[0].EMP_ISFAMILY;
+                document.getElementById("EMP_WIFE_NAME").value = data[0].EMP_WIFE_NAME;
+                document.getElementById("EMP_WIFE_NIK").value = data[0].EMP_WIFE_NIK;
+                document.getElementById("EMP_WIFE_BIRTH_PLACE").value = data[0].EMP_WIFE_BIRTH_PLACE;
+                document.getElementById("EMP_WIFE_BIRTH_DATE").value = data[0].EMP_WIFE_BIRTH_DATE;
+                document.getElementById("EMP_WIFE_MOBILE").value = data[0].EMP_WIFE_MOBILE;
+
+                document.getElementById("EMP_EM_NAME").value = data[0].EMP_EM_NAME;
+                document.getElementById("EMP_EM_REL").value = data[0].EMP_EM_REL;
+                document.getElementById("EMP_EM_MOBILE").value = data[0].EMP_EM_MOBILE;
+                document.getElementById("EMP_EM_ADDR").value = data[0].EMP_EM_ADDR;
+                document.getElementById("EMP_EM_RT").value = data[0].EMP_EM_RT;
+                document.getElementById("EMP_EM_RW").value = data[0].EMP_EM_RW;
+                document.getElementById("EMP_EM_PROVINSI").value = data[0].EMP_EM_PROVINSI;
+                document.getElementById("EMP_EM_KABUPATEN").value = data[0].EMP_EM_KABUPATEN;
+                document.getElementById("EMP_EM_KECAMATAN").value = data[0].EMP_EM_KECAMATAN;
+                document.getElementById("EMP_EM_KELURAHAN").value = data[0].EMP_EM_KELURAHAN;
+
+                document.getElementById("EMP_LAST_EDU").value = data[0].EMP_LAST_EDU;
+                document.getElementById("EMP_SCHOOL_NAME").value = data[0].EMP_SCHOOL_NAME;
+                document.getElementById("EMP_SCHOOL_MAJOR").value = data[0].EMP_SCHOOL_MAJOR;
+                document.getElementById("EMP_AVG_SCORE").value = data[0].EMP_AVG_SCORE;
+                document.getElementById("EMP_CERT_NO").value = data[0].EMP_CERT_NO;
+                document.getElementById("EMP_HOLD_WILLINGLY").value = data[0].EMP_HOLD_WILLINGLY;
+
+                document.getElementById("EMP_FACULTY").value = data[0].EMP_FACULTY;
+                document.getElementById("EMP_GRADUATE_YEAR").value = data[0].EMP_GRADUATE_YEAR;
+                document.getElementById("EMP_GRADUATE_PLACE").value = data[0].EMP_GRADUATE_PLACE;
+
+                document.getElementById("EMP_GRADUATE_COUNTRY").value   = data[0].EMP_GRADUATE_COUNTRY;
+                document.getElementById("EMP_GRADUATE_DISTRICT").value = data[0].EMP_GRADUATE_DISTRICT;
+                document.getElementById("EMP_GRADUATE_CITY").value      = data[0].EMP_GRADUATE_CITY;
+
+                document.getElementById("EMP_MOTIVASI").value = data[0].EMP_MOTIVASI;
+                document.getElementById("EMP_KOMITMEN").value = data[0].EMP_KOMITMEN;
+
+                document.getElementById("EMP_CRIME").value = data[0].EMP_CRIME;
+                document.getElementById("EMP_MENTAL_DISEASE").value = data[0].EMP_MENTAL_DISEASE;
+                document.getElementById("EMP_WORKED_ON_SHIMANO").value = data[0].EMP_WORKED_ON_SHIMANO;
+                document.getElementById("EMP_SHAMANO_START").value = data[0].EMP_SHAMANO_START;
+                document.getElementById("EMP_SHIMANO_END").value = data[0].EMP_SHIMANO_END;
+                document.getElementById("EMP_SAPORCOMP").value = data[0].EMP_SAPORCOMP;
+                document.getElementById("EMP_EYE_CHECK").value = data[0].EMP_EYE_CHECK;
+                document.getElementById("EMP_EYE_VALUE").value = data[0].EMP_EYE_VALUE;
+                document.getElementById("EMP_STUDY_PLAN").value = data[0].EMP_STUDY_PLAN;
+
+                document.getElementById("EMP_EYE_CHECK").value = data[0].EMP_EYE_CHECK;
+                document.getElementById("EMP_EYE_VALUE").value = data[0].EMP_EYE_VALUE;
+                document.getElementById("EMP_EYE_GLASSES").value = data[0].EMP_EYE_GLASSES;
+                document.getElementById("EMP_LAST_SMOKING").value = data[0].EMP_LAST_SMOKING;
+                document.getElementById("EMP_SMOKING").value = data[0].EMP_SMOKING;
+                document.getElementById("EMP_LEFT_HANDED").value = data[0].EMP_LEFT_HANDED;
+
+                document.getElementById("EMP_ACCOUNT_BCA").value = data[0].EMP_ACCOUNT_BCA;
+                document.getElementById("EMP_ACCOUNT_NPWP").value = data[0].EMP_ACCOUNT_NPWP;
+                document.getElementById("EMP_ACCOUNT_EFIN").value = data[0].EMP_ACCOUNT_EFIN;
+                document.getElementById("EMP_ACCOUNT_BPJS_KES").value = data[0].EMP_ACCOUNT_BPJS_KES;
+                document.getElementById("EMP_ACCOUNT_BPJS_TKJ").value = data[0].EMP_ACCOUNT_BPJS_TKJ;
+
+                document.getElementById("EMP_BATCH_EMP").value = data[0].EMP_BATCH_EMP;
+                document.getElementById("EMP_INVITECODE").value = data[0].EMP_INVITECODE;
+                document.getElementById("EMP_PERSONALITY").value = data[0].EMP_PERSONALITY;
+                document.getElementById("EMP_THINKING_STY").value = data[0].EMP_THINKING_STY;
+                document.getElementById("EMP_WORKING_STY").value = data[0].EMP_WORKING_STY;
+                document.getElementById("EMP_TEST_IQ").value = data[0].EMP_TEST_IQ;
+                document.getElementById("EMP_TEST_MTH").value = data[0].EMP_TEST_MTH;
+                document.getElementById("EMP_TEST_ACC").value = data[0].EMP_TEST_ACC;
+                document.getElementById("EMP_TEST_ENG").value = data[0].EMP_TEST_ENG;
+                document.getElementById("EMP_WRITTEN_SCORE").value = data[0].EMP_WRITTEN_SCORE;
+                document.getElementById("EMP_TEST_1").value = data[0].EMP_TEST_1;
+                document.getElementById("EMP_TIME_TEST_1").value = data[0].EMP_TIME_TEST_1;
+                document.getElementById("EMP_TEST_2").value = data[0].EMP_TEST_2;
+                document.getElementById("EMP_TIME_TEST_2").value = data[0].EMP_TIME_TEST_2;
+                document.getElementById("EMP_PRACTICAL_SCORE").value = data[0].EMP_PRACTICAL_SCORE;
+                document.getElementById("EMP_REMARK").value = data[0].EMP_REMARK;
+                document.getElementById("EMP_MEMORY_SCORE").value = data[0].EMP_MEMORY_SCORE;
+                document.getElementById("EMP_ATTN_EMP").value = data[0].EMP_ATTN_EMP;
+                document.getElementById("EMP_MDCL_TST").value = data[0].EMP_MDCL_TST;
+                document.getElementById("EMP_FIN_DES").value = data[0].EMP_FIN_DES;
+                document.getElementById("EMP_SUM_REMARK").value = data[0].EMP_SUM_REMARK;
+                document.getElementById("EMP_UPDT_USER").value = data[0].EMP_UPDT_USER;
+                document.getElementById("EMP_UPDT_TIME").value = data[0].EMP_UPDT_TIME;
+                var stringHTML = "";
+                var stringHTML2 = "";
+                var stringHTML3 = "";
+                var stringHTML4 = "";
+                TOTAL_SIBLINGS = data[0].SIBLINGS.length;
+                TOTAL_LANGUAGES = data[0].LANGUAGE.length;
+                for (var i = 0; i < data[0].WORK_EXP.length; i++) {
+                    if (i == 0) {
+                        stringHTML += '<div class="widget widget-card-four">';
+                        stringHTML += '<div class="w-content">';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_COMPANY_NAME" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Company Name';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_COMPANY_NAME" value="' + data[0].WORK_EXP[i].COMPANY_NAME + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_POSITION" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Position';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_POSITION" value="' + data[0].WORK_EXP[i].POSITION + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_START_YEAR" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Start Year';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_START_YEAR" value="' + data[0].WORK_EXP[i].START_YEAR + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_END_YEAR" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'End Year';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_END_YEAR" value="' + data[0].WORK_EXP[i].END_YEAR + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_REASON_LEAVE" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Reason Leaving';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_REASON_LEAVE" value="' + data[0].WORK_EXP[i].REASON_LEAVE + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_CERT_PHOTO" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Document';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-8">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_CERT_PHOTO" value="' + data[0].WORK_EXP[i].CERT_PHOTO + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '<button class="btn btn-outline-primary" onclick="CEKWORKEXP(' + i + ')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>'
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                    }
+                    else {
+                        stringHTML += '</br>';
+                        stringHTML += '<div class="widget widget-card-four">';
+                        stringHTML += '<div class="w-content">';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_COMPANY_NAME" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Company Name';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_COMPANY_NAME" value="' + data[0].WORK_EXP[i].COMPANY_NAME + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_POSITION" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Position';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_POSITION" value="' + data[0].WORK_EXP[i].POSITION + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_START_YEAR" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Start Year';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_START_YEAR" value="' + data[0].WORK_EXP[i].START_YEAR + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_END_YEAR" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'End Year';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_END_YEAR" value="' + data[0].WORK_EXP[i].END_YEAR + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_REASON_LEAVE" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Reason Leaving';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-10">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_REASON_LEAVE" value="' + data[0].WORK_EXP[i].REASON_LEAVE + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '<div class="form-group row  mb-4">';
+                        stringHTML += '<label for="EMP_CERT_PHOTO" class="col-sm-2 col-form-label col-form-label-sm">';
+                        stringHTML += 'Document';
+                        stringHTML += '</label>';
+                        stringHTML += '<div class="col-sm-8">';
+                        stringHTML += '<input type="text" class="form-control form-control-sm" id="EMP_CERT_PHOTO" value="' + data[0].WORK_EXP[i].CERT_PHOTO + '" placeholder="" disabled>';
+                        stringHTML += '</div>';
+                        stringHTML += '<button class="btn btn-outline-primary" onclick="CEKWORKEXP('+i+')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>'
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                        stringHTML += '</div>';
+                    }
+                }
+                for (var j = 0; j < data[0].SIBLINGS.length; j++) {
+                    if (j == 0) {
+                        stringHTML2 += '<div class="form-group row  mb-4">';
+                        stringHTML2 += '<div class="col-sm-1">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_ID' + j + '" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="ID" value="' + data[0].SIBLINGS[j].ID + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_NAME' + j+'" placeholder="NAME" value="' + data[0].SIBLINGS[j].NAME + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_AGE' + j +'" placeholder="UMUR" value="' + data[0].SIBLINGS[j].AGE + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_JOB' + j +'" placeholder="PEKERJAAN" value="' + data[0].SIBLINGS[j].JOB + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '</div>';
+                    }
+                    else {
+                        stringHTML2 += '<div class="form-group row  mb-4">';
+                        stringHTML2 += '<div class="col-sm-1">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_ID' + j + '" style="color: transparent; text-shadow: 0 0 8px #000;" readonly placeholder="ID" value="' + data[0].SIBLINGS[j].ID + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_NAME' + j +'" placeholder="NAME" value="' + data[0].SIBLINGS[j].NAME + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_AGE' + j +'" placeholder="UMUR" value="' + data[0].SIBLINGS[j].AGE + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '<div class="col-sm-3">';
+                        stringHTML2 += '<input type="text" class="form-control form-control-sm" id="EMP_SIBLINGS_JOB' + j +'" placeholder="PEKERJAAN" value="' + data[0].SIBLINGS[j].JOB + '">';
+                        stringHTML2 += '</div>';
+                        stringHTML2 += '</div>';
+                    }
+                }
+                for (var k = 0; k < data[0].LANGUAGE.length; k++) {
+                    if (k == 0) {
+                        stringHTML3 += '<div class="form-group row  mb-4">';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_ID' + k + '" placeholder="ID" style="color: transparent; text-shadow: 0 0 8px #000;" disabled value="' + data[0].LANGUAGE[k].LANGUAGE_ID + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_NAME' + k + '" placeholder="LANGAUAGE" value="' + data[0].LANGUAGE[k].LANGUAGE + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_LEVEL' + k + '" placeholder="LANGAUAGE" value="' + data[0].LANGUAGE[k].LEVEL + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '</div>';
+                    }
+                    else {
+                        stringHTML3 += '<div class="form-group row  mb-4">';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_ID' + k + '" placeholder="ID" style="color: transparent; text-shadow: 0 0 8px #000;" disabled value="' + data[0].LANGUAGE[k].LANGUAGE_ID + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_NAME' + k + '" placeholder="LANGAUAGE" value="' + data[0].LANGUAGE[k].LANGUAGE + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '<div class="col-sm-4">';
+                        stringHTML3 += '<input type="text" class="form-control form-control-sm" id="EMP_LANGUAGE_LEVEL' + k + '" placeholder="LANGAUAGE" value="' + data[0].LANGUAGE[k].LEVEL + '">';
+                        stringHTML3 += '</div>';
+                        stringHTML3 += '</div>';
+                    }
+                }
+                for (var l = 0; l < data[0].CHILD.length; l++) {
+                    if (l == 0) {
+                        stringHTML4 += '<div class="form-group row  mb-4">';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_NAME' + l + '" placeholder="ID" style="color: transparent; text-shadow: 0 0 8px #000;" disabled value="' + data[0].CHILD[l].CHILD_NIK + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_NAME' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_NAME + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_BIRTH_PALCE' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_BIRTH_PLACE + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_BIRTH_DATE' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_BIRTH_DATE + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '</div>';
+                    }
+                    else {
+                        stringHTML4 += '<div class="form-group row  mb-4">';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_NAME' + l + '" placeholder="ID" style="color: transparent; text-shadow: 0 0 8px #000;" disabled value="' + data[0].CHILD[l].CHILD_NIK + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_NAME' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_NAME + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_BIRTH_PALCE' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_BIRTH_PLACE + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '<div class="col-sm-3">';
+                        stringHTML4 += '<input type="text" class="form-control form-control-sm" id="EMP_CHILD_BIRTH_DATE' + l + '" placeholder="LANGAUAGE" value="' + data[0].CHILD[l].CHILD_BIRTH_DATE + '">';
+                        stringHTML4 += '</div>';
+                        stringHTML4 += '</div>';
+                    }
+                }
+                $("#WORK_EXPERIENCE_DIV").html(stringHTML);
+                $("#SIBLINGS_DIV").html(stringHTML2);
+                $("#LANGUAGE_DIV").html(stringHTML3);
+                $("#CHILD_DIV").html(stringHTML4);
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKWORKEXP(i) {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].WORK_EXP[i].CERT_PHOTO;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKPASFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_PASFOTO;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKCLFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_CL;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKCVFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_CV;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKSIMFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_SIM_C;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKVAKSINFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_VAKSIN;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKSKCKFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_SKCK;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKSERTIFIKATFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_SERTIFIKAT_KOMPETENSI;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKWORKEXPFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_PENGALAMAN;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKKESEHATANFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_SURAT_SEHAT;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKKUNINGFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_KARTU_KUNING;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKSIOFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_SIO;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKKTPFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_KTPFOTO;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKKKFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_PHOTOKK;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKBNIKAH() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_WIFE_BNIKAH;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    //CEKBNIKAH
+    function CEKCEERTFOTO_F() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_PHOTO_CERT_F;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKCEERTFOTO_B() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_PHOTO_CERT_B;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKBCAFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_BCA;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKNPWPFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_NPWP;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKEFINFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_EFIN;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKBPJSKESFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_BPJS_KES;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function CEKBPJSTKJFOTO() {
+        var BATCH_EMP = '@ViewBag.BATCH_EMP';
+        var URL = "@Url.Action("WEB_GET_CANDIDATE_DETAIL", "INTERVIEWBOARD")?BATCH_EMP=" + BATCH_EMP;
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (data) {
+                document.getElementById('my_iframe').src = data[0].EMP_IMG_BPJS_TKJ;
+                $('#IMAGE_MODAL').modal('toggle');
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+    function TAB1_SELECTED() {
+        CURRENT = 1;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB2_SELECTED() {
+        CURRENT = 2;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB3_SELECTED() {
+        CURRENT = 3;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB4_SELECTED() {
+        CURRENT = 4;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB5_SELECTED() {
+        CURRENT = 5;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB6_SELECTED() {
+        CURRENT = 6;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB7_SELECTED() {
+        CURRENT = 7;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB8_SELECTED() {
+        CURRENT = 8;
+        //Snackbar.show({ text: 'CURRENT : ' + CURRENT + '', pos: 'bottom-right' });
+    }
+    function TAB9_SELECTED() {
+        CURRENT = 9;
+    }
+    function GETEDUCATION() {
+        var URL = "@Url.Action("WEB_GET_EDU", "MASTERDATA")";
+        $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var j = 0; j < data.length; j++) {
+                        var option = new Option(data[j].EDUCATION, data[j].EDUCATION, true, true);
+                        document.getElementById('EMP_LAST_EDU').append(option);
+                    }
+                    GETMARITAL();
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETEDUCATION() ERROR: ' + request.responseText + '', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+    function GETRELIGION() {
+        var URL = "@Url.Action("WEB_GET_RELIGION", "MASTERDATA")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                for (var j = 0; j < data.length; j++) {
+                    var option = new Option(data[j].RELIGION, data[j].RELIGION, true, true);
+                    document.getElementById('EMP_RELIGION').append(option);
+                }
+                GETRACE();
+            },
+            failure: function (response) {
+                Snackbar.show({ text: 'GETRELIGION ERROR: ' + response.message + '', pos: 'bottom-right' });
+            },
+            error: function (response) {
+                Snackbar.show({ text: 'GETRELIGION ERROR: ' + response.message + '', pos: 'bottom-right' });
+            }
+        });
+    }
+    function GETRACE() {
+        var URL = "@Url.Action("WEB_GET_RACE", "MASTERDATA")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                for (var j = 0; j < data.length; j++) {
+                    var option = new Option(data[j].RACE, data[j].RACE, true, true);
+                    document.getElementById('EMP_RACE').append(option);
+                }
+                GETEDUCATION();
+            },
+            failure: function (response) {
+                Snackbar.show({ text: 'GETRACE ERROR: ' + response.message + '', pos: 'bottom-right' });
+            },
+            error: function (response) {
+                Snackbar.show({ text: 'GETRACE ERROR: ' + response.message + '', pos: 'bottom-right' });
+            }
+        });
+    }
+    function GETMARITAL() {
+        var URL = "@Url.Action("MOBILE_GET_MARITAL", "MASTERDATA")";
+        $.ajax({
+                url: URL,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var option = new Option(data[i].TEXT, data[i].VALUE, true, true);
+                        document.getElementById('EMP_MARITAL').append(option);
+                    }
+                },
+                error: {
+                    function(request, status, error) {
+                        Snackbar.show({ text: 'GETMARITAL() ERROR: ' + request.responseText +'', pos: 'bottom-right' });
+                    }
+                }
+            });
+    }
+    function SAVE() {
+        $.blockUI({
+            message: "SAVING..",
+            fadeIn: 500,
+            overlayCSS: { backgroundColor: '#1b2024', opacity: 0.8, zIndex: 1200, cursor: 'wait' },
+            css: { border: 0, color: '#fff', zIndex: 1201, padding: 0, backgroundColor: 'transparent' }
+        });
+        if (CURRENT == 1) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_NAME = document.getElementById("EMP_NAME").value;
+            var _EMP_NIK = document.getElementById("EMP_NIK").value;
+            var _EMP_GANDER = document.getElementById("EMP_GANDER").value;
+            var _EMP_MARITAL = document.getElementById("EMP_MARITAL").value;
+            var _EMP_HEIGHT = document.getElementById("EMP_HEIGHT").value;
+            var _EMP_WEIGHT = document.getElementById("EMP_WEIGHT").value;
+            var _EMP_BIRTHPLACE = document.getElementById("EMP_BIRTHPLACE").value;
+            var _EMP_BIRTHDATE = document.getElementById("EMP_BIRTHDATE").value;
+            var _EMP_RELIGION = document.getElementById("EMP_RELIGION").value;
+            var _EMP_RACE = document.getElementById("EMP_RACE").value;
+            var _EMP_MOBILE = document.getElementById("EMP_MOBILE").value;
+            var _EMP_TELEGRAM = document.getElementById("EMP_TELEGRAM").value;
+            var _EMP_WHATSAPP = document.getElementById("EMP_WHATSAPP").value;
+
+            var _EMP_EMAIL = document.getElementById("EMP_EMAIL").value;
+            var _EMP_LINKEDIN = document.getElementById("EMP_LINKEDIN").value;
+            var _EMP_ADDRESS = document.getElementById("EMP_ADDRESS").value;
+            var _EMP_BLOK = document.getElementById("EMP_BLOK").value;
+            var _EMP_NOMOR = document.getElementById("EMP_NOMOR").value;
+            var _EMP_RT = document.getElementById("EMP_RT").value;
+            var _EMP_RW = document.getElementById("EMP_RW").value;
+
+            var _EMP_PANTS_SIZE = document.getElementById("EMP_PANTS_SIZE").value;
+            var _EMP_SHIRT_SIZE = document.getElementById("EMP_SHIRT_SIZE").value;
+
+            var MODEL = {
+                TYPE: "1",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_NAME: _EMP_NAME,
+                EMP_NIK: _EMP_NIK,
+                EMP_MARITAL: _EMP_MARITAL,
+                EMP_GANDER: _EMP_GANDER,
+                EMP_HEIGHT: _EMP_HEIGHT,
+                EMP_WEIGHT: _EMP_WEIGHT,
+                EMP_BIRTHPLACE: _EMP_BIRTHPLACE,
+                EMP_BIRTHDATE: _EMP_BIRTHDATE,
+                EMP_RELIGION: _EMP_RELIGION,
+                EMP_RACE: _EMP_RACE,
+                EMP_MOBILE: _EMP_MOBILE,
+                EMP_TELEGRAM: _EMP_TELEGRAM,
+                EMP_WHATSAPP: _EMP_WHATSAPP,
+
+                EMP_EMAIL: _EMP_EMAIL,
+                EMP_LINKEDIN: _EMP_LINKEDIN,
+                EMP_ADDRESS: _EMP_ADDRESS,
+                EMP_BLOK: _EMP_BLOK,
+                EMP_NOMOR: _EMP_NOMOR,
+                EMP_RT: _EMP_RT,
+                EMP_RW: _EMP_RW,
+
+                EMP_PANTS_SIZE: _EMP_PANTS_SIZE,
+                EMP_SHIRT_SIZE: _EMP_SHIRT_SIZE
+
+            };
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING INFORMATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING INFORMATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+            });
+        }
+        else if (CURRENT == 2) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_NOKK = document.getElementById("EMP_NOKK").value;
+            var _EMP_FATHER_ALIVE = document.getElementById("EMP_FATHER_ALIVE").value;
+            var _EMP_FATHER_NAME = document.getElementById("EMP_FATHER_NAME").value;
+            var _EMP_FATHER_AGE = document.getElementById("EMP_FATHER_AGE").value;
+            var _EMP_FATHER_JOB = document.getElementById("EMP_FATHER_JOB").valu;
+            var _EMP_NIK_FATHER = document.getElementById("EMP_NIK_FATHER").value;
+            var _EMP_FATHER_BIRTHPLACE = document.getElementById("EMP_FATHER_BIRTHPLACE").value;
+            var _EMP_FATHER_BIRTHDAY = document.getElementById("EMP_FATHER_BIRTHDAY").value;
+            var _EMP_FATHER_MOBILE = document.getElementById("EMP_FATHER_MOBILE").value;
+            var _EMP_MOTHER_ALIVE = document.getElementById("EMP_MOTHER_ALIVE").value;
+            var _EMP_MOTHER_NAME = document.getElementById("EMP_MOTHER_NAME").value;
+            var _EMP_MOTHER_AGE = document.getElementById("EMP_MOTHER_AGE").value;
+            var _EMP_MOTHER_JOB = document.getElementById("EMP_MOTHER_JOB").value;
+            var _EMP_NIK_MOTHER = document.getElementById("EMP_NIK_MOTHER").value;
+            var _EMP_MOTHER_BIRTHPLACE = document.getElementById("EMP_MOTHER_BIRTHPLACE").value;
+            var _EMP_MOTHER_BIRTHDAY = document.getElementById("EMP_MOTHER_BIRTHDAY").value;
+            var _EMP_MOTHER_MOBILE = document.getElementById("EMP_MOTHER_MOBILE").value
+            var MODEL = {
+                TYPE: "2",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_NOKK: _EMP_NOKK,
+                EMP_FATHER_ALIVE: _EMP_FATHER_ALIVE,
+                EMP_FATHER_NAME: _EMP_FATHER_NAME,
+                EMP_FATHER_AGE: _EMP_FATHER_AGE,
+                EMP_FATHER_JOB: _EMP_FATHER_JOB,
+                EMP_NIK_FATHER: _EMP_NIK_FATHER,
+                EMP_FATHER_BIRTHPLACE: _EMP_FATHER_BIRTHPLACE,
+                EMP_FATHER_BIRTHDAY: _EMP_FATHER_BIRTHDAY,
+                EMP_FATHER_MOBILE: _EMP_FATHER_MOBILE,
+                EMP_MOTHER_ALIVE: _EMP_MOTHER_ALIVE,
+                EMP_MOTHER_NAME: _EMP_MOTHER_NAME,
+                EMP_MOTHER_AGE: _EMP_MOTHER_AGE,
+                EMP_MOTHER_JOB: _EMP_MOTHER_JOB,
+                EMP_NIK_MOTHER: _EMP_NIK_MOTHER,
+                EMP_MOTHER_BIRTHPLACE: _EMP_MOTHER_BIRTHPLACE,
+                EMP_MOTHER_BIRTHDAY: _EMP_MOTHER_BIRTHDAY,
+                EMP_MOTHER_MOBILE: _EMP_MOTHER_MOBILE
+            };
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    setTimeout(function () { SAVE_SIBLINGS(); }, 300);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING FAMILY FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING FAMILY FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+            });
+        }
+        else if (CURRENT == 3) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_ISFAMILY           = document.getElementById("EMP_ISFAMILY").value;
+            var _EMP_WIFE_NAME          = document.getElementById("EMP_WIFE_NAME").value;
+            var _EMP_WIFE_NIK           = document.getElementById("EMP_WIFE_NIK").value;
+            var _EMP_WIFE_BIRTH_PLACE   = document.getElementById("EMP_WIFE_BIRTH_PLACE").value;
+            var _EMP_WIFE_BIRTH_DATE    = document.getElementById("EMP_WIFE_BIRTH_DATE").value;
+            var _EMP_WIFE_MOBILE = document.getElementById("EMP_WIFE_MOBILE").value;
+            var MODEL = {
+                TYPE: "3",
+                BATCH_EMP:              _BATCH_EMP,
+                EMP_ISFAMILY:           _EMP_ISFAMILY,
+                EMP_WIFE_NAME:          _EMP_WIFE_NAME,
+                EMP_WIFE_NIK:           _EMP_WIFE_NIK,
+                EMP_WIFE_BIRTH_PLACE:   _EMP_WIFE_BIRTH_PLACE,
+                EMP_WIFE_BIRTH_DATE:    _EMP_WIFE_BIRTH_DATE,
+                EMP_WIFE_MOBILE:        _EMP_WIFE_MOBILE
+            };
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING SPOUSE FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING SPOUSE FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+            });
+        }
+        else if (CURRENT == 4) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_EM_NAME = document.getElementById("EMP_EM_NAME").value;
+            var _EMP_EM_REL = document.getElementById("EMP_EM_REL").value;
+            var _EMP_EM_MOBILE = document.getElementById("EMP_EM_MOBILE").value;
+            var _EMP_EM_ADDR = document.getElementById("EMP_EM_ADDR").value;
+            var _EMP_EM_RT = document.getElementById("EMP_EM_RT").value;
+            var _EMP_EM_RW = document.getElementById("EMP_EM_RW").value;
+            var _EMP_EM_PROVINSI = document.getElementById("EMP_EM_PROVINSI").value;
+            var _EMP_EM_KABUPATEN = document.getElementById("EMP_EM_KABUPATEN").value;
+            var _EMP_EM_KECAMATAN = document.getElementById("EMP_EM_KECAMATAN").value;
+            var _EMP_EM_KELURAHAN = document.getElementById("EMP_EM_KELURAHAN").value;
+
+            var MODEL = {
+                TYPE: "4",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_EM_NAME: _EMP_EM_NAME,
+                EMP_EM_REL: _EMP_EM_REL,
+                EMP_EM_MOBILE: _EMP_EM_MOBILE,
+                EMP_EM_ADDR: _EMP_EM_ADDR,
+                EMP_EM_RT: _EMP_EM_RT,
+                EMP_EM_RW: _EMP_EM_RW,
+                EMP_EM_PROVINSI: _EMP_EM_PROVINSI,
+                EMP_EM_KABUPATEN: _EMP_EM_KABUPATEN,
+                EMP_EM_KECAMATAN: _EMP_EM_KECAMATAN,
+                EMP_EM_KELURAHAN: _EMP_EM_KELURAHAN
+            };
+
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+
+
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING EMERGENCY FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING EMERGENCY FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+            });
+
+        }
+        else if (CURRENT == 5) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_LAST_EDU = document.getElementById("EMP_LAST_EDU").value;
+            var _EMP_SCHOOL_NAME = document.getElementById("EMP_SCHOOL_NAME").value;
+            var _EMP_SCHOOL_MAJOR = document.getElementById("EMP_SCHOOL_MAJOR").value;
+            var _EMP_FACULTY = document.getElementById("EMP_FACULTY").value;
+            var _EMP_GRADUATE_YEAR = document.getElementById("EMP_GRADUATE_YEAR").value;
+            var _EMP_GRADUATE_PLACE = "";
+            var _EMP_GRADUATE_COUNTRY = document.getElementById("EMP_GRADUATE_COUNTRY").value;
+            var _EMP_GRADUATE_DISTRICT = document.getElementById("EMP_GRADUATE_DISTRICT").value;
+            var _EMP_GRADUATE_CITY = document.getElementById("EMP_GRADUATE_CITY").value;
+            var _EMP_AVG_SCORE = document.getElementById("EMP_AVG_SCORE").value;
+            var _EMP_CERT_NO = document.getElementById("EMP_CERT_NO").value;
+            var _EMP_HOLD_WILLINGLY = document.getElementById("EMP_HOLD_WILLINGLY").value;
+
+            var MODEL = {
+                TYPE: "5",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_LAST_EDU: _EMP_LAST_EDU,
+                EMP_SCHOOL_NAME: _EMP_SCHOOL_NAME,
+                EMP_SCHOOL_MAJOR: _EMP_SCHOOL_MAJOR,
+                EMP_FACULTY: _EMP_FACULTY,
+                EMP_GRADUATE_YEAR: _EMP_GRADUATE_YEAR,
+                EMP_GRADUATE_PLACE: _EMP_GRADUATE_PLACE,
+                EMP_GRADUATE_COUNTRY: _EMP_GRADUATE_COUNTRY,
+                EMP_GRADUATE_DISTRICT: EMP_GRADUATE_DISTRICT,
+                EMP_GRADUATE_CITY: _EMP_GRADUATE_CITY,
+                EMP_AVG_SCORE: _EMP_AVG_SCORE,
+                EMP_CERT_NO: _EMP_CERT_NO,
+                EMP_HOLD_WILLINGLY: _EMP_HOLD_WILLINGLY
+            };
+
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    //setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                    setTimeout(function () { SAVE_LANGUAGES(); }, 300);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING EDUCATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING EDUCATION FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+             });
+        }
+        else if (CURRENT == 6) {
+            $.unblockUI();
+            Snackbar.show({ text: 'SAVING WORKEXPERIENCE CANT BE DONE BY CANDIDATE IT SELF. PLEASE ASK THEM TO DO IT', pos: 'bottom-right' });
+        }
+        else if (CURRENT == 7) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_MOTIVASI = document.getElementById("EMP_MOTIVASI").value;
+            var _EMP_KOMITMEN = document.getElementById("EMP_KOMITMEN").value;
+
+            var _EMP_CRIME = document.getElementById("EMP_CRIME").value;
+            var _EMP_MENTAL_DISEASE = document.getElementById("EMP_MENTAL_DISEASE").value;
+            var _EMP_WORKED_ON_SHIMANO = document.getElementById("EMP_WORKED_ON_SHIMANO").value;
+            var _EMP_SHAMANO_START = document.getElementById("EMP_SHAMANO_START").value;
+            var _EMP_SHIMANO_END = document.getElementById("EMP_SHIMANO_END").value;
+            var _EMP_SAPORCOMP = document.getElementById("EMP_SAPORCOMP").value;
+
+            var _EMP_STUDY_PLAN = document.getElementById("EMP_STUDY_PLAN").value;
+
+
+            var _EMP_EYE_CHECK = document.getElementById("EMP_EYE_CHECK").value;
+            var _EMP_EYE_VALUE = document.getElementById("EMP_EYE_VALUE").value;
+            var _EMP_EYE_GLASSES = document.getElementById("EMP_EYE_GLASSES").value;
+            var _EMP_LAST_SMOKING = document.getElementById("EMP_LAST_SMOKING").value;
+            var _EMP_SMOKING = document.getElementById("EMP_SMOKING").value;
+            var _EMP_LEFT_HANDED = document.getElementById("EMP_LEFT_HANDED").value;
+
+            var MODEL = {
+                TYPE: "7",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_MOTIVASI: _EMP_MOTIVASI,
+                EMP_KOMITMEN: _EMP_KOMITMEN,
+                EMP_LEFT_HANDED: _EMP_LEFT_HANDED,
+                EMP_CRIME: _EMP_CRIME,
+                EMP_MENTAL_DISEASE: _EMP_MENTAL_DISEASE,
+                EMP_WORKED_ON_SHIMANO: _EMP_WORKED_ON_SHIMANO,
+                EMP_SHAMANO_START: _EMP_SHAMANO_START,
+                EMP_SHIMANO_END: _EMP_SHIMANO_END,
+                EMP_SAPORCOMP: _EMP_SAPORCOMP,
+                EMP_EYE_CHECK: _EMP_EYE_CHECK,
+                EMP_EYE_VALUE: _EMP_EYE_VALUE,
+                EMP_STUDY_PLAN: _EMP_STUDY_PLAN,
+
+                EMP_EYE_CHECK: _EMP_EYE_CHECK,
+                EMP_EYE_VALUE: _EMP_EYE_VALUE,
+                EMP_EYE_GLASSES: _EMP_EYE_GLASSES,
+                EMP_LAST_SMOKING: _EMP_LAST_SMOKING,
+                EMP_SMOKING: _EMP_SMOKING,
+                EMP_LEFT_HANDED: _EMP_LEFT_HANDED
+            };
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING ADDTIONAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING ADDTIONAL FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+             });
+        }
+        else if (CURRENT == 8) {
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_ACCOUNT_BCA = document.getElementById("EMP_ACCOUNT_BCA").value;
+            var _EMP_ACCOUNT_NPWP = document.getElementById("EMP_ACCOUNT_NPWP").value;
+            var _EMP_ACCOUNT_EFIN = document.getElementById("EMP_ACCOUNT_EFIN").value;
+            var _EMP_ACCOUNT_BPJS_KES = document.getElementById("EMP_ACCOUNT_BPJS_KES").value;
+            var _EMP_ACCOUNT_BPJS_TKJ = document.getElementById("EMP_ACCOUNT_BPJS_TKJ").value;
+            var MODEL = {
+                TYPE: "8",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_ACCOUNT_BCA: _EMP_ACCOUNT_BCA,
+                EMP_ACCOUNT_NPWP: _EMP_ACCOUNT_NPWP,
+                EMP_ACCOUNT_EFIN: _EMP_ACCOUNT_EFIN,
+                EMP_ACCOUNT_BPJS_KES: _EMP_ACCOUNT_BPJS_KES,
+                EMP_ACCOUNT_BPJS_TKJ: _EMP_ACCOUNT_BPJS_TKJ
+            };
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING DOCUMENT FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING DOCUMENT FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+             });
+        }
+        else if (CURRENT == 9) {
+
+            var _BATCH_EMP = '@ViewBag.BATCH_EMP';
+            var _EMP_PERSONALITY = document.getElementById("EMP_PERSONALITY").value;
+            var _EMP_THINKING_STY = document.getElementById("EMP_THINKING_STY").value;
+            var _EMP_WORKING_STY = document.getElementById("EMP_WORKING_STY").value;
+            var _EMP_TEST_IQ = document.getElementById("EMP_TEST_IQ").value;
+            var _EMP_TEST_MTH = document.getElementById("EMP_TEST_MTH").value;
+            var _EMP_TEST_ACC = document.getElementById("EMP_TEST_ACC").value;
+            var _EMP_TEST_ENG = document.getElementById("EMP_TEST_ENG").value;
+            var _EMP_WRITTEN_SCORE = document.getElementById("EMP_WRITTEN_SCORE").value;
+            var _EMP_TEST_1 = document.getElementById("EMP_TEST_1").value;
+            var _EMP_TIME_TEST_1 = document.getElementById("EMP_TIME_TEST_1").value;
+            var _EMP_TEST_2 = document.getElementById("EMP_TEST_2").value;
+            var _EMP_TIME_TEST_2 = document.getElementById("EMP_TIME_TEST_2").value;
+            var _EMP_PRACTICAL_SCORE = document.getElementById("EMP_PRACTICAL_SCORE").value;
+            var _EMP_REMARK = document.getElementById("EMP_REMARK").value;
+            var _EMP_MEMORY_SCORE = document.getElementById("EMP_MEMORY_SCORE").value;
+            var _EMP_ATTN_EMP = document.getElementById("EMP_ATTN_EMP").value;
+            var _EMP_MDCL_TST = document.getElementById("EMP_MDCL_TST").value;
+            var _EMP_FIN_DES = document.getElementById("EMP_FIN_DES").value;
+            var _EMP_SUM_REMARK = document.getElementById("EMP_SUM_REMARK").value;
+
+            var MODEL = {
+                TYPE: "9",
+                BATCH_EMP: _BATCH_EMP,
+                EMP_PERSONALITY: _EMP_PERSONALITY,
+                EMP_THINKING_STY: _EMP_THINKING_STY,
+                EMP_WORKING_STY: _EMP_WORKING_STY,
+                EMP_TEST_IQ: _EMP_TEST_IQ,
+                EMP_TEST_MTH: _EMP_TEST_MTH,
+                EMP_TEST_ACC: _EMP_TEST_ACC,
+                EMP_TEST_ENG: _EMP_TEST_ENG,
+                EMP_WRITTEN_SCORE: _EMP_WRITTEN_SCORE,
+
+                EMP_TEST_1: _EMP_TEST_1,
+                EMP_TIME_TEST_1: _EMP_TIME_TEST_1,
+                EMP_TEST_2: _EMP_TEST_2,
+                EMP_TIME_TEST_2: _EMP_TIME_TEST_2,
+                EMP_PRACTICAL_SCORE: _EMP_PRACTICAL_SCORE,
+                EMP_REMARK: _EMP_REMARK,
+
+                EMP_MEMORY_SCORE: _EMP_MEMORY_SCORE,
+                EMP_ATTN_EMP: _EMP_ATTN_EMP,
+                EMP_MDCL_TST: _EMP_MDCL_TST,
+                EMP_FIN_DES: _EMP_FIN_DES,
+                EMP_SUM_REMARK: _EMP_SUM_REMARK
+            };
+
+            var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE", "INTERVIEWBOARD")";
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: '{MODEL: ' + JSON.stringify(MODEL) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                    setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+                },
+                failure: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING DOCUMENT FAILED: ' + response.message + '', pos: 'bottom-right' });
+                },
+                error: function (response) {
+                    $.unblockUI();
+                    Snackbar.show({ text: 'SAVING DOCUMENT FAILED: ' + response.message + '', pos: 'bottom-right' });
+                }
+             });
+        }
+        else {
+            Snackbar.show({ text: 'Unknown error please reload the page', pos: 'bottom-right' });
+        }
+    }
+    function SAVE_SIBLINGS() {
+        var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE_SIBLINGS", "INTERVIEWBOARD")";
+        var BATCH_EMP = "@ViewBag.BATCH_EMP";
+        var SIBLINGS = new Array();
+        for (var i = 0; i < TOTAL_SIBLINGS; i++) {
+            var _ID = "";
+            var _NAME = "";
+            var _AGE = "";
+            var _JOB = "";
+            if (i == 0) {
+                _ID = document.getElementById("EMP_SIBLINGS_ID0").value;
+                _NAME = document.getElementById("EMP_SIBLINGS_NAME0").value;
+                _AGE = document.getElementById("EMP_SIBLINGS_AGE0").value;
+                _JOB = document.getElementById("EMP_SIBLINGS_JOB0").value;
+            }
+            else {
+                _ID = document.getElementById("EMP_SIBLINGS_ID" + i + "").value;
+                _NAME = document.getElementById("EMP_SIBLINGS_NAME" + i + "").value;
+                _AGE = document.getElementById("EMP_SIBLINGS_AGE" + i + "").value;
+                _JOB = document.getElementById("EMP_SIBLINGS_JOB" + i + "").value;
+            }
+            SIBLINGS[i] = { ID: _ID, NAME: _NAME, AGE: _AGE, JOB: _JOB };
+        }
+        SIBLINGS = JSON.stringify({ 'MODEL': SIBLINGS });
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: SIBLINGS,
+            success: function (response) {
+                $.unblockUI();
+                Snackbar.show({ text: response.Message, pos: 'bottom-right' });
+                setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+            },
+            failure: function (response) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVING FAMILY FAILED: ' + response.message + '', pos: 'bottom-right' });
+            },
+            error: function (response) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVING FAMILY FAILED: ' + response.message + '', pos: 'bottom-right' });
+            }
+        });
+    }
+    function SAVE_LANGUAGES() {
+        var URL = "@Url.Action("WEB_CANDIDATE_DETAILS_SAVE_LANGUAGES", "INTERVIEWBOARD")";
+        var BATCH_EMP = "@ViewBag.BATCH_EMP";
+        var LANGUAGES = new Array();
+        for (var i = 0; i < TOTAL_LANGUAGES; i++) {
+            var _LANGUAGE_ID = "";
+            var _LANGUAGE = "";
+            var _LEVEL = "";
+            if (i == 0) {
+                _LANGUAGE_ID = document.getElementById("EMP_LANGUAGE_ID0").value;
+                _LANGUAGE = document.getElementById("EMP_LANGUAGE_NAME0").value;
+                _LEVEL = document.getElementById("EMP_LANGUAGE_LEVEL0").value;
+            }
+            else {
+                _LANGUAGE_ID = document.getElementById("EMP_LANGUAGE_ID" + i + "").value;
+                _LANGUAGE = document.getElementById("EMP_LANGUAGE_NAME" + i + "").value;
+                _LEVEL = document.getElementById("EMP_LANGUAGE_LEVEL" + i + "").value;
+            }
+            LANGUAGES[i] = { LANGUAGE_ID: _LANGUAGE_ID, LANGUAGE: _LANGUAGE, LEVEL: _LEVEL };
+        }
+        LANGUAGES = JSON.stringify({ 'MODEL': LANGUAGES });
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: URL,
+            data: LANGUAGES,
+            success: function (response) {
+                $.unblockUI();
+                setTimeout(function () { GETDETAILS('@ViewBag.BATCH_EMP'); }, 1000);
+            },
+            failure: function (response) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVING LANGUAGE FAILED: ' + response.message + '', pos: 'bottom-right' });
+            },
+            error: function (response) {
+                $.unblockUI();
+                Snackbar.show({ text: 'SAVING LANGUAGE FAILED: ' + response.message + '', pos: 'bottom-right' });
+            }
+        });
+    }
+</script>

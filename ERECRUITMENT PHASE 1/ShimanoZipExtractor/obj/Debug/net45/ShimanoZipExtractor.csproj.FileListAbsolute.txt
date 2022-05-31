@@ -1,0 +1,24 @@
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.exe.config
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.exe
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.pdb
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csprojAssemblyReference.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.FormMain.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.Properties.Resources.resources
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csproj.GenerateResource.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.AssemblyInfoInputs.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.AssemblyInfo.cs
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csproj.CoreCompileInputs.cache
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.exe
+C:\Users\sbm_deni\Desktop\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.pdb
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.exe.config
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.exe
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\bin\Debug\net45\ShimanoZipExtractor.pdb
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csprojAssemblyReference.cache
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.FormMain.resources
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.Properties.Resources.resources
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csproj.GenerateResource.cache
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.AssemblyInfoInputs.cache
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.AssemblyInfo.cs
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.csproj.CoreCompileInputs.cache
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.exe
+D:\Project Deni\EREQRUITMENT\ShimanoZipExtractor\obj\Debug\net45\ShimanoZipExtractor.pdb

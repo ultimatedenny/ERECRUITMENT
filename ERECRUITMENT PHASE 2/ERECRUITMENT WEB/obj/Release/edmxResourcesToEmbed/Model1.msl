@@ -1,0 +1,1101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBERECRUITMENTModelStoreContainer" CdmEntityContainer="DBERECRUITMENTEntities">
+    <EntitySetMapping Name="menulists">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.menulist">
+        <MappingFragment StoreEntitySet="menulist">
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="MnuSeq" ColumnName="MnuSeq" />
+          <ScalarProperty Name="MnuCod" ColumnName="MnuCod" />
+          <ScalarProperty Name="MnuLev" ColumnName="MnuLev" />
+          <ScalarProperty Name="MnuNam" ColumnName="MnuNam" />
+          <ScalarProperty Name="MnuNod" ColumnName="MnuNod" />
+          <ScalarProperty Name="MnuPrt" ColumnName="MnuPrt" />
+          <ScalarProperty Name="MnuAct" ColumnName="MnuAct" />
+          <ScalarProperty Name="FRMNAM" ColumnName="FRMNAM" />
+          <ScalarProperty Name="FRMPARMTR" ColumnName="FRMPARMTR" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+          <ScalarProperty Name="creusr" ColumnName="creusr" />
+          <ScalarProperty Name="credat" ColumnName="credat" />
+          <ScalarProperty Name="chgusr" ColumnName="chgusr" />
+          <ScalarProperty Name="chgdat" ColumnName="chgdat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BatchHeaders">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.BatchHeader">
+        <MappingFragment StoreEntitySet="BatchHeader">
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="BatchCategory" ColumnName="BatchCategory" />
+          <ScalarProperty Name="InvitationDate" ColumnName="InvitationDate" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="StatusBatch" ColumnName="StatusBatch" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="WA_Log" ColumnName="WA_Log" />
+          <ScalarProperty Name="TL_Log" ColumnName="TL_Log" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="levelmenus">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.levelmenu">
+        <MappingFragment StoreEntitySet="levelmenu">
+          <ScalarProperty Name="group" ColumnName="group" />
+          <ScalarProperty Name="MnuCod" ColumnName="MnuCod" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="BusFunc" ColumnName="BusFunc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MD_DISTRICT">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.MD_DISTRICT">
+        <MappingFragment StoreEntitySet="MD_DISTRICT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="REGENCY_ID" ColumnName="REGENCY_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MD_VILLAGE">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.MD_VILLAGE">
+        <MappingFragment StoreEntitySet="MD_VILLAGE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISTRICT_ID" ColumnName="DISTRICT_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="syssets">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.sysset">
+        <MappingFragment StoreEntitySet="sysset">
+          <ScalarProperty Name="SysCod" ColumnName="SysCod" />
+          <ScalarProperty Name="SysVar" ColumnName="SysVar" />
+          <ScalarProperty Name="VarTyp" ColumnName="VarTyp" />
+          <ScalarProperty Name="VarDec" ColumnName="VarDec" />
+          <ScalarProperty Name="MapField" ColumnName="MapField" />
+          <ScalarProperty Name="creusr" ColumnName="creusr" />
+          <ScalarProperty Name="credat" ColumnName="credat" />
+          <ScalarProperty Name="chgusr" ColumnName="chgusr" />
+          <ScalarProperty Name="chgdat" ColumnName="chgdat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usrs">
+      <EntityTypeMapping TypeName="DBERECRUITMENTModel.Usr">
+        <MappingFragment StoreEntitySet="Usr">
+          <ScalarProperty Name="UseId" ColumnName="UseId" />
+          <ScalarProperty Name="UseLev" ColumnName="UseLev" />
+          <ScalarProperty Name="UseNam" ColumnName="UseNam" />
+          <ScalarProperty Name="UsePass" ColumnName="UsePass" />
+          <ScalarProperty Name="IsWindowsAuth" ColumnName="IsWindowsAuth" />
+          <ScalarProperty Name="UseComCod" ColumnName="UseComCod" />
+          <ScalarProperty Name="BusFunc" ColumnName="BusFunc" />
+          <ScalarProperty Name="CreUsr" ColumnName="CreUsr" />
+          <ScalarProperty Name="CreDat" ColumnName="CreDat" />
+          <ScalarProperty Name="ChgUsr" ColumnName="ChgUsr" />
+          <ScalarProperty Name="ChgDat" ColumnName="ChgDat" />
+          <ScalarProperty Name="UseRole" ColumnName="UseRole" />
+          <ScalarProperty Name="ChgPassword" ColumnName="ChgPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="DBERECRUITMENTModel.Store.GetDifferent" FunctionImportName="GetDifferent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.GetDifferent_Result">
+          <ScalarProperty Name="KONTRAK" ColumnName="KONTRAK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DBERECRUITMENTModel.Store.ufn_String_To_Table" FunctionImportName="ufn_String_To_Table">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.ufn_String_To_Table_Result">
+          <ScalarProperty Name="Val" ColumnName="Val" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DELETE_ALL" FunctionName="DBERECRUITMENTModel.Store.DELETE_ALL" />
+    <FunctionImportMapping FunctionImportName="DESKTOP_GET_BATCH_DETAIL" FunctionName="DBERECRUITMENTModel.Store.DESKTOP_GET_BATCH_DETAIL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.DESKTOP_GET_BATCH_DETAIL_Result">
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="InvitationDate" ColumnName="InvitationDate" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="BatchEmp" ColumnName="BatchEmp" />
+          <ScalarProperty Name="NameEmp" ColumnName="NameEmp" />
+          <ScalarProperty Name="PhoneEmp" ColumnName="PhoneEmp" />
+          <ScalarProperty Name="DOBEmp" ColumnName="DOBEmp" />
+          <ScalarProperty Name="InvitationEmp" ColumnName="InvitationEmp" />
+          <ScalarProperty Name="StatusEmp" ColumnName="StatusEmp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DESKTOP_GET_BATCH_LIST" FunctionName="DBERECRUITMENTModel.Store.DESKTOP_GET_BATCH_LIST" />
+    <FunctionImportMapping FunctionImportName="DESKTOP_UPDATE_STATUS_EMP" FunctionName="DBERECRUITMENTModel.Store.DESKTOP_UPDATE_STATUS_EMP" />
+    <FunctionImportMapping FunctionImportName="EXPORT2" FunctionName="DBERECRUITMENTModel.Store.EXPORT2" />
+    <FunctionImportMapping FunctionImportName="GET_MOBILE_DASHBOARD" FunctionName="DBERECRUITMENTModel.Store.GET_MOBILE_DASHBOARD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.GET_MOBILE_DASHBOARD_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="MESSAGEHEADER" ColumnName="MESSAGEHEADER" />
+          <ScalarProperty Name="MESSAGEBODY" ColumnName="MESSAGEBODY" />
+          <ScalarProperty Name="IMAGEDASHBOARD" ColumnName="IMAGEDASHBOARD" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GET_MOBILE_GETPARENTS" FunctionName="DBERECRUITMENTModel.Store.GET_MOBILE_GETPARENTS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.GET_MOBILE_GETPARENTS_Result">
+          <ScalarProperty Name="NOKK" ColumnName="NOKK" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="MOTHER_NAME" ColumnName="MOTHER_NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBatchInvDate" FunctionName="DBERECRUITMENTModel.Store.GetBatchInvDate" />
+    <FunctionImportMapping FunctionImportName="GetContactList1" FunctionName="DBERECRUITMENTModel.Store.GetContactList1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.GetContactList1_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONEEMP" ColumnName="PHONEEMP" />
+          <ScalarProperty Name="BATCHEMP" ColumnName="BATCHEMP" />
+          <ScalarProperty Name="INVITATIONEMP" ColumnName="INVITATIONEMP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetContactList2" FunctionName="DBERECRUITMENTModel.Store.GetContactList2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.GetContactList2_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONEEMP" ColumnName="PHONEEMP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListLocalServers" FunctionName="DBERECRUITMENTModel.Store.ListLocalServers" />
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_ADDITIONALFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_ADDITIONALFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_ADDITIONALFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_EDUCATIONFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_EDUCATIONFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_EDUCATIONFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_FAMILYFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_FAMILYFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_FAMILYFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_LANGUAGEFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_LANGUAGEFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_LANGUAGEFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_PERSONALFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_PERSONALFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_PERSONALFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_CHECK_CANEDIT_WORKEXPFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_CHECK_CANEDIT_WORKEXPFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_CHECK_CANEDIT_WORKEXPFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_GET_DISTRICT" FunctionName="DBERECRUITMENTModel.Store.MOBILE_GET_DISTRICT" />
+    <FunctionImportMapping FunctionImportName="MOBILE_GET_GENDER" FunctionName="DBERECRUITMENTModel.Store.MOBILE_GET_GENDER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_GET_GENDER_Result">
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_GET_MARITAL" FunctionName="DBERECRUITMENTModel.Store.MOBILE_GET_MARITAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_GET_MARITAL_Result">
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_GET_MOBILE_GOTOFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_GET_MOBILE_GOTOFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_GET_MOBILE_GOTOFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_GET_VILLAGE" FunctionName="DBERECRUITMENTModel.Store.MOBILE_GET_VILLAGE" />
+    <FunctionImportMapping FunctionImportName="MOBILE_MOBILE_GATENAME_UNIFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_MOBILE_GATENAME_UNIFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_MOBILE_GATENAME_UNIFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_ADDITIONALFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_ADDITIONALFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_ADDITIONALFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_EDUCATIONFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_EDUCATIONFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_EDUCATIONFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_EMERGENCYCONTACT" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_EMERGENCYCONTACT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_EMERGENCYCONTACT_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_FAMILYBACKGROUND" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_FAMILYBACKGROUND">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_FAMILYBACKGROUND_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_FAMILYFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_FAMILYFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_FAMILYFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_HEALTH" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_HEALTH">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_HEALTH_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_LANGUAGEFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_LANGUAGEFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_LANGUAGEFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_PERSONALFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_PERSONALFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_PERSONALFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_REFERENCE_PERSON" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_REFERENCE_PERSON">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_REFERENCE_PERSON_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_REPORT" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_REPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_REPORT_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_SIBLINGSFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_SIBLINGSFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_SIBLINGSFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_SPOUSE_CHILD" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_SPOUSE_CHILD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_SPOUSE_CHILD_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_SPOUSE_WIFE" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_SPOUSE_WIFE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_SPOUSE_WIFE_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_USERDOCUMENT" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_USERDOCUMENT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_USERDOCUMENT_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_USERUNIFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_USERUNIFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_USERUNIFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MOBILE_SAVE_WORKEXPFORM" FunctionName="DBERECRUITMENTModel.Store.MOBILE_SAVE_WORKEXPFORM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.MOBILE_SAVE_WORKEXPFORM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DBERECRUITMENTModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DBERECRUITMENTModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DBERECRUITMENTModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT1" FunctionName="DBERECRUITMENTModel.Store.SP_EXPORT1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_EXPORT1_Result">
+          <ScalarProperty Name="NAME_EMP" ColumnName="NAME_EMP" />
+          <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+          <ScalarProperty Name="BATCH_EMP" ColumnName="BATCH_EMP" />
+          <ScalarProperty Name="NAME_EMP1" ColumnName="NAME_EMP1" />
+          <ScalarProperty Name="PERSONALITY" ColumnName="PERSONALITY" />
+          <ScalarProperty Name="THINKING_STY" ColumnName="THINKING_STY" />
+          <ScalarProperty Name="WORKING_STY" ColumnName="WORKING_STY" />
+          <ScalarProperty Name="MDCL_TST" ColumnName="MDCL_TST" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_EXPORT2" FunctionName="DBERECRUITMENTModel.Store.SP_EXPORT2" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORTEXCEL_GENERALNAMELIST" FunctionName="DBERECRUITMENTModel.Store.SP_EXPORTEXCEL_GENERALNAMELIST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_EXPORTEXCEL_GENERALNAMELIST_Result">
+          <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+          <ScalarProperty Name="BATCH_EMP" ColumnName="BATCH_EMP" />
+          <ScalarProperty Name="NAME_EMP" ColumnName="NAME_EMP" />
+          <ScalarProperty Name="GANDER" ColumnName="GANDER" />
+          <ScalarProperty Name="NO_EMP" ColumnName="NO_EMP" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="TAX" ColumnName="TAX" />
+          <ScalarProperty Name="TIER" ColumnName="TIER" />
+          <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_BATCHLIST_1" FunctionName="DBERECRUITMENTModel.Store.SP_GET_BATCHLIST_1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_GET_BATCHLIST_1_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONEEMP" ColumnName="PHONEEMP" />
+          <ScalarProperty Name="BATCHEMP" ColumnName="BATCHEMP" />
+          <ScalarProperty Name="INVITATIONEMP" ColumnName="INVITATIONEMP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_BATCHLIST_2" FunctionName="DBERECRUITMENTModel.Store.SP_GET_BATCHLIST_2" />
+    <FunctionImportMapping FunctionImportName="SP_GET_CONTACT_LIST1" FunctionName="DBERECRUITMENTModel.Store.SP_GET_CONTACT_LIST1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_GET_CONTACT_LIST1_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONEEMP" ColumnName="PHONEEMP" />
+          <ScalarProperty Name="BATCHEMP" ColumnName="BATCHEMP" />
+          <ScalarProperty Name="INVITATIONEMP" ColumnName="INVITATIONEMP" />
+          <ScalarProperty Name="STATUSEMP" ColumnName="STATUSEMP" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_CONTACT_LIST2" FunctionName="DBERECRUITMENTModel.Store.SP_GET_CONTACT_LIST2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_GET_CONTACT_LIST2_Result">
+          <ScalarProperty Name="NAMEEMP" ColumnName="NAMEEMP" />
+          <ScalarProperty Name="PHONEEMP" ColumnName="PHONEEMP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_LAST_SEQ" FunctionName="DBERECRUITMENTModel.Store.SP_GET_LAST_SEQ" />
+    <FunctionImportMapping FunctionImportName="SP_GET_SERVICE_YEAR" FunctionName="DBERECRUITMENTModel.Store.SP_GET_SERVICE_YEAR" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DBERECRUITMENTModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DBERECRUITMENTModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_POST_NEW_USER" FunctionName="DBERECRUITMENTModel.Store.SP_POST_NEW_USER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_POST_NEW_USER_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBERECRUITMENTModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_ALL_USER_TABLE" FunctionName="DBERECRUITMENTModel.Store.SP_UPDATE_ALL_USER_TABLE" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_BATCHSTATUS" FunctionName="DBERECRUITMENTModel.Store.SP_UPDATE_BATCHSTATUS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPDATE_BATCHSTATUS_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_CANDIDATE_STATUS" FunctionName="DBERECRUITMENTModel.Store.SP_UPDATE_CANDIDATE_STATUS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPDATE_CANDIDATE_STATUS_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_INV_CODE" FunctionName="DBERECRUITMENTModel.Store.SP_UPDATE_INV_CODE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPDATE_INV_CODE_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_LOGFILE_TELEGRAM" FunctionName="DBERECRUITMENTModel.Store.SP_UPDATE_LOGFILE_TELEGRAM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPDATE_LOGFILE_TELEGRAM_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBERECRUITMENTModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SP_UPLOAD_SINGLE_BATCH" FunctionName="DBERECRUITMENTModel.Store.SP_UPLOAD_SINGLE_BATCH">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPLOAD_SINGLE_BATCH_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UPLOAD_SINGLE_BATCH_2" FunctionName="DBERECRUITMENTModel.Store.SP_UPLOAD_SINGLE_BATCH_2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_UPLOAD_SINGLE_BATCH_2_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_EXPORT_GENERANAMELIST" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_EXPORT_GENERANAMELIST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_EXPORT_GENERANAMELIST_Result">
+          <ScalarProperty Name="GELOMBANG" ColumnName="GELOMBANG" />
+          <ScalarProperty Name="NOMOR_UNDANGAN" ColumnName="NOMOR UNDANGAN" />
+          <ScalarProperty Name="NAMA_LENGKAP" ColumnName="NAMA LENGKAP" />
+          <ScalarProperty Name="NO__KARYAWAN" ColumnName="NO. KARYAWAN" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="KONTRAK" ColumnName="KONTRAK" />
+          <ScalarProperty Name="GAJI" ColumnName="GAJI" />
+          <ScalarProperty Name="KODE_PAJAK" ColumnName="KODE PAJAK" />
+          <ScalarProperty Name="DEPARTEMEN" ColumnName="DEPARTEMEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NO__WA" ColumnName="NO. WA" />
+          <ScalarProperty Name="NO__HP" ColumnName="NO. HP" />
+          <ScalarProperty Name="BIRTHPLACE" ColumnName="BIRTHPLACE" />
+          <ScalarProperty Name="BIRTHDATE" ColumnName="BIRTHDATE" />
+          <ScalarProperty Name="UMUR" ColumnName="UMUR" />
+          <ScalarProperty Name="JENIS_KELAMIN" ColumnName="JENIS KELAMIN" />
+          <ScalarProperty Name="AGAMA" ColumnName="AGAMA" />
+          <ScalarProperty Name="SUKU" ColumnName="SUKU" />
+          <ScalarProperty Name="TINGGI_BADAN" ColumnName="TINGGI BADAN" />
+          <ScalarProperty Name="BERAT_BADAN" ColumnName="BERAT BADAN" />
+          <ScalarProperty Name="UKURAN_BAJU" ColumnName="UKURAN BAJU" />
+          <ScalarProperty Name="UKURAN_CELANA" ColumnName="UKURAN CELANA" />
+          <ScalarProperty Name="TEST_IQ" ColumnName="TEST IQ" />
+          <ScalarProperty Name="TEST_ENG" ColumnName="TEST ENG" />
+          <ScalarProperty Name="TEST_MATH" ColumnName="TEST MATH" />
+          <ScalarProperty Name="TEST_ACC" ColumnName="TEST ACC" />
+          <ScalarProperty Name="MEMORY" ColumnName="MEMORY" />
+          <ScalarProperty Name="PENDIDIKAN_TERAKHIR" ColumnName="PENDIDIKAN TERAKHIR" />
+          <ScalarProperty Name="TEMPAT_PENDIDIKAN" ColumnName="TEMPAT PENDIDIKAN" />
+          <ScalarProperty Name="JURUSAN" ColumnName="JURUSAN" />
+          <ScalarProperty Name="NILAI" ColumnName="NILAI" />
+          <ScalarProperty Name="NOMOR_IJAZAH" ColumnName="NOMOR IJAZAH" />
+          <ScalarProperty Name="ALAMAT" ColumnName="ALAMAT" />
+          <ScalarProperty Name="RT" ColumnName="RT" />
+          <ScalarProperty Name="RW" ColumnName="RW" />
+          <ScalarProperty Name="KECAMATAN" ColumnName="KECAMATAN" />
+          <ScalarProperty Name="KELURAHAN" ColumnName="KELURAHAN" />
+          <ScalarProperty Name="ALAMAT_LENGKAP" ColumnName="ALAMAT LENGKAP" />
+          <ScalarProperty Name="NAMA_KONTAK_DARURAT" ColumnName="NAMA KONTAK DARURAT" />
+          <ScalarProperty Name="NOMOR_KONTAK_DARURAT" ColumnName="NOMOR KONTAK DARURAT" />
+          <ScalarProperty Name="RELASI_KONTAK_DARURAT" ColumnName="RELASI KONTAK DARURAT" />
+          <ScalarProperty Name="ALAMAT_KONTAK_DARURAT" ColumnName="ALAMAT KONTAK DARURAT" />
+          <ScalarProperty Name="RT1" ColumnName="RT1" />
+          <ScalarProperty Name="RW1" ColumnName="RW1" />
+          <ScalarProperty Name="PROVINSI" ColumnName="PROVINSI" />
+          <ScalarProperty Name="KOTA" ColumnName="KOTA" />
+          <ScalarProperty Name="KECAMATAN1" ColumnName="KECAMATAN1" />
+          <ScalarProperty Name="KELURAHAN1" ColumnName="KELURAHAN1" />
+          <ScalarProperty Name="ALAMAT_LENGKAP1" ColumnName="ALAMAT LENGKAP1" />
+          <ScalarProperty Name="NOMOR_KTP" ColumnName="NOMOR KTP" />
+          <ScalarProperty Name="NOMOR_REKENING" ColumnName="NOMOR REKENING" />
+          <ScalarProperty Name="NOMOR_NPWP" ColumnName="NOMOR NPWP" />
+          <ScalarProperty Name="NOMOR_EFIN" ColumnName="NOMOR EFIN" />
+          <ScalarProperty Name="NOMOR_BPJS_KS" ColumnName="NOMOR BPJS KS" />
+          <ScalarProperty Name="NOMOR_BPJS_TKJ" ColumnName="NOMOR BPJS TKJ" />
+          <ScalarProperty Name="NOMOR_KK" ColumnName="NOMOR KK" />
+          <ScalarProperty Name="AYAH_MASIH_HIDUP" ColumnName="AYAH MASIH HIDUP" />
+          <ScalarProperty Name="NIK_AYAH" ColumnName="NIK AYAH" />
+          <ScalarProperty Name="NAMA_AYAH" ColumnName="NAMA AYAH" />
+          <ScalarProperty Name="UMUR_AYAH" ColumnName="UMUR AYAH" />
+          <ScalarProperty Name="TANGGAL_LAHIR_AYAH" ColumnName="TANGGAL LAHIR AYAH" />
+          <ScalarProperty Name="TEMPAT_LAHIR_AYAH" ColumnName="TEMPAT LAHIR AYAH" />
+          <ScalarProperty Name="PEKERJAAN_AYAH" ColumnName="PEKERJAAN AYAH" />
+          <ScalarProperty Name="KONTAK_AYAH" ColumnName="KONTAK AYAH" />
+          <ScalarProperty Name="IBU_MASIH_HIDUP" ColumnName="IBU MASIH HIDUP" />
+          <ScalarProperty Name="NIK_IBU" ColumnName="NIK IBU" />
+          <ScalarProperty Name="NAMA_IBU" ColumnName="NAMA IBU" />
+          <ScalarProperty Name="UMUR_IBU" ColumnName="UMUR IBU" />
+          <ScalarProperty Name="TANGGAL_LAHIR_IBU" ColumnName="TANGGAL LAHIR IBU" />
+          <ScalarProperty Name="TEMPAT_LAHIR_IBU" ColumnName="TEMPAT LAHIR IBU" />
+          <ScalarProperty Name="PEKERJAAN_IBU" ColumnName="PEKERJAAN IBU" />
+          <ScalarProperty Name="KONTAK_IBU" ColumnName="KONTAK IBU" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GET_CANDIDATE_DETAILS" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GET_CANDIDATE_DETAILS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GET_CANDIDATE_DETAILS_Result">
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="EMP_NIK" ColumnName="EMP_NIK" />
+          <ScalarProperty Name="EMP_GANDER" ColumnName="EMP_GANDER" />
+          <ScalarProperty Name="EMP_MARITAL" ColumnName="EMP_MARITAL" />
+          <ScalarProperty Name="EMP_RELIGION" ColumnName="EMP_RELIGION" />
+          <ScalarProperty Name="EMP_HEIGHT" ColumnName="EMP_HEIGHT" />
+          <ScalarProperty Name="EMP_WEIGHT" ColumnName="EMP_WEIGHT" />
+          <ScalarProperty Name="EMP_BIRTHPLACE" ColumnName="EMP_BIRTHPLACE" />
+          <ScalarProperty Name="EMP_BIRTHDATE" ColumnName="EMP_BIRTHDATE" />
+          <ScalarProperty Name="EMP_RACE" ColumnName="EMP_RACE" />
+          <ScalarProperty Name="EMP_MOBILE" ColumnName="EMP_MOBILE" />
+          <ScalarProperty Name="EMP_TELEGRAM" ColumnName="EMP_TELEGRAM" />
+          <ScalarProperty Name="EMP_WHATSAPP" ColumnName="EMP_WHATSAPP" />
+          <ScalarProperty Name="EMP_PASFOTO" ColumnName="EMP_PASFOTO" />
+          <ScalarProperty Name="EMP_KTPFOTO" ColumnName="EMP_KTPFOTO" />
+          <ScalarProperty Name="EMP_NOKK" ColumnName="EMP_NOKK" />
+          <ScalarProperty Name="EMP_FATHER_ALIVE" ColumnName="EMP_FATHER_ALIVE" />
+          <ScalarProperty Name="EMP_FATHER_NAME" ColumnName="EMP_FATHER_NAME" />
+          <ScalarProperty Name="EMP_FATHER_AGE" ColumnName="EMP_FATHER_AGE" />
+          <ScalarProperty Name="EMP_FATHER_JOB" ColumnName="EMP_FATHER_JOB" />
+          <ScalarProperty Name="EMP_NIK_FATHER" ColumnName="EMP_NIK_FATHER" />
+          <ScalarProperty Name="EMP_FATHER_BIRTHPLACE" ColumnName="EMP_FATHER_BIRTHPLACE" />
+          <ScalarProperty Name="EMP_FATHER_BIRTHDAY" ColumnName="EMP_FATHER_BIRTHDAY" />
+          <ScalarProperty Name="EMP_FATHER_MOBILE" ColumnName="EMP_FATHER_MOBILE" />
+          <ScalarProperty Name="EMP_MOTHER_ALIVE" ColumnName="EMP_MOTHER_ALIVE" />
+          <ScalarProperty Name="EMP_MOTHER_NAME" ColumnName="EMP_MOTHER_NAME" />
+          <ScalarProperty Name="EMP_MOTHER_AGE" ColumnName="EMP_MOTHER_AGE" />
+          <ScalarProperty Name="EMP_MOTHER_JOB" ColumnName="EMP_MOTHER_JOB" />
+          <ScalarProperty Name="EMP_NIK_MOTHER" ColumnName="EMP_NIK_MOTHER" />
+          <ScalarProperty Name="EMP_MOTHER_BIRTHPLACE" ColumnName="EMP_MOTHER_BIRTHPLACE" />
+          <ScalarProperty Name="EMP_MOTHER_BIRTHDAY" ColumnName="EMP_MOTHER_BIRTHDAY" />
+          <ScalarProperty Name="EMP_MOTHER_MOBILE" ColumnName="EMP_MOTHER_MOBILE" />
+          <ScalarProperty Name="EMP_PHOTOKK" ColumnName="EMP_PHOTOKK" />
+          <ScalarProperty Name="EMP_ISFAMILY" ColumnName="EMP_ISFAMILY" />
+          <ScalarProperty Name="EMP_WIFE_NAME" ColumnName="EMP_WIFE_NAME" />
+          <ScalarProperty Name="EMP_WIFE_NIK" ColumnName="EMP_WIFE_NIK" />
+          <ScalarProperty Name="EMP_WIFE_BIRTH_PLACE" ColumnName="EMP_WIFE_BIRTH_PLACE" />
+          <ScalarProperty Name="EMP_WIFE_BIRTH_DATE" ColumnName="EMP_WIFE_BIRTH_DATE" />
+          <ScalarProperty Name="EMP_WIFE_MOBILE" ColumnName="EMP_WIFE_MOBILE" />
+          <ScalarProperty Name="EMP_EM_NAME" ColumnName="EMP_EM_NAME" />
+          <ScalarProperty Name="EMP_EM_REL" ColumnName="EMP_EM_REL" />
+          <ScalarProperty Name="EMP_EM_MOBILE" ColumnName="EMP_EM_MOBILE" />
+          <ScalarProperty Name="EMP_EM_ADDR" ColumnName="EMP_EM_ADDR" />
+          <ScalarProperty Name="EMP_EM_RT" ColumnName="EMP_EM_RT" />
+          <ScalarProperty Name="EMP_EM_RW" ColumnName="EMP_EM_RW" />
+          <ScalarProperty Name="EMP_EM_PROVINSI" ColumnName="EMP_EM_PROVINSI" />
+          <ScalarProperty Name="EMP_EM_KABUPATEN" ColumnName="EMP_EM_KABUPATEN" />
+          <ScalarProperty Name="EMP_EM_KECAMATAN" ColumnName="EMP_EM_KECAMATAN" />
+          <ScalarProperty Name="EMP_EM_KELURAHAN" ColumnName="EMP_EM_KELURAHAN" />
+          <ScalarProperty Name="EMP_LAST_EDU" ColumnName="EMP_LAST_EDU" />
+          <ScalarProperty Name="EMP_SCHOOL_NAME" ColumnName="EMP_SCHOOL_NAME" />
+          <ScalarProperty Name="EMP_SCHOOL_MAJOR" ColumnName="EMP_SCHOOL_MAJOR" />
+          <ScalarProperty Name="EMP_AVG_SCORE" ColumnName="EMP_AVG_SCORE" />
+          <ScalarProperty Name="EMP_CERT_NO" ColumnName="EMP_CERT_NO" />
+          <ScalarProperty Name="EMP_PHOTO_CERT_F" ColumnName="EMP_PHOTO_CERT_F" />
+          <ScalarProperty Name="EMP_PHOTO_CERT_B" ColumnName="EMP_PHOTO_CERT_B" />
+          <ScalarProperty Name="EMP_HOLD_WILLINGLY" ColumnName="EMP_HOLD_WILLINGLY" />
+          <ScalarProperty Name="EMP_FACULTY" ColumnName="EMP_FACULTY" />
+          <ScalarProperty Name="EMP_GRADUATE_YEAR" ColumnName="EMP_GRADUATE_YEAR" />
+          <ScalarProperty Name="EMP_GRADUATE_PLACE" ColumnName="EMP_GRADUATE_PLACE" />
+          <ScalarProperty Name="EMP_MOTIVASI" ColumnName="EMP_MOTIVASI" />
+          <ScalarProperty Name="EMP_KOMITMEN" ColumnName="EMP_KOMITMEN" />
+          <ScalarProperty Name="EMP_CRIME" ColumnName="EMP_CRIME" />
+          <ScalarProperty Name="EMP_MENTAL_DISEASE" ColumnName="EMP_MENTAL_DISEASE" />
+          <ScalarProperty Name="EMP_WORKED_ON_SHIMANO" ColumnName="EMP_WORKED_ON_SHIMANO" />
+          <ScalarProperty Name="EMP_SHAMANO_START" ColumnName="EMP_SHAMANO_START" />
+          <ScalarProperty Name="EMP_SHIMANO_END" ColumnName="EMP_SHIMANO_END" />
+          <ScalarProperty Name="EMP_STUDY_PLAN" ColumnName="EMP_STUDY_PLAN" />
+          <ScalarProperty Name="EMP_SAPORCOMP" ColumnName="EMP_SAPORCOMP" />
+          <ScalarProperty Name="EMP_CL" ColumnName="EMP_CL" />
+          <ScalarProperty Name="EMP_CV" ColumnName="EMP_CV" />
+          <ScalarProperty Name="EMP_ACCOUNT_BCA" ColumnName="EMP_ACCOUNT_BCA" />
+          <ScalarProperty Name="EMP_ACCOUNT_NPWP" ColumnName="EMP_ACCOUNT_NPWP" />
+          <ScalarProperty Name="EMP_ACCOUNT_EFIN" ColumnName="EMP_ACCOUNT_EFIN" />
+          <ScalarProperty Name="EMP_ACCOUNT_BPJS_KES" ColumnName="EMP_ACCOUNT_BPJS_KES" />
+          <ScalarProperty Name="EMP_ACCOUNT_BPJS_TKJ" ColumnName="EMP_ACCOUNT_BPJS_TKJ" />
+          <ScalarProperty Name="EMP_IMG_BCA" ColumnName="EMP_IMG_BCA" />
+          <ScalarProperty Name="EMP_IMG_NPWP" ColumnName="EMP_IMG_NPWP" />
+          <ScalarProperty Name="EMP_IMG_EFIN" ColumnName="EMP_IMG_EFIN" />
+          <ScalarProperty Name="EMP_IMG_BPJS_KES" ColumnName="EMP_IMG_BPJS_KES" />
+          <ScalarProperty Name="EMP_IMG_BPJS_TKJ" ColumnName="EMP_IMG_BPJS_TKJ" />
+          <ScalarProperty Name="EMP_IMG_SIM_C" ColumnName="EMP_IMG_SIM_C" />
+          <ScalarProperty Name="EMP_IMG_VAKSIN" ColumnName="EMP_IMG_VAKSIN" />
+          <ScalarProperty Name="EMP_IMG_SKCK" ColumnName="EMP_IMG_SKCK" />
+          <ScalarProperty Name="EMP_IMG_SERTIFIKAT_KOMPETENSI" ColumnName="EMP_IMG_SERTIFIKAT_KOMPETENSI" />
+          <ScalarProperty Name="EMP_IMG_PENGALAMAN" ColumnName="EMP_IMG_PENGALAMAN" />
+          <ScalarProperty Name="EMP_IMG_SURAT_SEHAT" ColumnName="EMP_IMG_SURAT_SEHAT" />
+          <ScalarProperty Name="EMP_IMG_KARTU_KUNING" ColumnName="EMP_IMG_KARTU_KUNING" />
+          <ScalarProperty Name="EMP_IMG_SIO" ColumnName="EMP_IMG_SIO" />
+          <ScalarProperty Name="EMP_BATCH_EMP" ColumnName="EMP_BATCH_EMP" />
+          <ScalarProperty Name="EMP_INVITECODE" ColumnName="EMP_INVITECODE" />
+          <ScalarProperty Name="EMP_PERSONALITY" ColumnName="EMP_PERSONALITY" />
+          <ScalarProperty Name="EMP_THINKING_STY" ColumnName="EMP_THINKING_STY" />
+          <ScalarProperty Name="EMP_WORKING_STY" ColumnName="EMP_WORKING_STY" />
+          <ScalarProperty Name="EMP_TEST_MTH" ColumnName="EMP_TEST_MTH" />
+          <ScalarProperty Name="EMP_TEST_ACC" ColumnName="EMP_TEST_ACC" />
+          <ScalarProperty Name="EMP_TEST_ENG" ColumnName="EMP_TEST_ENG" />
+          <ScalarProperty Name="EMP_TEST_IQ" ColumnName="EMP_TEST_IQ" />
+          <ScalarProperty Name="EMP_WRITTEN_SCORE" ColumnName="EMP_WRITTEN_SCORE" />
+          <ScalarProperty Name="EMP_TEST_1" ColumnName="EMP_TEST_1" />
+          <ScalarProperty Name="EMP_TIME_TEST_1" ColumnName="EMP_TIME_TEST_1" />
+          <ScalarProperty Name="EMP_TEST_2" ColumnName="EMP_TEST_2" />
+          <ScalarProperty Name="EMP_TIME_TEST_2" ColumnName="EMP_TIME_TEST_2" />
+          <ScalarProperty Name="EMP_PRACTICAL_SCORE" ColumnName="EMP_PRACTICAL_SCORE" />
+          <ScalarProperty Name="EMP_REMARK" ColumnName="EMP_REMARK" />
+          <ScalarProperty Name="EMP_MEMORY_SCORE" ColumnName="EMP_MEMORY_SCORE" />
+          <ScalarProperty Name="EMP_ATTN_EMP" ColumnName="EMP_ATTN_EMP" />
+          <ScalarProperty Name="EMP_MDCL_TST" ColumnName="EMP_MDCL_TST" />
+          <ScalarProperty Name="EMP_FIN_DES" ColumnName="EMP_FIN_DES" />
+          <ScalarProperty Name="EMP_SUM_REMARK" ColumnName="EMP_SUM_REMARK" />
+          <ScalarProperty Name="EMP_UPDT_USER" ColumnName="EMP_UPDT_USER" />
+          <ScalarProperty Name="EMP_UPDT_TIME" ColumnName="EMP_UPDT_TIME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GET_GENERANAMELIST" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GET_GENERANAMELIST">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GET_GENERANAMELIST_Result">
+          <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+          <ScalarProperty Name="BATCH_EMP" ColumnName="BATCH_EMP" />
+          <ScalarProperty Name="NAME_EMP" ColumnName="NAME_EMP" />
+          <ScalarProperty Name="GANDER" ColumnName="GANDER" />
+          <ScalarProperty Name="FORM" ColumnName="FORM" />
+          <ScalarProperty Name="NO_EMP" ColumnName="NO_EMP" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="TAX" ColumnName="TAX" />
+          <ScalarProperty Name="TIER" ColumnName="TIER" />
+          <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="COMPLETED_ON" ColumnName="COMPLETED_ON" />
+          <ScalarProperty Name="SEND_ON" ColumnName="SEND_ON" />
+          <ScalarProperty Name="VERIFY_ON" ColumnName="VERIFY_ON" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GET_INTERVIEWBOARD_SCOREBOARD" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GET_INTERVIEWBOARD_SCOREBOARD" />
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETBATCH_DROPDOWN" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETBATCH_DROPDOWN" />
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETBATSTAT_DROPDOWN" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETBATSTAT_DROPDOWN" />
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETCATEGORY_DROPDOWN" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETCATEGORY_DROPDOWN" />
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETEMPSTAT_DROPDOWN" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETEMPSTAT_DROPDOWN" />
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETREPORT_FORM1" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETREPORT_FORM1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GETREPORT_FORM1_Result">
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="EMP_GANDER" ColumnName="EMP_GANDER" />
+          <ScalarProperty Name="EM_BIRTHPLACE" ColumnName="EM_BIRTHPLACE" />
+          <ScalarProperty Name="EMP_BIRTHDATE" ColumnName="EMP_BIRTHDATE" />
+          <ScalarProperty Name="EMP_ADDRESS" ColumnName="EMP_ADDRESS" />
+          <ScalarProperty Name="EMP_RELIGION" ColumnName="EMP_RELIGION" />
+          <ScalarProperty Name="EMP_RT" ColumnName="EMP_RT" />
+          <ScalarProperty Name="EMP_RW" ColumnName="EMP_RW" />
+          <ScalarProperty Name="EMP_KELURAHAN" ColumnName="EMP_KELURAHAN" />
+          <ScalarProperty Name="EMP_KECAMATAN" ColumnName="EMP_KECAMATAN" />
+          <ScalarProperty Name="EMP_RACE" ColumnName="EMP_RACE" />
+          <ScalarProperty Name="EMP_MARITAL" ColumnName="EMP_MARITAL" />
+          <ScalarProperty Name="EMP_HEIGHT" ColumnName="EMP_HEIGHT" />
+          <ScalarProperty Name="EMP_WEIGHT" ColumnName="EMP_WEIGHT" />
+          <ScalarProperty Name="EMP_EMAIL" ColumnName="EMP_EMAIL" />
+          <ScalarProperty Name="EMP_PHONE" ColumnName="EMP_PHONE" />
+          <ScalarProperty Name="EMP_TELEGRAM" ColumnName="EMP_TELEGRAM" />
+          <ScalarProperty Name="EMP_WHATSAPP" ColumnName="EMP_WHATSAPP" />
+          <ScalarProperty Name="EMP_LAST_EDU" ColumnName="EMP_LAST_EDU" />
+          <ScalarProperty Name="EMP_SCHOOL_NAME" ColumnName="EMP_SCHOOL_NAME" />
+          <ScalarProperty Name="EMP_SCHOOL_MAJOR" ColumnName="EMP_SCHOOL_MAJOR" />
+          <ScalarProperty Name="EMP_CERT_NO" ColumnName="EMP_CERT_NO" />
+          <ScalarProperty Name="EMP_GRAD_YEAR" ColumnName="EMP_GRAD_YEAR" />
+          <ScalarProperty Name="EMP_GRAD_COUN" ColumnName="EMP_GRAD_COUN" />
+          <ScalarProperty Name="EMP_WORK_EXP" ColumnName="EMP_WORK_EXP" />
+          <ScalarProperty Name="EMP_REF_NAME" ColumnName="EMP_REF_NAME" />
+          <ScalarProperty Name="EMP_REF_COMPANY" ColumnName="EMP_REF_COMPANY" />
+          <ScalarProperty Name="EMP_REF_TITLE" ColumnName="EMP_REF_TITLE" />
+          <ScalarProperty Name="EMP_REF_MOBILE" ColumnName="EMP_REF_MOBILE" />
+          <ScalarProperty Name="EMP_REF_EMAIL" ColumnName="EMP_REF_EMAIL" />
+          <ScalarProperty Name="EMP_EYECHECK" ColumnName="EMP_EYECHECK" />
+          <ScalarProperty Name="EMP_EYEVALUE" ColumnName="EMP_EYEVALUE" />
+          <ScalarProperty Name="EMP_SMOKIN" ColumnName="EMP_SMOKIN" />
+          <ScalarProperty Name="EMP_CRIME" ColumnName="EMP_CRIME" />
+          <ScalarProperty Name="EMP_MENTAL_DISEASE" ColumnName="EMP_MENTAL_DISEASE" />
+          <ScalarProperty Name="EMP_DEPARTMENT" ColumnName="EMP_DEPARTMENT" />
+          <ScalarProperty Name="EMP_POSITION" ColumnName="EMP_POSITION" />
+          <ScalarProperty Name="EMP_PERIOD" ColumnName="EMP_PERIOD" />
+          <ScalarProperty Name="EMP_TIER" ColumnName="EMP_TIER" />
+          <ScalarProperty Name="EMP_DOJ" ColumnName="EMP_DOJ" />
+          <ScalarProperty Name="EMP_SALARY" ColumnName="EMP_SALARY" />
+          <ScalarProperty Name="EMP_ACKNOWLEDGE" ColumnName="EMP_ACKNOWLEDGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_Result">
+          <ScalarProperty Name="BATCHNO" ColumnName="BATCHNO" />
+          <ScalarProperty Name="TOTALINVITATION" ColumnName="TOTALINVITATION" />
+          <ScalarProperty Name="TOTALATTENDANCE" ColumnName="TOTALATTENDANCE" />
+          <ScalarProperty Name="REQUESTDATE" ColumnName="REQUESTDATE" />
+          <ScalarProperty Name="STATUSBATCH" ColumnName="STATUSBATCH" />
+          <ScalarProperty Name="INVITATIONDATE" ColumnName="INVITATIONDATE" />
+          <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+          <ScalarProperty Name="SUBCATEGORY" ColumnName="SUBCATEGORY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GETTABLE_INTERVIEWSCOREBOARD_DETAIL_Result">
+          <ScalarProperty Name="NAME_EMP" ColumnName="NAME_EMP" />
+          <ScalarProperty Name="BATCH_EMP" ColumnName="BATCH_EMP" />
+          <ScalarProperty Name="GANDER" ColumnName="GANDER" />
+          <ScalarProperty Name="NIK" ColumnName="NIK" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="JAFORM" ColumnName="JAFORM" />
+          <ScalarProperty Name="PREVYEAR" ColumnName="PREVYEAR" />
+          <ScalarProperty Name="ATTN_EMP" ColumnName="ATTN_EMP" />
+          <ScalarProperty Name="WRTN_TST" ColumnName="WRTN_TST" />
+          <ScalarProperty Name="PRTC_TST" ColumnName="PRTC_TST" />
+          <ScalarProperty Name="INTR_TST" ColumnName="INTR_TST" />
+          <ScalarProperty Name="MDCL_TST" ColumnName="MDCL_TST" />
+          <ScalarProperty Name="STATUSEMP" ColumnName="STATUSEMP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETUNIQUE" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETUNIQUE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GETUNIQUE_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_GETUSERINFO" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_GETUSERINFO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_GETUSERINFO_Result">
+          <ScalarProperty Name="USEID" ColumnName="USEID" />
+          <ScalarProperty Name="USENAM" ColumnName="USENAM" />
+          <ScalarProperty Name="ISWINDOWS" ColumnName="ISWINDOWS" />
+          <ScalarProperty Name="BUSFUNC" ColumnName="BUSFUNC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WEB_REPORT_TABLE" FunctionName="DBERECRUITMENTModel.Store.SP_WEB_REPORT_TABLE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.SP_WEB_REPORT_TABLE_Result">
+          <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+          <ScalarProperty Name="BATCH_EMP" ColumnName="BATCH_EMP" />
+          <ScalarProperty Name="NAME_EMP" ColumnName="NAME_EMP" />
+          <ScalarProperty Name="GANDER" ColumnName="GANDER" />
+          <ScalarProperty Name="NIK" ColumnName="NIK" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="TAHUN" ColumnName="TAHUN" />
+          <ScalarProperty Name="BULAN" ColumnName="BULAN" />
+          <ScalarProperty Name="HARI" ColumnName="HARI" />
+          <ScalarProperty Name="SERVICE_YEAR" ColumnName="SERVICE_YEAR" />
+          <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetBatchInfo" FunctionName="DBERECRUITMENTModel.Store.spGetBatchInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.spGetBatchInfo_Result">
+          <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+          <ScalarProperty Name="BatchCategory" ColumnName="BatchCategory" />
+          <ScalarProperty Name="InvitationDate" ColumnName="InvitationDate" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="StatusBatch" ColumnName="StatusBatch" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="WA_Log" ColumnName="WA_Log" />
+          <ScalarProperty Name="TL_Log" ColumnName="TL_Log" />
+          <ScalarProperty Name="TotalCandidate" ColumnName="TotalCandidate" />
+          <ScalarProperty Name="UPLOADED" ColumnName="UPLOADED" />
+          <ScalarProperty Name="INVITED" ColumnName="INVITED" />
+          <ScalarProperty Name="NOTINVITED" ColumnName="NOTINVITED" />
+          <ScalarProperty Name="PRESENT" ColumnName="PRESENT" />
+          <ScalarProperty Name="ABSENT" ColumnName="ABSENT" />
+          <ScalarProperty Name="BLACKLISTED" ColumnName="BLACKLISTED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetBatchList" FunctionName="DBERECRUITMENTModel.Store.spGetBatchList" />
+    <FunctionImportMapping FunctionImportName="spGetBatchList2" FunctionName="DBERECRUITMENTModel.Store.spGetBatchList2" />
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_1" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_1_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_2" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_2_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_3" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_3_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_4" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_4">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_4_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_5" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_5">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_5_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_7" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_7">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_7_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_8" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_8">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_8_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_CANDIDATE_DETAILS_SAVE_9" FunctionName="DBERECRUITMENTModel.Store.WEB_CANDIDATE_DETAILS_SAVE_9">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_CANDIDATE_DETAILS_SAVE_9_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_GET_DASHBOARD_DETAIL" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_DASHBOARD_DETAIL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_GET_DASHBOARD_DETAIL_Result">
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="PASSED" ColumnName="PASSED" />
+          <ScalarProperty Name="FAILED" ColumnName="FAILED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_GET_EDU" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_EDU" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_PERSONALITY" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_PERSONALITY" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_RACE" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_RACE" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_RELIGION" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_RELIGION" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_STATUS_DETAIL" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_STATUS_DETAIL" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_THINKING_STY" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_THINKING_STY" />
+    <FunctionImportMapping FunctionImportName="WEB_GET_WORKING_STY" FunctionName="DBERECRUITMENTModel.Store.WEB_GET_WORKING_STY" />
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_EDUCATION" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_EDUCATION">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_EDUCATION_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_FINAL" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_FINAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_FINAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_MEMORY" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_MEMORY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_MEMORY_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_OTHER" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_OTHER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_OTHER_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_PERSONAL" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_PERSONAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_PERSONAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_PRACTICAL" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_PRACTICAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_PRACTICAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_WRITTEN" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_WRITTEN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_WRITTEN_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_SAVE_WRITTEN_DMR_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR" FunctionName="DBERECRUITMENTModel.Store.WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_INTERVIEWBOARD_UNDO_WRITTEN_DMR_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_SAVE_DETAIL_REPORT" FunctionName="DBERECRUITMENTModel.Store.WEB_SAVE_DETAIL_REPORT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_SAVE_DETAIL_REPORT_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_SETDIGIT" FunctionName="DBERECRUITMENTModel.Store.WEB_SETDIGIT" />
+    <FunctionImportMapping FunctionImportName="WEB_SHOWDIGIT" FunctionName="DBERECRUITMENTModel.Store.WEB_SHOWDIGIT" />
+    <FunctionImportMapping FunctionImportName="WEB_SUBMIT_USER_GENERAL" FunctionName="DBERECRUITMENTModel.Store.WEB_SUBMIT_USER_GENERAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_SUBMIT_USER_GENERAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_UPDATE_PTM" FunctionName="DBERECRUITMENTModel.Store.WEB_UPDATE_PTM">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_UPDATE_PTM_Result">
+          <ScalarProperty Name="SUCCESS" ColumnName="SUCCESS" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_UPDATE_USER_GENERAL" FunctionName="DBERECRUITMENTModel.Store.WEB_UPDATE_USER_GENERAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_UPDATE_USER_GENERAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WEB_VERIFY_USER_GENERAL" FunctionName="DBERECRUITMENTModel.Store.WEB_VERIFY_USER_GENERAL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBERECRUITMENTModel.WEB_VERIFY_USER_GENERAL_Result">
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

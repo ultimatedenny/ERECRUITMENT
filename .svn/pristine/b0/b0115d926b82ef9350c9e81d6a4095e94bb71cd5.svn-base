@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "Interview Scoreboard";
+}
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                
+                <div class="widget-content widget-content-area">
+                    <div class="form-row mb-10" style="padding:10pt">
+                        <div class="col">
+                            <h6>BATCH NO.</h6>
+                            @*<select class="selectpicker" data-live-search="true" id="BATCHSELECTOR"></select>*@
+                            <select class="form-control basic js-data-example-ajax" id="BATCHSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6>CATEGORY</h6>
+                            @*<select class="selectpicker" data-live-search="true" id="CATEGORYSELECTOR"></select>*@
+                            <select class="form-control basic js-data-example-ajax" id="CATEGORYSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6>SUB CATEGORY</h6>
+                            @*<select class="selectpicker" data-live-search="true" id="SUBCATEGORYSELECTOR"></select>*@
+                            <select class="form-control basic js-data-example-ajax" id="SUBCATEGORYSELECTOR" disabled></select>
+                        </div>
+                        <div class="col">
+                            <h6>STATUS</h6>
+                            @*<select class="selectpicker" data-live-search="true" id="STATUSSELECTOR"></select>*@
+                            <select class="form-control basic js-data-example-ajax" id="STATUSSELECTOR"></select>
+                        </div>
+                        <div class="col">
+                            <h6>START DATE</h6>
+                            <input id="basicFlatpickr1" class="form-control flatpickr flatpickr-input" type="text" placeholder="From" readonly="readonly">
+                        </div>
+                        <div class="col">
+                            <h6>END DATE</h6>
+                            <input id="basicFlatpickr2" class="form-control flatpickr flatpickr-input" type="text" placeholder="To" readonly="readonly">
+                        </div>
+                        <div class="col">
+                            <h6 style="color:transparent">SEARCH</h6>
+                            <button class="btn btn-outline-primary mb-2 mr-2 btn-lg" onclick="Search()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="widget-content widget-content-area br-6" >
+                <table id="table1" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>BATCH NO</th>
+                            <th>TOTAL INVITATION</th>
+                            <th>TOTAL ATTENDANCE</th>
+                            <th>REQUEST DATE</th>
+                            <th>INVITATION DATE</th>
+                            <th>STATUS</th>
+                            <th>CATEGORY</th>
+                            <th>SUBCATEGORY</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var APPNAME = '@System.Configuration.ConfigurationManager.AppSettings["APPNAME"]';
+
+    $(document).ready(function () {
+        var ss = $(".basic").select2({
+            tags: true,
+        });
+        var todayDate = new Date().toISOString().slice(0, 10);
+        var dateForCalculation = new Date();
+        var prevSunday = new Date(dateForCalculation.setDate(dateForCalculation.getDate() - dateForCalculation.getDay())).toISOString().slice(0, 10);
+        var nextSunday = new Date(dateForCalculation.setDate(dateForCalculation.getDate() + 7)).toISOString().slice(0, 10);
+        var f1 = flatpickr(document.getElementById('basicFlatpickr1'), {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "Y-m-d",
+            allowInput: true,
+            minDate: "1900-01",
+            defaultDate: todayDate
+        });
+        var f2 = flatpickr(document.getElementById('basicFlatpickr2'), {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "Y-m-d",
+            allowInput: true,
+            minDate: "1900-01",
+            defaultDate: todayDate
+        });
+        GETBATCH_DROPDOWN();
+        GetTable();
+    });
+
+    function Search() {
+        GetTable();
+    }
+
+    function GetTable() {
+        var BATCHNO = $("#BATCHSELECTOR").val();
+        var CATEGORY = $("#CATEGORYSELECTOR").val();
+        var SUBCATEGORY = $("#SUBCATEGORYSELECTOR").val();
+        var STATUS = $("#STATUSSELECTOR").val();
+        var FROM = $("#basicFlatpickr1").val();
+        var TO = $("#basicFlatpickr2").val();
+
+        if (BATCHNO == "ALL") {
+            BATCHNO = "";
+        }
+
+        if (CATEGORY == "ALL") {
+            CATEGORY = "";
+        }
+
+        if (SUBCATEGORY == "ALL") {
+            SUBCATEGORY = "";
+        }
+
+        if (STATUS == "ALL") {
+            STATUS = "";
+        }
+
+        var URL = "@Url.Action("WEB_GETTABLE_INTERVIEWSCOREBOARD", "INTERVIEWBOARD")";
+
+        var MODEL = {
+            BATCHNO: BATCHNO,
+            BATCHCATEGORY: CATEGORY,
+            BATCHSTATUS: STATUS,
+            FROM: FROM,
+            TO: TO
+        };
+
+        var table = $('#table1').DataTable({
+            "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+                "<'table-responsive'tr>" +
+                "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+            "oLanguage": {
+                "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                "sInfo": "Showing page _PAGE_ of _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "destroy": true,
+            "searching": false,
+            "paging": false,
+            "searching": false,
+            "stripeClasses": [],
+            "lengthMenu": [10, 20, 30, 40, 50, 100, 200, 500, 1000],
+            "pageLength": 10,
+            "filter": false,
+            "ajax": {
+                "url": URL,
+                "type": "POST",
+                "datatype": "json",
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "data": MODEL, function (a) {
+                    return $.extend({}, a, {
+                    });
+                }
+            },
+            "columns": [
+                { "data": "BATCHNO", "autoWidth": true, "orderable": false },
+                { "data": "TOTALINVITATION", "autoWidth": true, "orderable": false },
+                { "data": "TOTALATTENDANCE", "autoWidth": true, "orderable": false },
+                { "data": "FROM", "autoWidth": true, "orderable": false },
+                { "data": "UNTIL", "autoWidth": true, "orderable": false },
+                {
+                    "data": "STATUS", render: function (data, type, row) {
+                        if (data == 'OPEN') {
+                            return '<span class="badge" style="background-color:#1e88e5; color:#ffffff">' + data + '</span>';
+                        }
+                        else if (data == 'PENDING') {
+                            return '<span class="badge" style="background-color:#039be5; color:#ffffff">' + data + '</span>';
+                        }
+                        else if (data == 'ONGOING') {
+                            return '<span class="badge" style="background-color:#00E1B5; color:#ffffff">' + data + '</span>';
+                        }
+                        else if (data == 'FINISHED') {
+                            return '<span class="badge" style="background-color:#DB577F; color:#ffffff">' + data + '</span>';
+                        }
+                        else if (data == 'CLOSED') {
+                            return '<span class="badge" style="background-color:#008A60; color:#ffffff">' + data + '</span>';
+                        }
+                        else {
+                            return '<span class="badge" style="background-color:#404756; color:#ffffff">NO DATA</span>';
+                        }
+                    }, "autoWidth": true, "orderable": false
+                },
+                { "data": "CATEGORY", "autoWidth": true, "orderable": false },
+                { "data": "SUBCATEGORY", "autoWidth": true, "orderable": false },
+                {
+                    "render": function (data, type, full, meta) {
+                        var ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+                        var BUTTON = '<button class="btn btn-outline-warning mb-2 mr-2 btn-lg" onclick="GOTODETAILS(\'' + full.BATCHNO + '\')">' + ICON+'</button >'
+                        
+                        return BUTTON;
+                        //href=' + '@Url.Action("Detail", "InterviewBoard")?' + "BATCHNO="
+                    }
+                },
+            ],
+        });
+    }
+
+    function GOTODETAILS(BATCHNO) {
+        var PARAM1 = BATCHNO;
+        var URL = '@Url.Action("Detail", "InterviewBoard")?' + "BATCHNO=" + PARAM1;
+        window.location.href = URL;
+    }
+
+    function GETBATCH_DROPDOWN() {
+        var URL = "@Url.Action("WEB_GETBATCH_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#BATCHSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    var option = document.createElement('option')
+                    option.value = jsonRes[j].BATCHNO;
+                    option.innerHTML = jsonRes[j].BATCHNO;
+                    document.getElementById('BATCHSELECTOR').append(option);
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+        GETCATEGORY_DROPDOWN();
+    }
+
+    function GETCATEGORY_DROPDOWN() {
+        var URL = "@Url.Action("WEB_GETCATEGORY_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#CATEGORYSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    let option = document.createElement('option')
+                    option.value = jsonRes[j].CATEGORY;
+                    option.innerHTML = jsonRes[j].CATEGORY;
+                    document.getElementById('CATEGORYSELECTOR').append(option);
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+        GETBATSTAT_DROPDOWN();
+    }
+
+    function GETBATSTAT_DROPDOWN() {
+        var URL = "@Url.Action("WEB_GETBATSTAT_DROPDOWN", "INTERVIEWBOARD")";
+        $.ajax({
+            url: URL,
+            type: 'GET',
+            success: function (jsonRes) {
+                var x = '';
+                x = '<option value="">ALL</option>';
+                $("#STATUSSELECTOR").html(x);
+                for (var j = 0; j < jsonRes.length; j++) {
+                    let option = document.createElement('option')
+                    option.value = jsonRes[j].STATUS;
+                    option.innerHTML = jsonRes[j].STATUS;
+                    document.getElementById('STATUSSELECTOR').append(option);
+                }
+            },
+            error: {
+                function(request, status, error) {
+                    alert(request.responseText);
+                }
+            }
+        });
+    }
+
+</script>
+
